@@ -161,9 +161,23 @@
         .newsom-card p { font-size: 0.9rem; color: #B0BED0; }
         .newsom-quote { text-align: center; margin-top: 40px; font-size: 1.3rem; font-style: italic; color: #B8902A; font-family: 'Georgia', serif; }
 
+        /* Articles Section */
+        .articles-section { background: #fff; padding: 80px 0; }
+        .articles-section h2 { font-size: 0.9rem; color: #B8902A; letter-spacing: 3px; margin-bottom: 20px; font-family: 'Calibri', sans-serif; font-weight: 700; }
+        .articles-section .headline { font-size: 2rem; font-weight: 400; color: #1B2A4A; margin-bottom: 40px; }
+        .articles-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(350px, 1fr)); gap: 30px; }
+        .article-card { background: #F8F4EE; text-decoration: none; color: inherit; display: block; box-shadow: 0 2px 10px rgba(0,0,0,0.06); transition: transform 0.2s, box-shadow 0.2s; overflow: hidden; }
+        .article-card:hover { transform: translateY(-4px); box-shadow: 0 8px 20px rgba(0,0,0,0.1); }
+        .article-image { height: 180px; background-size: cover; background-position: center; }
+        .article-card .article-content { padding: 24px; }
+        .article-tag { display: inline-block; background: #1B2A4A; color: #B8902A; font-size: 0.7rem; font-weight: 700; padding: 4px 10px; margin-bottom: 12px; font-family: 'Calibri', sans-serif; letter-spacing: 1px; text-transform: uppercase; }
+        .article-card h3 { font-size: 1.2rem; color: #1B2A4A; margin-bottom: 12px; font-family: 'Calibri', sans-serif; font-weight: 700; line-height: 1.4; }
+        .article-card p { font-size: 0.95rem; color: #555; line-height: 1.6; margin-bottom: 16px; }
+        .article-meta { font-size: 0.8rem; color: #888; font-family: 'Calibri', sans-serif; }
+
         /* Responsive */
         @media (max-width: 900px) {
-            .stats-grid, .problem-grid, .works-grid, .failed-grid, .solution-features, .success-grid, .newsom-grid { grid-template-columns: 1fr; }
+            .stats-grid, .problem-grid, .works-grid, .failed-grid, .solution-features, .success-grid, .newsom-grid, .articles-grid { grid-template-columns: 1fr; }
             .hero h1 { font-size: 2.5rem; }
             .image-hero h2 { font-size: 2.2rem; }
             .image-hero p { font-size: 1.1rem; }
@@ -182,6 +196,7 @@
             <a href="#failed">What Failed</a>
             <a href="#success">Requirements</a>
             <a href="#solution">The Solution</a>
+            <a href="#articles">Articles</a>
             <a href="#contact">Contact</a>
         </nav>
     </div>
@@ -425,6 +440,25 @@
                 <h3>Public Dashboard</h3>
                 <p>State of the Gap visibility. Visual, accessible, publicly accountable. No more hiding behind aggregates.</p>
             </div>
+        </div>
+    </div>
+</section>
+
+<!-- Articles Section -->
+<section class="articles-section" id="articles">
+    <div class="container">
+        <h2>ARTICLES & ANALYSIS</h2>
+        <p class="headline">Research, reports, and strategic analysis supporting the H-EDU mission.</p>
+        <div class="articles-grid">
+            <a href="pages/article-mckinsey-vera.html" class="article-card">
+                <div class="article-image" style="background: linear-gradient(135deg, rgba(27, 42, 74, 0.8), rgba(22, 34, 56, 0.9)), url('assets/manufacturing-workforce.jpg') center/cover no-repeat; background-color: #1B2A4A;"></div>
+                <div class="article-content">
+                    <span class="article-tag">McKinsey Analysis</span>
+                    <h3>How the McKinsey Manufacturing Workforce Article Supports VERA</h3>
+                    <p>The achievement gap is the workforce gap — identified twelve years too late. Manufacturing has named the problem from the demand side. VERA names it from the supply side.</p>
+                    <span class="article-meta">February 2026 · Strategic Analysis</span>
+                </div>
+            </a>
         </div>
     </div>
 </section>
