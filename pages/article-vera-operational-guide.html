@@ -1,0 +1,408 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>VERA Operational Guide | H-EDU</title>
+    <meta name="description" content="Complete operational guide for VERA - the Verification Engine for Results & Accountability. Installation, setup, and usage instructions for connecting Claude to California education data.">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: 'Georgia', 'Times New Roman', serif; line-height: 1.7; color: #2c2c2c; background: #F8F4EE; }
+        .container { max-width: 1200px; margin: 0 auto; padding: 0 24px; }
+
+        /* Header */
+        header {
+            background: #1B2A4A;
+            padding: 16px 0;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+        }
+        header .container { display: flex; justify-content: space-between; align-items: center; }
+        .logo { color: #B8902A; font-size: 1.6rem; font-weight: 700; text-decoration: none; font-family: 'Calibri', sans-serif; }
+        .logo span { color: #fff; }
+        nav { display: flex; gap: 32px; }
+        nav a { color: rgba(255,255,255,0.85); text-decoration: none; font-size: 0.95rem; font-family: 'Calibri', sans-serif; }
+        nav a:hover { color: #B8902A; }
+
+        /* Hero */
+        .hero {
+            background: linear-gradient(135deg, rgba(27, 42, 74, 0.75), rgba(22, 34, 56, 0.8)),
+                        url('../assets/vera-dashboard.jpg') center/cover no-repeat;
+            background-color: #1B2A4A;
+            color: white;
+            padding: 120px 24px 60px;
+            text-align: center;
+        }
+        .hero h1 { font-size: 2.4rem; font-weight: 400; margin-bottom: 16px; max-width: 900px; margin-left: auto; margin-right: auto; }
+        .hero .subtitle { font-size: 1.1rem; opacity: 0.9; max-width: 700px; margin: 0 auto; font-style: italic; }
+        .hero .meta { margin-top: 20px; font-size: 0.9rem; opacity: 0.7; }
+
+        /* Article */
+        .article-content { max-width: 800px; margin: 0 auto; padding: 40px 24px; }
+        .article-content h2 { font-size: 1.6rem; margin-top: 40px; margin-bottom: 16px; color: #1B2A4A; }
+        .article-content h3 { font-size: 1.2rem; margin-top: 28px; margin-bottom: 12px; color: #444; }
+        .article-content p { font-size: 1.05rem; color: #444; margin-bottom: 18px; line-height: 1.8; }
+        .article-content ul, .article-content ol { margin: 16px 0 16px 24px; }
+        .article-content li { font-size: 1.05rem; color: #444; margin-bottom: 10px; line-height: 1.7; }
+        .article-content hr { border: none; border-top: 1px solid #ddd; margin: 32px 0; }
+        .article-content a { color: #B8902A; text-decoration: none; }
+        .article-content a:hover { text-decoration: underline; }
+
+        /* Code blocks */
+        .article-content pre {
+            background: #1B2A4A;
+            color: #B0BED0;
+            padding: 20px;
+            border-radius: 4px;
+            overflow-x: auto;
+            font-family: 'Consolas', 'Monaco', monospace;
+            font-size: 0.9rem;
+            margin: 20px 0;
+            line-height: 1.5;
+        }
+        .article-content code {
+            background: #E8E3D8;
+            padding: 2px 6px;
+            border-radius: 3px;
+            font-family: 'Consolas', 'Monaco', monospace;
+            font-size: 0.9rem;
+            color: #1B2A4A;
+        }
+        .article-content pre code {
+            background: none;
+            padding: 0;
+            color: inherit;
+        }
+
+        /* Blockquote */
+        .article-content blockquote {
+            background: #E8E3D8;
+            border-left: 4px solid #B8902A;
+            padding: 20px 24px;
+            margin: 24px 0;
+            font-style: italic;
+            color: #1B2A4A;
+        }
+
+        /* Tool card */
+        .tool-card {
+            background: #fff;
+            border-left: 4px solid #B8902A;
+            padding: 20px 24px;
+            margin: 20px 0;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+        }
+        .tool-card h4 {
+            font-size: 1.1rem;
+            color: #1B2A4A;
+            margin-bottom: 8px;
+            font-family: 'Consolas', monospace;
+        }
+        .tool-card .params {
+            font-size: 0.85rem;
+            color: #666;
+            margin-bottom: 10px;
+        }
+        .tool-card .example {
+            font-size: 0.9rem;
+            color: #B8902A;
+            font-style: italic;
+        }
+
+        /* Callout box */
+        .callout {
+            background: #1B2A4A;
+            color: white;
+            padding: 24px;
+            margin: 32px 0;
+            text-align: center;
+        }
+        .callout p {
+            color: #B8902A;
+            font-size: 1.2rem;
+            font-weight: 600;
+            margin: 0;
+        }
+
+        /* Step box */
+        .step-box {
+            background: #fff;
+            border-top: 4px solid #1B2A4A;
+            padding: 20px 24px;
+            margin: 20px 0;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+        }
+        .step-box .step-number {
+            display: inline-block;
+            background: #B8902A;
+            color: #1B2A4A;
+            width: 28px;
+            height: 28px;
+            border-radius: 50%;
+            text-align: center;
+            line-height: 28px;
+            font-weight: 700;
+            font-size: 0.9rem;
+            margin-right: 12px;
+        }
+        .step-box h4 {
+            display: inline;
+            font-size: 1.1rem;
+            color: #1B2A4A;
+        }
+        .step-box p {
+            margin-top: 12px;
+            margin-bottom: 0;
+        }
+
+        /* Back link */
+        .back-link { display: inline-block; margin-bottom: 20px; color: #B8902A; text-decoration: none; font-size: 0.95rem; }
+        .back-link:hover { text-decoration: underline; }
+
+        /* Footer */
+        footer { background: #1B2A4A; color: white; padding: 40px 0 20px; margin-top: 40px; }
+        .footer-bottom { text-align: center; color: rgba(255,255,255,0.5); font-size: 0.85rem; }
+        footer a { color: #B8902A; text-decoration: none; }
+
+        @media (max-width: 768px) {
+            .hero h1 { font-size: 1.8rem; }
+            nav { display: none; }
+        }
+    </style>
+</head>
+<body>
+
+<header>
+    <div class="container">
+        <a href="../index.html" class="logo">H-<span>EDU</span></a>
+        <nav>
+            <a href="../index.html">Home</a>
+            <a href="../index.html#articles">Articles</a>
+            <a href="../index.html#solution">The Solution</a>
+            <a href="../index.html#contact">Contact</a>
+        </nav>
+    </div>
+</header>
+
+<section class="hero">
+    <div class="container">
+        <h1>VERA Operational Guide</h1>
+        <p class="subtitle">Verification Engine for Results & Accountability — MCP Server Documentation</p>
+        <p class="meta">Version 1.0 | March 2026</p>
+    </div>
+</section>
+
+<article class="article-content">
+    <a href="../index.html#articles" class="back-link">&larr; Back to Articles</a>
+
+    <h2>Overview</h2>
+    <p>VERA (Verification Engine for Results & Accountability) is an MCP server that connects Claude to California education assessment data. It enables plain-English queries against CAASPP, ELPAC, and other data sources to identify achievement gaps.</p>
+
+    <blockquote>
+        Without MCP, a County Office of Education (COE) reviewer would have to download CAASPP files manually, run their own analysis in Excel or Python, and paste results somewhere for reporting. With VERA, they open Claude Desktop, type a question in plain English, and Claude calls VERA's tools automatically — returning a formatted report. No data literacy required.
+    </blockquote>
+
+    <h3>Core Capability: The Type 4 Gap</h3>
+    <p>H-EDU's differentiator is identifying students who speak well but write poorly — the "oral-written delta." This computation runs on CAASPP ELA Claim 2 (writing) versus ELPAC speaking scores. A large positive delta flags students who may be misclassified or receiving inappropriate interventions.</p>
+
+    <hr>
+
+    <h2>What is MCP?</h2>
+    <p>MCP (Model Context Protocol) is Anthropic's open standard for connecting AI models to external data sources and tools. Released November 2024, it has been adopted by OpenAI, Google DeepMind, and Microsoft.</p>
+
+    <h3>The Three MCP Primitives</h3>
+    <ol>
+        <li><strong>Resources</strong> — Read-only data addresses that Claude can retrieve like a URL.<br>
+            <code>caaspp://district/36678196000000</code></li>
+        <li><strong>Tools</strong> — Executable functions Claude calls with parameters. VERA has five analysis tools.<br>
+            <code>compute_oral_written_delta(district_name='Capistrano')</code></li>
+        <li><strong>Prompts</strong> — Reusable templates that trigger structured workflows.<br>
+            <code>intervention_verification_brief(district_id)</code></li>
+    </ol>
+
+    <hr>
+
+    <h2>Installation & Setup</h2>
+
+    <h3>Prerequisites</h3>
+    <ul>
+        <li>Python 3.10 or higher</li>
+        <li>Claude Desktop (download from claude.ai/download)</li>
+    </ul>
+
+    <div class="step-box">
+        <span class="step-number">1</span>
+        <h4>Create Directory Structure</h4>
+        <p>Create the VERA folder:</p>
+        <pre>C:\Users\[Username]\MCP\VERA\</pre>
+    </div>
+
+    <div class="step-box">
+        <span class="step-number">2</span>
+        <h4>Create Python Virtual Environment</h4>
+        <pre>cd C:\Users\[Username]\MCP\VERA
+python -m venv venv
+venv\Scripts\activate</pre>
+    </div>
+
+    <div class="step-box">
+        <span class="step-number">3</span>
+        <h4>Install FastMCP</h4>
+        <pre>pip install fastmcp</pre>
+    </div>
+
+    <div class="step-box">
+        <span class="step-number">4</span>
+        <h4>Create the Database</h4>
+        <pre>python setup_database.py</pre>
+    </div>
+
+    <div class="step-box">
+        <span class="step-number">5</span>
+        <h4>Configure Claude Desktop</h4>
+        <p>Open: <code>%APPDATA%\Claude\claude_desktop_config.json</code></p>
+        <p>Add the following configuration:</p>
+        <pre>{
+  "mcpServers": {
+    "vera": {
+      "command": "C:\\Users\\[Username]\\MCP\\VERA\\venv\\Scripts\\python.exe",
+      "args": ["C:\\Users\\[Username]\\MCP\\VERA\\vera_mcp_server.py"]
+    }
+  }
+}</pre>
+    </div>
+
+    <div class="step-box">
+        <span class="step-number">6</span>
+        <h4>Restart Claude Desktop</h4>
+        <p>Fully quit Claude Desktop (right-click taskbar icon, select Quit), then reopen.</p>
+    </div>
+
+    <div class="step-box">
+        <span class="step-number">7</span>
+        <h4>Test the Connection</h4>
+        <p>In Claude Desktop, type: <em>"List all districts in the VERA database"</em></p>
+    </div>
+
+    <hr>
+
+    <h2>The Five Tools</h2>
+
+    <div class="tool-card">
+        <h4>list_districts()</h4>
+        <p>Lists all districts available in the VERA database.</p>
+        <p class="params"><strong>Parameters:</strong> None</p>
+        <p class="example">Example: "List all districts in the VERA database"</p>
+    </div>
+
+    <div class="tool-card">
+        <h4>fetch_caaspp_results(district_name, grade?, subgroup?)</h4>
+        <p>Fetches CAASPP assessment results for a district.</p>
+        <p class="params"><strong>Parameters:</strong> district_name (required), grade (optional), subgroup (optional)</p>
+        <p class="example">Example: "Fetch CAASPP results for Capistrano Unified, Grade 4"</p>
+    </div>
+
+    <div class="tool-card">
+        <h4>compute_oral_written_delta(district_name, subgroup?)</h4>
+        <p>H-EDU's core differentiator. Compares ELA Claim 2 (writing) against ELPAC speaking scores to identify Type 4 gaps.</p>
+        <p class="params"><strong>Parameters:</strong> district_name (required), subgroup (optional, defaults to English Learners)</p>
+        <p class="example">Example: "Compute the oral-written delta for Capistrano English Learners"</p>
+    </div>
+
+    <div class="tool-card">
+        <h4>flag_type4_candidates(threshold?)</h4>
+        <p>Scans all districts for Type 4 gaps. The statewide accountability view.</p>
+        <p class="params"><strong>Parameters:</strong> threshold (optional, defaults to 8.0)</p>
+        <p class="example">Example: "Flag all Type 4 candidates across all districts"</p>
+    </div>
+
+    <div class="tool-card">
+        <h4>get_lcap_match_summary(district_id)</h4>
+        <p>Generates an LCAP verification report for COE submission.</p>
+        <p class="params"><strong>Parameters:</strong> district_id (required)</p>
+        <p class="example">Example: "Generate an LCAP match-rate summary for district 36678196000000"</p>
+    </div>
+
+    <hr>
+
+    <h2>Resources & Prompts</h2>
+
+    <h3>MCP Resources</h3>
+    <p>Resources are read-only data endpoints that Claude can access directly:</p>
+    <ul>
+        <li><code>caaspp://districts</code> — List all districts</li>
+        <li><code>caaspp://district/{id}</code> — Get data for specific district</li>
+    </ul>
+
+    <h3>MCP Prompts</h3>
+    <p>Prompts are workflow templates that chain multiple tool calls:</p>
+
+    <p><strong>intervention_verification_brief(district_id)</strong></p>
+    <ol>
+        <li>Pulls LCAP alignment data</li>
+        <li>Computes oral-written deltas</li>
+        <li>Summarizes findings for COE submission</li>
+    </ol>
+
+    <p><strong>statewide_gap_scan()</strong></p>
+    <p>Generates a statewide Type 4 gap analysis grouped by county and district.</p>
+
+    <hr>
+
+    <h2>Production Deployment</h2>
+
+    <h3>Local Mode (Current)</h3>
+    <p>VERA runs in stdio mode for Claude Desktop connections. No server infrastructure required.</p>
+
+    <h3>HTTP Mode (Production)</h3>
+    <p>For multi-user access, VERA can run as an HTTP server with OAuth 2.1 authentication:</p>
+    <pre># In vera_mcp_server.py, change:
+mcp.run()  # stdio mode
+
+# To:
+mcp.run(transport="http", port=8000)  # HTTP mode</pre>
+
+    <h3>Database Options</h3>
+    <ul>
+        <li><strong>SQLite</strong> — Current demo setup, single-file, no server</li>
+        <li><strong>PostgreSQL</strong> — Production multi-user, use Supabase or AWS RDS</li>
+        <li><strong>Live CDE API</strong> — Direct connection to California data sources</li>
+    </ul>
+
+    <h3>Security Considerations</h3>
+    <ul>
+        <li>OAuth 2.1 for authentication in HTTP mode</li>
+        <li>Data Processing Agreements (DPA) required for student-level data</li>
+        <li>Non-evaluation guarantee: no teacher identity attached to results</li>
+    </ul>
+
+    <hr>
+
+    <h2>File Structure</h2>
+    <pre>C:\Users\[Username]\MCP\VERA\
+|
++-- vera_mcp_server.py    # Main MCP server (5 tools, 2 resources, 2 prompts)
++-- vera_demo.db          # SQLite database with demo data
++-- setup_database.py     # Database creation script
++-- setup_VERA.bat        # Windows installation script
++-- README.md             # Quick reference documentation
++-- venv\                 # Python virtual environment</pre>
+
+    <div class="callout">
+        <p>VERA: The verification layer that California education accountability has been missing.</p>
+    </div>
+
+</article>
+
+<footer>
+    <div class="container">
+        <div class="footer-bottom">
+            <p>&copy; 2026 H-EDU.solutions | A <a href="https://hallucinations.cloud">Hallucinations.cloud</a> Initiative</p>
+        </div>
+    </div>
+</footer>
+
+</body>
+</html>
