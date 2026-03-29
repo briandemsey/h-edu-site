@@ -1,0 +1,466 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>H-EDU Indiana | Year Zero</title>
+    <meta name="description" content="Indiana's GPS framework launches with Year Zero in 2025-26. VERA provides verification before grades carry consequences.">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: 'Georgia', 'Times New Roman', serif; line-height: 1.7; color: #000; background: #fff; }
+
+        header {
+            background: #fff;
+            padding: 20px 0;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            border-bottom: 1px solid #e0e0e0;
+        }
+        .container { max-width: 1200px; margin: 0 auto; padding: 0 24px; }
+        header .container { display: flex; justify-content: space-between; align-items: center; }
+        .logo { color: #000; font-size: 1.5rem; font-weight: 700; text-decoration: none; letter-spacing: 1px; font-family: 'Segoe UI', 'Helvetica Neue', sans-serif; }
+        nav { display: flex; gap: 32px; align-items: center; }
+        nav a { color: #333; text-decoration: none; font-size: 0.9rem; font-weight: 400; transition: color 0.2s; font-family: 'Segoe UI', 'Helvetica Neue', sans-serif; }
+        nav a:hover { color: #2251ff; }
+        nav .nav-cta { background: #000; color: #fff; padding: 10px 24px; font-weight: 500; }
+        nav .nav-cta:hover { background: #333; color: #fff; }
+
+        .hero {
+            min-height: 70vh;
+            background: linear-gradient(135deg, #9D2235 0%, #6b1725 100%);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            padding: 140px 24px 80px;
+            position: relative;
+            color: #fff;
+        }
+        .hero-content { position: relative; z-index: 10; max-width: 900px; }
+        .hero-eyebrow {
+            font-size: 1rem;
+            color: rgba(255,255,255,0.85);
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            margin-bottom: 24px;
+            font-weight: 400;
+            font-family: 'Segoe UI', 'Helvetica Neue', sans-serif;
+        }
+        .hero h1 {
+            font-size: 2.8rem;
+            font-weight: 400;
+            margin-bottom: 28px;
+            letter-spacing: -0.5px;
+            line-height: 1.25;
+            color: #fff;
+        }
+        .hero h1 strong { font-weight: 700; }
+        .hero .subtitle {
+            font-size: 1.15rem;
+            color: rgba(255,255,255,0.9);
+            max-width: 750px;
+            margin-bottom: 20px;
+            line-height: 1.9;
+        }
+
+        section { padding: 80px 0; }
+        .section-eyebrow {
+            font-size: 0.75rem;
+            color: #666;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            margin-bottom: 16px;
+            font-weight: 400;
+            font-family: 'Segoe UI', 'Helvetica Neue', sans-serif;
+        }
+        .section-headline {
+            font-size: 2.2rem;
+            font-weight: 400;
+            margin-bottom: 24px;
+            color: #000;
+        }
+        .section-headline strong { font-weight: 700; }
+        .section-desc {
+            font-size: 1.05rem;
+            color: #444;
+            max-width: 750px;
+            margin-bottom: 40px;
+            line-height: 1.8;
+        }
+
+        .timeline-section { background: #f7f7f7; }
+        .timeline {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 30px;
+        }
+        .timeline-item {
+            background: #fff;
+            border: 1px solid #e0e0e0;
+            padding: 35px;
+            text-align: center;
+        }
+        .timeline-item.current { border-top: 4px solid #D4AF37; }
+        .timeline-item.future { border-top: 4px solid #9D2235; }
+        .timeline-item .date {
+            font-size: 0.8rem;
+            color: #666;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            margin-bottom: 12px;
+            font-family: 'Segoe UI', 'Helvetica Neue', sans-serif;
+        }
+        .timeline-item h4 {
+            font-size: 1.3rem;
+            font-weight: 600;
+            margin-bottom: 16px;
+            color: #000;
+            font-family: 'Segoe UI', 'Helvetica Neue', sans-serif;
+        }
+        .timeline-item p {
+            font-size: 0.95rem;
+            color: #555;
+            line-height: 1.7;
+        }
+
+        .gps-section { background: #fff; }
+        .gps-intro {
+            font-size: 1.1rem;
+            color: #444;
+            max-width: 800px;
+            margin-bottom: 40px;
+            line-height: 1.9;
+        }
+        .gps-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 30px;
+        }
+        .gps-card {
+            background: #f7f7f7;
+            border: 1px solid #e0e0e0;
+            padding: 35px;
+        }
+        .gps-card h4 {
+            font-size: 1.1rem;
+            font-weight: 600;
+            margin-bottom: 16px;
+            color: #000;
+            font-family: 'Segoe UI', 'Helvetica Neue', sans-serif;
+        }
+        .gps-card p {
+            font-size: 0.95rem;
+            color: #555;
+            line-height: 1.8;
+        }
+        .gps-card ul {
+            list-style: none;
+            padding: 0;
+            margin-top: 12px;
+        }
+        .gps-card li {
+            font-size: 0.9rem;
+            color: #444;
+            padding: 6px 0;
+            padding-left: 16px;
+            position: relative;
+        }
+        .gps-card li::before {
+            content: '✓';
+            position: absolute;
+            left: 0;
+            color: #9D2235;
+        }
+
+        .portrait-section { background: #f7f7f7; }
+        .portrait-box {
+            background: #fff;
+            border: 1px solid #e0e0e0;
+            padding: 50px;
+            max-width: 900px;
+        }
+        .portrait-box h3 {
+            font-size: 1.4rem;
+            font-weight: 600;
+            margin-bottom: 24px;
+            color: #9D2235;
+            font-family: 'Segoe UI', 'Helvetica Neue', sans-serif;
+        }
+        .portrait-grid {
+            display: grid;
+            grid-template-columns: repeat(5, 1fr);
+            gap: 20px;
+            text-align: center;
+        }
+        .portrait-item {
+            padding: 20px 10px;
+            background: #f7f7f7;
+            border-radius: 4px;
+        }
+        .portrait-item span {
+            font-size: 0.85rem;
+            color: #333;
+            font-weight: 500;
+            font-family: 'Segoe UI', 'Helvetica Neue', sans-serif;
+        }
+
+        .gap-section {
+            background: #000;
+            color: #fff;
+            padding: 100px 0;
+        }
+        .gap-quote {
+            font-size: 1.6rem;
+            font-style: italic;
+            max-width: 900px;
+            margin: 0 auto;
+            text-align: center;
+            line-height: 1.6;
+        }
+        .gap-quote cite {
+            display: block;
+            font-size: 1rem;
+            color: rgba(255,255,255,0.6);
+            font-style: normal;
+            margin-top: 24px;
+        }
+
+        .vera-section { background: #fff; }
+        .vera-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 30px;
+        }
+        .vera-card {
+            background: #f7f7f7;
+            border: 1px solid #e0e0e0;
+            padding: 35px;
+        }
+        .vera-card h4 {
+            font-size: 1.1rem;
+            font-weight: 600;
+            margin-bottom: 16px;
+            color: #000;
+            font-family: 'Segoe UI', 'Helvetica Neue', sans-serif;
+        }
+        .vera-card p {
+            font-size: 0.95rem;
+            color: #555;
+            line-height: 1.8;
+        }
+
+        .cta-section {
+            background: #9D2235;
+            text-align: center;
+            padding: 100px 24px;
+            color: #fff;
+        }
+        .cta-section h2 {
+            font-size: 2.2rem;
+            font-weight: 400;
+            margin-bottom: 20px;
+        }
+        .cta-section p {
+            font-size: 1.1rem;
+            color: rgba(255,255,255,0.9);
+            max-width: 600px;
+            margin: 0 auto 40px;
+        }
+        .cta-button {
+            display: inline-block;
+            background: #fff;
+            color: #000;
+            padding: 18px 50px;
+            font-size: 0.9rem;
+            font-weight: 600;
+            text-decoration: none;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            font-family: 'Segoe UI', 'Helvetica Neue', sans-serif;
+        }
+        .cta-button:hover { background: #D4AF37; }
+
+        footer {
+            background: #111;
+            padding: 60px 0;
+            text-align: center;
+        }
+        footer .logo { font-size: 1.4rem; margin-bottom: 20px; display: inline-block; color: #fff; }
+        footer p { font-size: 0.85rem; color: rgba(255,255,255,0.6); }
+        footer a { color: #fff; text-decoration: none; }
+        footer a:hover { color: #ccc; }
+
+        @media (max-width: 900px) {
+            .hero h1 { font-size: 2rem; }
+            .timeline, .gps-grid, .vera-grid, .portrait-grid { grid-template-columns: 1fr; }
+            nav { display: none; }
+        }
+    </style>
+</head>
+<body>
+
+<header>
+    <div class="container">
+        <a href="../index.html" class="logo">H-EDU.SOLUTIONS</a>
+        <nav>
+            <a href="../index.html" style="font-weight: 600;">Global</a>
+            <a href="california.html">California</a>
+            <a href="nsw.html">NSW</a>
+            <a href="nz.html">New Zealand</a>
+            <a href="#contact" class="nav-cta">Get in Touch</a>
+        </nav>
+    </div>
+</header>
+
+<section class="hero">
+    <div class="container">
+        <div class="hero-content">
+            <p class="hero-eyebrow">🇺🇸 Indiana</p>
+            <h1><strong>Year Zero</strong></h1>
+            <p class="subtitle">Indiana's new GPS framework was approved March 4, 2026. The 2025-26 school year is "Year Zero" — grades are calculated and published, but carry no consequences.</p>
+            <p class="subtitle">This is the window for verification. Before grades count, VERA ensures the infrastructure works.</p>
+        </div>
+    </div>
+</section>
+
+<section class="timeline-section">
+    <div class="container">
+        <p class="section-eyebrow">The Timeline</p>
+        <h2 class="section-headline">Indiana GPS <strong>Implementation</strong></h2>
+        <div class="timeline">
+            <div class="timeline-item">
+                <p class="date">2025</p>
+                <h4>HEA 1498 Passed</h4>
+                <p>House Enrolled Act 1498 establishes the Indiana GPS framework, requiring development of "Portrait of a Graduate" with stakeholder input.</p>
+            </div>
+            <div class="timeline-item current">
+                <p class="date">2025-26</p>
+                <h4>Year Zero</h4>
+                <p>Letter grades calculated and publicly released under new model. Grades are informational only — no consequences triggered. Baseline year.</p>
+            </div>
+            <div class="timeline-item future">
+                <p class="date">2026-27</p>
+                <h4>Grades Count</h4>
+                <p>Full implementation. A-F grades carry legal consequences for schools. Accountability system fully operational.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="gps-section">
+    <div class="container">
+        <p class="section-eyebrow">The Framework</p>
+        <h2 class="section-headline">Graduate Prepared to <strong>Succeed</strong></h2>
+        <p class="gps-intro">Indiana GPS measures success at critical K-12 milestones, with multiple pathways for students to demonstrate achievement. Not just test scores — workforce credentials, work-based learning, and college/career coursework all count.</p>
+        <div class="gps-grid">
+            <div class="gps-card">
+                <h4>K-3 Milestones</h4>
+                <p>Foundation years focus on:</p>
+                <ul>
+                    <li>ILEARN test proficiency</li>
+                    <li>Attendance markers</li>
+                    <li>Literacy growth indicators</li>
+                    <li>ELL goal attainment</li>
+                </ul>
+            </div>
+            <div class="gps-card">
+                <h4>Grades 4-8</h4>
+                <p>Expanding demonstration of success:</p>
+                <ul>
+                    <li>Academic mastery across subjects</li>
+                    <li>Skills development tracking</li>
+                    <li>Additional achievement pathways</li>
+                </ul>
+            </div>
+            <div class="gps-card">
+                <h4>Grades 9-10</h4>
+                <p>Transition to postsecondary preparation:</p>
+                <ul>
+                    <li>Career pathway exploration</li>
+                    <li>Work ethic and collaboration skills</li>
+                    <li>Academic advancement indicators</li>
+                </ul>
+            </div>
+            <div class="gps-card">
+                <h4>Grades 11-12</h4>
+                <p>Graduation pathway completion:</p>
+                <ul>
+                    <li>Workforce credentials earned</li>
+                    <li>Work-based learning experiences</li>
+                    <li>College/career coursework</li>
+                    <li>Regular attendance maintained</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="portrait-section">
+    <div class="container">
+        <div class="portrait-box">
+            <h3>Portrait of a Graduate: Five Characteristics</h3>
+            <div class="portrait-grid">
+                <div class="portrait-item"><span>Academic Mastery</span></div>
+                <div class="portrait-item"><span>Workforce Skills</span></div>
+                <div class="portrait-item"><span>Communication</span></div>
+                <div class="portrait-item"><span>Collaboration</span></div>
+                <div class="portrait-item"><span>Work Ethic</span></div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="gap-section">
+    <div class="container">
+        <blockquote class="gap-quote">
+            "Year Zero is informational. The question is whether the information is accurate — whether the new A-F calculations actually reflect what's happening in schools."
+            <cite>VERA verifies before grades carry consequences</cite>
+        </blockquote>
+    </div>
+</section>
+
+<section class="vera-section">
+    <div class="container">
+        <p class="section-eyebrow">The Opportunity</p>
+        <h2 class="section-headline">What VERA <strong>Provides</strong></h2>
+        <p class="section-desc">Year Zero is the window for verification. VERA ensures Indiana's new accountability system works before grades carry consequences.</p>
+        <div class="vera-grid">
+            <div class="vera-card">
+                <h4>Ed-Fi Integration</h4>
+                <p>Indiana has adopted the Ed-Fi Data Standard. VERA leverages this modern infrastructure for sophisticated cross-system analytics and real-time data verification.</p>
+            </div>
+            <div class="vera-card">
+                <h4>Year Zero Analytics</h4>
+                <p>Create dashboards showing informational grade distributions. Help schools understand new calculations before they count.</p>
+            </div>
+            <div class="vera-card">
+                <h4>Portrait Implementation</h4>
+                <p>Track implementation fidelity of Portrait of a Graduate across schools and districts. Verify that all five characteristics are being measured consistently.</p>
+            </div>
+            <div class="vera-card">
+                <h4>Pathway Analytics</h4>
+                <p>Analyze which students pursue which postsecondary pathways — enrollment, employment, or enlistment — and success rates for each.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="cta-section" id="contact">
+    <div class="container">
+        <h2>Year Zero is the window for verification.</h2>
+        <p>VERA ensures Indiana's GPS framework works before grades carry consequences. Contact us to discuss implementation.</p>
+        <a href="mailto:brian@h-edu.solutions" class="cta-button">Request Briefing</a>
+    </div>
+</section>
+
+<footer>
+    <div class="container">
+        <a href="../index.html" class="logo">H-EDU.SOLUTIONS</a>
+        <p style="margin-top: 20px;">&copy; 2026 H-EDU.solutions | A <a href="https://hallucinations.cloud">Hallucinations.cloud</a> Initiative</p>
+        <p style="margin-top: 12px;"><a href="../index.html">Global</a> &bull; <a href="california.html">California</a> &bull; <a href="nsw.html">New South Wales</a> &bull; <a href="nz.html">New Zealand</a> &bull; Indiana</p>
+    </div>
+</footer>
+
+</body>
+</html>
