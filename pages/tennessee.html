@@ -1,0 +1,382 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>H-EDU Tennessee | After the ASD</title>
+    <meta name="description" content="Tennessee is shutting down the Achievement School District and launching a new tiered intervention system. VERA provides the early warning infrastructure the ASD never had.">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: 'Georgia', 'Times New Roman', serif; line-height: 1.7; color: #000; background: #fff; }
+
+        header {
+            background: #fff;
+            padding: 20px 0;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            border-bottom: 1px solid #e0e0e0;
+        }
+        .container { max-width: 1200px; margin: 0 auto; padding: 0 24px; }
+        header .container { display: flex; justify-content: space-between; align-items: center; }
+        .logo { color: #000; font-size: 1.5rem; font-weight: 700; text-decoration: none; letter-spacing: 1px; font-family: 'Segoe UI', 'Helvetica Neue', sans-serif; }
+        nav { display: flex; gap: 32px; align-items: center; }
+        nav a { color: #333; text-decoration: none; font-size: 0.9rem; font-weight: 400; transition: color 0.2s; font-family: 'Segoe UI', 'Helvetica Neue', sans-serif; }
+        nav a:hover { color: #2251ff; }
+        nav .nav-cta { background: #000; color: #fff; padding: 10px 24px; font-weight: 500; }
+        nav .nav-cta:hover { background: #333; color: #fff; }
+
+        .hero {
+            min-height: 70vh;
+            background: linear-gradient(135deg, #FF8200 0%, #c66400 100%);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            padding: 140px 24px 80px;
+            position: relative;
+            color: #fff;
+        }
+        .hero-content { position: relative; z-index: 10; max-width: 900px; }
+        .hero-eyebrow {
+            font-size: 1rem;
+            color: rgba(255,255,255,0.85);
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            margin-bottom: 24px;
+            font-weight: 400;
+            font-family: 'Segoe UI', 'Helvetica Neue', sans-serif;
+        }
+        .hero h1 {
+            font-size: 2.8rem;
+            font-weight: 400;
+            margin-bottom: 28px;
+            letter-spacing: -0.5px;
+            line-height: 1.25;
+            color: #fff;
+        }
+        .hero h1 strong { font-weight: 700; }
+        .hero .subtitle {
+            font-size: 1.15rem;
+            color: rgba(255,255,255,0.9);
+            max-width: 750px;
+            margin-bottom: 20px;
+            line-height: 1.9;
+        }
+
+        section { padding: 80px 0; }
+        .section-eyebrow {
+            font-size: 0.75rem;
+            color: #666;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            margin-bottom: 16px;
+            font-weight: 400;
+            font-family: 'Segoe UI', 'Helvetica Neue', sans-serif;
+        }
+        .section-headline {
+            font-size: 2.2rem;
+            font-weight: 400;
+            margin-bottom: 24px;
+            color: #000;
+        }
+        .section-headline strong { font-weight: 700; }
+        .section-desc {
+            font-size: 1.05rem;
+            color: #444;
+            max-width: 750px;
+            margin-bottom: 40px;
+            line-height: 1.8;
+        }
+
+        .asd-section { background: #f7f7f7; }
+        .asd-box {
+            background: #fff;
+            border: 1px solid #e0e0e0;
+            border-left: 4px solid #CC142B;
+            padding: 40px;
+            max-width: 800px;
+        }
+        .asd-box h3 {
+            font-size: 1.4rem;
+            font-weight: 600;
+            margin-bottom: 20px;
+            color: #CC142B;
+            font-family: 'Segoe UI', 'Helvetica Neue', sans-serif;
+        }
+        .asd-box p {
+            font-size: 1rem;
+            color: #444;
+            line-height: 1.8;
+            margin-bottom: 16px;
+        }
+
+        .tier-section { background: #fff; }
+        .tier-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 30px;
+        }
+        .tier-card {
+            background: #f7f7f7;
+            border: 1px solid #e0e0e0;
+            padding: 35px;
+        }
+        .tier-card.tier-1 { border-top: 4px solid #00843D; }
+        .tier-card.tier-2 { border-top: 4px solid #FF8200; }
+        .tier-card.tier-3 { border-top: 4px solid #CC142B; }
+        .tier-card h4 {
+            font-size: 1.2rem;
+            font-weight: 600;
+            margin-bottom: 16px;
+            color: #000;
+            font-family: 'Segoe UI', 'Helvetica Neue', sans-serif;
+        }
+        .tier-card p {
+            font-size: 0.95rem;
+            color: #555;
+            line-height: 1.8;
+            margin-bottom: 12px;
+        }
+        .tier-card ul {
+            list-style: none;
+            padding: 0;
+        }
+        .tier-card li {
+            font-size: 0.9rem;
+            color: #444;
+            padding: 6px 0;
+            padding-left: 16px;
+            position: relative;
+        }
+        .tier-card li::before {
+            content: '•';
+            position: absolute;
+            left: 0;
+            color: #666;
+        }
+
+        .gap-section {
+            background: #000;
+            color: #fff;
+            padding: 100px 0;
+        }
+        .gap-quote {
+            font-size: 1.6rem;
+            font-style: italic;
+            max-width: 900px;
+            margin: 0 auto;
+            text-align: center;
+            line-height: 1.6;
+        }
+        .gap-quote cite {
+            display: block;
+            font-size: 1rem;
+            color: rgba(255,255,255,0.6);
+            font-style: normal;
+            margin-top: 24px;
+        }
+
+        .vera-section { background: #f7f7f7; }
+        .vera-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 30px;
+        }
+        .vera-card {
+            background: #fff;
+            border: 1px solid #e0e0e0;
+            padding: 35px;
+        }
+        .vera-card h4 {
+            font-size: 1.1rem;
+            font-weight: 600;
+            margin-bottom: 16px;
+            color: #000;
+            font-family: 'Segoe UI', 'Helvetica Neue', sans-serif;
+        }
+        .vera-card p {
+            font-size: 0.95rem;
+            color: #555;
+            line-height: 1.8;
+        }
+
+        .cta-section {
+            background: #FF8200;
+            text-align: center;
+            padding: 100px 24px;
+            color: #fff;
+        }
+        .cta-section h2 {
+            font-size: 2.2rem;
+            font-weight: 400;
+            margin-bottom: 20px;
+        }
+        .cta-section p {
+            font-size: 1.1rem;
+            color: rgba(255,255,255,0.9);
+            max-width: 600px;
+            margin: 0 auto 40px;
+        }
+        .cta-button {
+            display: inline-block;
+            background: #fff;
+            color: #000;
+            padding: 18px 50px;
+            font-size: 0.9rem;
+            font-weight: 600;
+            text-decoration: none;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            font-family: 'Segoe UI', 'Helvetica Neue', sans-serif;
+        }
+        .cta-button:hover { background: #e0e0e0; }
+
+        footer {
+            background: #111;
+            padding: 60px 0;
+            text-align: center;
+        }
+        footer .logo { font-size: 1.4rem; margin-bottom: 20px; display: inline-block; color: #fff; }
+        footer p { font-size: 0.85rem; color: rgba(255,255,255,0.6); }
+        footer a { color: #fff; text-decoration: none; }
+        footer a:hover { color: #ccc; }
+
+        @media (max-width: 900px) {
+            .hero h1 { font-size: 2rem; }
+            .tier-grid, .vera-grid { grid-template-columns: 1fr; }
+            nav { display: none; }
+        }
+    </style>
+</head>
+<body>
+
+<header>
+    <div class="container">
+        <a href="../index.html" class="logo">H-EDU.SOLUTIONS</a>
+        <nav>
+            <a href="../index.html" style="font-weight: 600;">Global</a>
+            <a href="california.html">California</a>
+            <a href="nsw.html">NSW</a>
+            <a href="nz.html">New Zealand</a>
+            <a href="#contact" class="nav-cta">Get in Touch</a>
+        </nav>
+    </div>
+</header>
+
+<section class="hero">
+    <div class="container">
+        <div class="hero-content">
+            <p class="hero-eyebrow">🇺🇸 Tennessee</p>
+            <h1>After the <strong>Achievement School District</strong></h1>
+            <p class="subtitle">After 15 years of state takeovers and charter conversions, Tennessee is shutting down the ASD and launching a new three-tiered intervention system for 2026-27.</p>
+            <p class="subtitle">The new system needs what the ASD never had: an early warning signal that identifies struggling schools before they fail.</p>
+            <p class="subtitle" style="font-weight: 600;">VERA is that signal.</p>
+        </div>
+    </div>
+</section>
+
+<section class="asd-section">
+    <div class="container">
+        <p class="section-eyebrow">The Lesson</p>
+        <h2 class="section-headline">What the ASD <strong>Got Wrong</strong></h2>
+        <div class="asd-box">
+            <h3>15 Years. Billions Spent. Schools Still Struggling.</h3>
+            <p>The Achievement School District was created to turn around Tennessee's lowest-performing schools through state takeover and charter conversion. It was shut down by overwhelming legislative vote (75-15) in 2025.</p>
+            <p>The last remaining ASD schools — Hillcrest High and Kirby Middle in Memphis — return to local district control at the start of 2026-27.</p>
+            <p><strong>The fundamental flaw:</strong> The ASD intervened after schools were already in crisis. There was no infrastructure to detect problems before they became failures, and no mechanism to verify whether interventions were actually reaching students.</p>
+        </div>
+    </div>
+</section>
+
+<section class="tier-section">
+    <div class="container">
+        <p class="section-eyebrow">The New System</p>
+        <h2 class="section-headline">Three-Tiered <strong>Intervention Model</strong></h2>
+        <p class="section-desc">Tennessee's new accountability framework launches 2026-27. Schools are assigned to tiers based on performance, with annual review to move up or down.</p>
+        <div class="tier-grid">
+            <div class="tier-card tier-1">
+                <h4>Tier 1: Least Intervention</h4>
+                <p>Schools first identified for intervention start here.</p>
+                <ul>
+                    <li>District chooses evidence-based intervention strategy</li>
+                    <li>OR partners with turnaround expert</li>
+                    <li>Annual review determines if school moves to Tier 2</li>
+                </ul>
+            </div>
+            <div class="tier-card tier-2">
+                <h4>Tier 2: Moderate Intervention</h4>
+                <p>Schools that don't improve at Tier 1 escalate here.</p>
+                <ul>
+                    <li>Convert to charter school</li>
+                    <li>Transfer to higher education institution</li>
+                    <li>Replace some/all leadership and staff</li>
+                    <li>Intervention committee with turnaround expert</li>
+                </ul>
+            </div>
+            <div class="tier-card tier-3">
+                <h4>Tier 3: Most Intensive</h4>
+                <p>Last resort for schools that continue to struggle.</p>
+                <ul>
+                    <li>School closure</li>
+                    <li>Complete replacement of leadership and staff</li>
+                    <li>State-directed restructuring</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="gap-section">
+    <div class="container">
+        <blockquote class="gap-quote">
+            "The ASD waited until schools were already failing. The new system needs early warning — a way to identify schools heading toward Tier 2 or Tier 3 before they get there."
+            <cite>The gap VERA fills</cite>
+        </blockquote>
+    </div>
+</section>
+
+<section class="vera-section">
+    <div class="container">
+        <p class="section-eyebrow">The Solution</p>
+        <h2 class="section-headline">What VERA <strong>Provides</strong></h2>
+        <p class="section-desc">VERA gives Tennessee the verification infrastructure the ASD never had — early warning before crisis, and intervention tracking to ensure resources reach students.</p>
+        <div class="vera-grid">
+            <div class="vera-card">
+                <h4>TVAAS Integration</h4>
+                <p>Connect to Tennessee Value-Added Assessment System data to identify schools showing early warning signs before they trigger tier assignment.</p>
+            </div>
+            <div class="vera-card">
+                <h4>Tier Movement Prediction</h4>
+                <p>Analyze patterns across schools to predict which Tier 1 schools are likely to escalate — and intervene before they do.</p>
+            </div>
+            <div class="vera-card">
+                <h4>Intervention Verification</h4>
+                <p>Track whether evidence-based interventions and turnaround partnerships are actually reaching students at the classroom level.</p>
+            </div>
+            <div class="vera-card">
+                <h4>Transition Support</h4>
+                <p>Assist with managing school transitions from ASD back to local districts, ensuring continuity of services for students.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="cta-section" id="contact">
+    <div class="container">
+        <h2>The ASD failed because it intervened too late.</h2>
+        <p>VERA provides the early warning signal Tennessee's new intervention system needs. Contact us to discuss implementation.</p>
+        <a href="mailto:brian@h-edu.solutions" class="cta-button">Request Briefing</a>
+    </div>
+</section>
+
+<footer>
+    <div class="container">
+        <a href="../index.html" class="logo">H-EDU.SOLUTIONS</a>
+        <p style="margin-top: 20px;">&copy; 2026 H-EDU.solutions | A <a href="https://hallucinations.cloud">Hallucinations.cloud</a> Initiative</p>
+        <p style="margin-top: 12px;"><a href="../index.html">Global</a> &bull; <a href="california.html">California</a> &bull; <a href="nsw.html">New South Wales</a> &bull; <a href="nz.html">New Zealand</a> &bull; Tennessee</p>
+    </div>
+</footer>
+
+</body>
+</html>
