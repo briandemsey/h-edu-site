@@ -41,13 +41,20 @@
         }
         .hero-content { position: relative; z-index: 10; max-width: 900px; }
         .hero-eyebrow {
-            font-size: 0.9rem;
-            color: #999;
+            font-size: 1.6rem;
+            color: #fff;
             letter-spacing: 3px;
             text-transform: uppercase;
             margin-bottom: 24px;
-            font-weight: 400;
+            font-weight: 600;
             font-family: 'Segoe UI', 'Helvetica Neue', sans-serif;
+            display: flex;
+            align-items: center;
+            gap: 16px;
+        }
+        .hero-eyebrow img {
+            height: 50px;
+            width: auto;
         }
         .hero h1 {
             font-size: 3rem;
@@ -389,7 +396,7 @@
 <section class="hero">
     <div class="container">
         <div class="hero-content">
-            <p class="hero-eyebrow">Aotearoa New Zealand</p>
+            <p class="hero-eyebrow"><img src="../assets/nz-silver-fern.svg" alt="Silver Fern Flag"> Aotearoa New Zealand</p>
             <h1>The only country that has built <strong>reciprocal accountability at scale.</strong></h1>
             <p class="subtitle">New Zealand is not a theoretical model. It is a functioning proof of concept. A national system where accountability flows in both directions — from state to student and student to state.</p>
             <p class="subtitle">Every other country in the world is watching. California is building the American version. VERA is what makes it verifiable.</p>
@@ -526,7 +533,7 @@
             <div class="vera-visual">
                 <div class="logo-text">VERA</div>
                 <p class="tagline">Verification Engine for Results & Accountability</p>
-                <span class="status">New Zealand — Coming 2026</span>
+                <a href="https://vera-nz.onrender.com" target="_blank" class="status" style="text-decoration: none;">Launch VERA-NZ</a>
             </div>
         </div>
     </div>
