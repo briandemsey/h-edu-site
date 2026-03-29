@@ -1,0 +1,392 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>H-EDU Washington | The Closest U.S. Analog</title>
+    <meta name="description" content="Washington State is redesigning accountability with the Learning Policy Institute. VERA provides the verification infrastructure Phase II needs.">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: 'Georgia', 'Times New Roman', serif; line-height: 1.7; color: #000; background: #fff; }
+
+        header {
+            background: #fff;
+            padding: 20px 0;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            border-bottom: 1px solid #e0e0e0;
+        }
+        .container { max-width: 1200px; margin: 0 auto; padding: 0 24px; }
+        header .container { display: flex; justify-content: space-between; align-items: center; }
+        .logo { color: #000; font-size: 1.5rem; font-weight: 700; text-decoration: none; letter-spacing: 1px; font-family: 'Segoe UI', 'Helvetica Neue', sans-serif; }
+        nav { display: flex; gap: 32px; align-items: center; }
+        nav a { color: #333; text-decoration: none; font-size: 0.9rem; font-weight: 400; transition: color 0.2s; font-family: 'Segoe UI', 'Helvetica Neue', sans-serif; }
+        nav a:hover { color: #2251ff; }
+        nav .nav-cta { background: #000; color: #fff; padding: 10px 24px; font-weight: 500; }
+        nav .nav-cta:hover { background: #333; color: #fff; }
+
+        .hero {
+            min-height: 70vh;
+            background: linear-gradient(135deg, #2E4A3F 0%, #1a2e26 100%);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            padding: 140px 24px 80px;
+            position: relative;
+            color: #fff;
+        }
+        .hero-content { position: relative; z-index: 10; max-width: 900px; }
+        .hero-eyebrow {
+            font-size: 1rem;
+            color: rgba(255,255,255,0.7);
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            margin-bottom: 24px;
+            font-weight: 400;
+            font-family: 'Segoe UI', 'Helvetica Neue', sans-serif;
+        }
+        .hero h1 {
+            font-size: 2.8rem;
+            font-weight: 400;
+            margin-bottom: 28px;
+            letter-spacing: -0.5px;
+            line-height: 1.25;
+            color: #fff;
+        }
+        .hero h1 strong { font-weight: 700; }
+        .hero .subtitle {
+            font-size: 1.15rem;
+            color: rgba(255,255,255,0.85);
+            max-width: 750px;
+            margin-bottom: 20px;
+            line-height: 1.9;
+        }
+
+        section { padding: 80px 0; }
+        .section-eyebrow {
+            font-size: 0.75rem;
+            color: #666;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            margin-bottom: 16px;
+            font-weight: 400;
+            font-family: 'Segoe UI', 'Helvetica Neue', sans-serif;
+        }
+        .section-headline {
+            font-size: 2.2rem;
+            font-weight: 400;
+            margin-bottom: 24px;
+            color: #000;
+        }
+        .section-headline strong { font-weight: 700; }
+        .section-desc {
+            font-size: 1.05rem;
+            color: #444;
+            max-width: 750px;
+            margin-bottom: 40px;
+            line-height: 1.8;
+        }
+
+        .phase-section { background: #f7f7f7; }
+        .phase-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+        }
+        .phase-card {
+            background: #fff;
+            border: 1px solid #e0e0e0;
+            padding: 40px;
+        }
+        .phase-card.complete { border-top: 4px solid #2E4A3F; }
+        .phase-card.needed { border-top: 4px solid #CC142B; }
+        .phase-card h3 {
+            font-size: 1.3rem;
+            font-weight: 600;
+            margin-bottom: 16px;
+            color: #000;
+            font-family: 'Segoe UI', 'Helvetica Neue', sans-serif;
+        }
+        .phase-card .status {
+            display: inline-block;
+            padding: 4px 12px;
+            font-size: 0.75rem;
+            font-weight: 600;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            margin-bottom: 16px;
+            font-family: 'Segoe UI', 'Helvetica Neue', sans-serif;
+        }
+        .status-complete { background: #2E4A3F; color: #fff; }
+        .status-needed { background: #CC142B; color: #fff; }
+        .phase-card p {
+            font-size: 0.95rem;
+            color: #555;
+            line-height: 1.8;
+            margin-bottom: 16px;
+        }
+        .phase-card ul {
+            list-style: none;
+            padding: 0;
+        }
+        .phase-card li {
+            font-size: 0.95rem;
+            color: #444;
+            padding: 8px 0;
+            border-bottom: 1px solid #eee;
+        }
+        .phase-card li:last-child { border-bottom: none; }
+
+        .partners-section { background: #fff; }
+        .partners-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 30px;
+        }
+        .partner-card {
+            background: #f7f7f7;
+            padding: 30px;
+            text-align: center;
+        }
+        .partner-card h4 {
+            font-size: 1rem;
+            font-weight: 600;
+            margin-bottom: 12px;
+            color: #000;
+            font-family: 'Segoe UI', 'Helvetica Neue', sans-serif;
+        }
+        .partner-card p {
+            font-size: 0.9rem;
+            color: #555;
+            line-height: 1.7;
+        }
+
+        .gap-section {
+            background: #000;
+            color: #fff;
+            padding: 100px 0;
+        }
+        .gap-quote {
+            font-size: 1.6rem;
+            font-style: italic;
+            max-width: 900px;
+            margin: 0 auto;
+            text-align: center;
+            line-height: 1.6;
+        }
+        .gap-quote cite {
+            display: block;
+            font-size: 1rem;
+            color: rgba(255,255,255,0.6);
+            font-style: normal;
+            margin-top: 24px;
+        }
+
+        .data-section { background: #f7f7f7; }
+        .data-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 30px;
+        }
+        .data-card {
+            background: #fff;
+            border: 1px solid #e0e0e0;
+            padding: 30px;
+        }
+        .data-card h4 {
+            font-size: 1.1rem;
+            font-weight: 600;
+            margin-bottom: 12px;
+            color: #000;
+            font-family: 'Segoe UI', 'Helvetica Neue', sans-serif;
+        }
+        .data-card p {
+            font-size: 0.9rem;
+            color: #555;
+            line-height: 1.7;
+        }
+
+        .cta-section {
+            background: #2E4A3F;
+            text-align: center;
+            padding: 100px 24px;
+            color: #fff;
+        }
+        .cta-section h2 {
+            font-size: 2.2rem;
+            font-weight: 400;
+            margin-bottom: 20px;
+        }
+        .cta-section p {
+            font-size: 1.1rem;
+            color: rgba(255,255,255,0.8);
+            max-width: 600px;
+            margin: 0 auto 40px;
+        }
+        .cta-button {
+            display: inline-block;
+            background: #fff;
+            color: #000;
+            padding: 18px 50px;
+            font-size: 0.9rem;
+            font-weight: 600;
+            text-decoration: none;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            font-family: 'Segoe UI', 'Helvetica Neue', sans-serif;
+        }
+        .cta-button:hover { background: #e0e0e0; }
+
+        footer {
+            background: #111;
+            padding: 60px 0;
+            text-align: center;
+        }
+        footer .logo { font-size: 1.4rem; margin-bottom: 20px; display: inline-block; color: #fff; }
+        footer p { font-size: 0.85rem; color: rgba(255,255,255,0.6); }
+        footer a { color: #fff; text-decoration: none; }
+        footer a:hover { color: #ccc; }
+
+        @media (max-width: 900px) {
+            .hero h1 { font-size: 2rem; }
+            .phase-grid, .partners-grid, .data-grid { grid-template-columns: 1fr; }
+            nav { display: none; }
+        }
+    </style>
+</head>
+<body>
+
+<header>
+    <div class="container">
+        <a href="../index.html" class="logo">H-EDU.SOLUTIONS</a>
+        <nav>
+            <a href="../index.html" style="font-weight: 600;">Global</a>
+            <a href="california.html">California</a>
+            <a href="nsw.html">NSW</a>
+            <a href="nz.html">New Zealand</a>
+            <a href="#contact" class="nav-cta">Get in Touch</a>
+        </nav>
+    </div>
+</header>
+
+<section class="hero">
+    <div class="container">
+        <div class="hero-content">
+            <p class="hero-eyebrow">🇺🇸 Washington State</p>
+            <h1>The Closest <strong>U.S. Analog</strong></h1>
+            <p class="subtitle">Washington's State Board of Education is redesigning accountability with the Learning Policy Institute — building a system that measures inputs, outputs, and outcomes aligned to state goals.</p>
+            <p class="subtitle">Phase I is complete. The problem they haven't solved: what technical infrastructure actually measures those inputs and outcomes at the individual student level.</p>
+            <p class="subtitle" style="color: #fff; font-weight: 600;">VERA's gap: this is exactly what VERA does.</p>
+        </div>
+    </div>
+</section>
+
+<section class="phase-section">
+    <div class="container">
+        <p class="section-eyebrow">The Redesign</p>
+        <h2 class="section-headline">Accountability <strong>Phase I & II</strong></h2>
+        <p class="section-desc">Washington is building what every state needs — a continuous improvement system that captures more than test scores. VERA provides the verification layer that makes it work.</p>
+        <div class="phase-grid">
+            <div class="phase-card complete">
+                <span class="status status-complete">Complete</span>
+                <h3>Phase I: Framework Design</h3>
+                <p>Completed in partnership with OSPI, EOGOAC, and the Learning Policy Institute:</p>
+                <ul>
+                    <li>Defined inputs/outputs/outcomes framing</li>
+                    <li>Established "conditions for learning" as accountability dimension</li>
+                    <li>Engaged stakeholders across equity communities</li>
+                    <li>Created conceptual model for continuous improvement</li>
+                </ul>
+            </div>
+            <div class="phase-card needed">
+                <span class="status status-needed">Infrastructure Needed</span>
+                <h3>Phase II: Technical Implementation</h3>
+                <p>The gap Washington is working to close:</p>
+                <ul>
+                    <li>How to measure "conditions for learning" at scale</li>
+                    <li>How to connect CEDARS data to intervention tracking</li>
+                    <li>How to verify resources reach individual students</li>
+                    <li>How to report outcomes beyond SBAC scores</li>
+                </ul>
+                <p style="margin-top: 16px; font-weight: 600; color: #CC142B;">VERA is the answer to Phase II.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="partners-section">
+    <div class="container">
+        <p class="section-eyebrow">The Partnership</p>
+        <h2 class="section-headline">Who's <strong>Building This</strong></h2>
+        <div class="partners-grid">
+            <div class="partner-card">
+                <h4>State Board of Education (SBE)</h4>
+                <p>Leading the accountability redesign with focus on continuous improvement rather than punitive measures.</p>
+            </div>
+            <div class="partner-card">
+                <h4>OSPI</h4>
+                <p>Office of Superintendent of Public Instruction — Chris Reykdal, now President of Council of Chief State School Officers.</p>
+            </div>
+            <div class="partner-card">
+                <h4>Learning Policy Institute</h4>
+                <p>National research partner providing evidence-based framework for inputs/outputs/outcomes accountability.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="gap-section">
+    <div class="container">
+        <blockquote class="gap-quote">
+            "Washington wants to capture more robust metrics addressing inputs, outputs, and outcomes. The problem: what technical infrastructure actually measures those inputs and outcomes at the individual student level?"
+            <cite>The Phase II question VERA answers</cite>
+        </blockquote>
+    </div>
+</section>
+
+<section class="data-section">
+    <div class="container">
+        <p class="section-eyebrow">Data Infrastructure</p>
+        <h2 class="section-headline">Washington's <strong>Data Systems</strong></h2>
+        <p class="section-desc">VERA connects to Washington's existing data infrastructure to provide the verification layer Phase II needs.</p>
+        <div class="data-grid">
+            <div class="data-card">
+                <h4>CEDARS</h4>
+                <p>Comprehensive Education Data and Research System — core data reporting by all local education agencies. Student-level data on enrollment, demographics, and program participation.</p>
+            </div>
+            <div class="data-card">
+                <h4>EDS</h4>
+                <p>Education Data System Administration — centralized web-based suite connecting state agencies, ESDs, districts, schools, and teachers.</p>
+            </div>
+            <div class="data-card">
+                <h4>SBAC / WCAS / WA-AIM</h4>
+                <p>Smarter Balanced assessments (ELA/Math), Washington Comprehensive Assessment of Science, and alternate assessments for students with disabilities.</p>
+            </div>
+            <div class="data-card">
+                <h4>EOGOAC Analytics</h4>
+                <p>Educational Opportunity Gap Oversight and Accountability Committee — synthesizes findings on achievement gaps across demographic groups.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="cta-section" id="contact">
+    <div class="container">
+        <h2>Phase I is complete. Phase II needs infrastructure.</h2>
+        <p>VERA provides the verification layer that connects Washington's accountability vision to student-level outcomes. Contact us to discuss integration.</p>
+        <a href="mailto:brian@h-edu.solutions" class="cta-button">Request Briefing</a>
+    </div>
+</section>
+
+<footer>
+    <div class="container">
+        <a href="../index.html" class="logo">H-EDU.SOLUTIONS</a>
+        <p style="margin-top: 20px;">&copy; 2026 H-EDU.solutions | A <a href="https://hallucinations.cloud">Hallucinations.cloud</a> Initiative</p>
+        <p style="margin-top: 12px;"><a href="../index.html">Global</a> &bull; <a href="california.html">California</a> &bull; <a href="nsw.html">New South Wales</a> &bull; <a href="nz.html">New Zealand</a> &bull; Washington</p>
+    </div>
+</footer>
+
+</body>
+</html>
