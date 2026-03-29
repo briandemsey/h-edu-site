@@ -1,0 +1,559 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>H-EDU New Zealand | The Global Proof of Concept</title>
+    <meta name="description" content="New Zealand is the only country that has built reciprocal accountability at scale. VERA-NZ brings verification infrastructure to Aotearoa's 2,500+ schools.">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: 'Georgia', 'Times New Roman', serif; line-height: 1.7; color: #000; background: #fff; }
+
+        /* Header */
+        header {
+            background: #fff;
+            padding: 20px 0;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            border-bottom: 1px solid #e0e0e0;
+        }
+        .container { max-width: 1200px; margin: 0 auto; padding: 0 24px; }
+        header .container { display: flex; justify-content: space-between; align-items: center; }
+        .logo { color: #000; font-size: 1.5rem; font-weight: 700; text-decoration: none; letter-spacing: 1px; font-family: 'Segoe UI', 'Helvetica Neue', sans-serif; }
+        nav { display: flex; gap: 32px; align-items: center; }
+        nav a { color: #333; text-decoration: none; font-size: 0.9rem; font-weight: 400; transition: color 0.2s; font-family: 'Segoe UI', 'Helvetica Neue', sans-serif; }
+        nav a:hover { color: #2251ff; }
+        nav .nav-cta { background: #000; color: #fff; padding: 10px 24px; font-weight: 500; }
+        nav .nav-cta:hover { background: #333; color: #fff; }
+
+        /* Hero */
+        .hero {
+            min-height: 80vh;
+            background: #000;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            padding: 140px 24px 80px;
+            position: relative;
+            color: #fff;
+        }
+        .hero-content { position: relative; z-index: 10; max-width: 900px; }
+        .hero-eyebrow {
+            font-size: 0.9rem;
+            color: #999;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            margin-bottom: 24px;
+            font-weight: 400;
+            font-family: 'Segoe UI', 'Helvetica Neue', sans-serif;
+        }
+        .hero h1 {
+            font-size: 3rem;
+            font-weight: 400;
+            margin-bottom: 28px;
+            letter-spacing: -0.5px;
+            line-height: 1.25;
+            color: #fff;
+        }
+        .hero h1 strong { font-weight: 700; }
+        .hero .subtitle {
+            font-size: 1.15rem;
+            color: #bbb;
+            max-width: 750px;
+            margin-bottom: 20px;
+            line-height: 1.9;
+        }
+        .hero-highlight {
+            font-size: 1.1rem;
+            color: #fff;
+            margin-top: 30px;
+            padding: 20px 0;
+            border-top: 1px solid #333;
+        }
+
+        /* Section styling */
+        section { padding: 80px 0; }
+        .section-eyebrow {
+            font-size: 0.75rem;
+            color: #666;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            margin-bottom: 16px;
+            font-weight: 400;
+            font-family: 'Segoe UI', 'Helvetica Neue', sans-serif;
+        }
+        .section-headline {
+            font-size: 2.2rem;
+            font-weight: 400;
+            margin-bottom: 24px;
+            color: #000;
+        }
+        .section-headline strong { font-weight: 700; }
+        .section-desc {
+            font-size: 1.05rem;
+            color: #444;
+            max-width: 750px;
+            margin-bottom: 40px;
+            line-height: 1.8;
+        }
+
+        /* Stats Section */
+        .stats-section { background: #f7f7f7; padding: 60px 0; }
+        .stats-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 40px; text-align: center; }
+        .stat-card { padding: 30px; }
+        .stat-card .number { font-size: 3rem; font-weight: 700; color: #000; font-family: 'Georgia', serif; }
+        .stat-card .label { font-size: 0.95rem; color: #555; margin-top: 10px; font-family: 'Segoe UI', 'Helvetica Neue', sans-serif; }
+
+        /* Proof Section */
+        .proof-section { background: #fff; }
+        .proof-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+            align-items: start;
+        }
+        .proof-text h3 {
+            font-size: 1.4rem;
+            font-weight: 600;
+            margin-bottom: 16px;
+            color: #000;
+            font-family: 'Segoe UI', 'Helvetica Neue', sans-serif;
+        }
+        .proof-text p {
+            font-size: 1rem;
+            color: #444;
+            line-height: 1.8;
+            margin-bottom: 16px;
+        }
+        .proof-box {
+            background: #f7f7f7;
+            border: 1px solid #e0e0e0;
+            padding: 40px;
+        }
+        .proof-box h3 {
+            font-size: 1.3rem;
+            font-weight: 600;
+            margin-bottom: 20px;
+            color: #000;
+            font-family: 'Segoe UI', 'Helvetica Neue', sans-serif;
+        }
+        .proof-box ul {
+            list-style: none;
+            padding: 0;
+        }
+        .proof-box li {
+            font-size: 0.95rem;
+            color: #444;
+            padding: 12px 0;
+            border-bottom: 1px solid #e0e0e0;
+            display: flex;
+            justify-content: space-between;
+        }
+        .proof-box li:last-child { border-bottom: none; }
+        .proof-box li span { color: #000; font-weight: 600; }
+
+        /* Equity Section */
+        .equity-section { background: #000; color: #fff; padding: 100px 0; }
+        .equity-intro {
+            font-size: 1.15rem;
+            color: #bbb;
+            max-width: 800px;
+            margin-bottom: 50px;
+            line-height: 1.9;
+        }
+        .equity-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 30px;
+        }
+        .equity-card {
+            background: #111;
+            border: 1px solid #333;
+            padding: 35px;
+        }
+        .equity-card h4 {
+            font-size: 1.1rem;
+            font-weight: 600;
+            margin-bottom: 16px;
+            color: #fff;
+            font-family: 'Segoe UI', 'Helvetica Neue', sans-serif;
+        }
+        .equity-card p {
+            font-size: 0.95rem;
+            color: #999;
+            line-height: 1.7;
+        }
+        .equity-card .stat {
+            font-size: 2rem;
+            font-weight: 700;
+            color: #fff;
+            margin-bottom: 12px;
+        }
+
+        /* Framework Section */
+        .framework-section { background: #f7f7f7; }
+        .framework-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 30px;
+        }
+        .framework-card {
+            background: #fff;
+            border: 1px solid #e0e0e0;
+            padding: 35px;
+        }
+        .framework-card h4 {
+            font-size: 1.2rem;
+            font-weight: 600;
+            margin-bottom: 16px;
+            color: #000;
+            font-family: 'Segoe UI', 'Helvetica Neue', sans-serif;
+        }
+        .framework-card p {
+            font-size: 0.95rem;
+            color: #555;
+            line-height: 1.8;
+        }
+
+        /* VERA Section */
+        .vera-section { background: #fff; border-top: 1px solid #e0e0e0; }
+        .vera-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+            align-items: center;
+        }
+        .vera-text h2 {
+            font-size: 2.2rem;
+            font-weight: 400;
+            margin-bottom: 24px;
+            color: #000;
+        }
+        .vera-text h2 strong { font-weight: 700; }
+        .vera-text p {
+            font-size: 1.05rem;
+            color: #444;
+            line-height: 1.8;
+            margin-bottom: 20px;
+        }
+        .vera-features {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+            margin-top: 30px;
+        }
+        .vera-feature {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            font-size: 0.95rem;
+            color: #333;
+        }
+        .vera-feature::before {
+            content: '';
+            width: 8px;
+            height: 8px;
+            background: #000;
+            border-radius: 50%;
+        }
+        .vera-visual {
+            background: #000;
+            color: #fff;
+            padding: 60px 40px;
+            text-align: center;
+        }
+        .vera-visual .logo-text {
+            font-size: 3.5rem;
+            font-weight: 700;
+            letter-spacing: 6px;
+            margin-bottom: 16px;
+            font-family: 'Segoe UI', 'Helvetica Neue', sans-serif;
+        }
+        .vera-visual .tagline {
+            font-size: 0.9rem;
+            color: #888;
+            letter-spacing: 2px;
+        }
+        .vera-visual .status {
+            display: inline-block;
+            margin-top: 30px;
+            padding: 10px 24px;
+            background: #333;
+            font-size: 0.8rem;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            font-family: 'Segoe UI', 'Helvetica Neue', sans-serif;
+        }
+
+        /* Quote Section */
+        .quote-section {
+            background: #f7f7f7;
+            padding: 80px 0;
+            text-align: center;
+        }
+        .quote-section blockquote {
+            font-size: 1.6rem;
+            font-style: italic;
+            max-width: 900px;
+            margin: 0 auto;
+            line-height: 1.7;
+            color: #000;
+        }
+        .quote-section cite {
+            display: block;
+            margin-top: 20px;
+            font-size: 1rem;
+            color: #666;
+            font-style: normal;
+        }
+
+        /* CTA Section */
+        .cta-section {
+            background: #000;
+            text-align: center;
+            padding: 100px 24px;
+            color: #fff;
+        }
+        .cta-section h2 {
+            font-size: 2.2rem;
+            font-weight: 400;
+            margin-bottom: 20px;
+            color: #fff;
+        }
+        .cta-section p {
+            font-size: 1.1rem;
+            color: #bbb;
+            max-width: 600px;
+            margin: 0 auto 40px;
+        }
+        .cta-button {
+            display: inline-block;
+            background: #fff;
+            color: #000;
+            padding: 18px 50px;
+            font-size: 0.9rem;
+            font-weight: 600;
+            text-decoration: none;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            font-family: 'Segoe UI', 'Helvetica Neue', sans-serif;
+        }
+        .cta-button:hover { background: #e0e0e0; }
+
+        /* Footer */
+        footer {
+            background: #111;
+            padding: 60px 0;
+            text-align: center;
+        }
+        footer .logo {
+            font-size: 1.4rem;
+            margin-bottom: 20px;
+            display: inline-block;
+            color: #fff;
+        }
+        footer p {
+            font-size: 0.85rem;
+            color: rgba(255,255,255,0.6);
+        }
+        footer a { color: #fff; text-decoration: none; }
+        footer a:hover { color: #ccc; }
+
+        /* Responsive */
+        @media (max-width: 900px) {
+            .hero h1 { font-size: 2.2rem; }
+            .stats-grid, .equity-grid, .framework-grid, .proof-grid, .vera-content { grid-template-columns: 1fr; }
+            nav { display: none; }
+        }
+    </style>
+</head>
+<body>
+
+<header>
+    <div class="container">
+        <a href="../index.html" class="logo">H-EDU.SOLUTIONS</a>
+        <nav>
+            <a href="../index.html" style="font-weight: 600;">Global</a>
+            <a href="#proof">The Proof</a>
+            <a href="#equity">Equity Crisis</a>
+            <a href="#vera">VERA-NZ</a>
+            <a href="california.html">California</a>
+            <a href="nsw.html">NSW</a>
+            <a href="#contact" class="nav-cta">Get in Touch</a>
+        </nav>
+    </div>
+</header>
+
+<section class="hero">
+    <div class="container">
+        <div class="hero-content">
+            <p class="hero-eyebrow">Aotearoa New Zealand</p>
+            <h1>The only country that has built <strong>reciprocal accountability at scale.</strong></h1>
+            <p class="subtitle">New Zealand is not a theoretical model. It is a functioning proof of concept. A national system where accountability flows in both directions — from state to student and student to state.</p>
+            <p class="subtitle">Every other country in the world is watching. California is building the American version. VERA is what makes it verifiable.</p>
+            <p class="hero-highlight"><strong>New Zealand's population: 5 million.</strong> That's equivalent to 26 U.S. states plus the District of Columbia. This is not a foreign experiment. It's a directly translatable model.</p>
+        </div>
+    </div>
+</section>
+
+<section class="stats-section">
+    <div class="container">
+        <div class="stats-grid">
+            <div class="stat-card">
+                <div class="number">2,536</div>
+                <div class="label">Schools Nationwide</div>
+            </div>
+            <div class="stat-card">
+                <div class="number">840K+</div>
+                <div class="label">Students in State Schools</div>
+            </div>
+            <div class="stat-card">
+                <div class="number">1</div>
+                <div class="label">National System</div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="proof-section" id="proof">
+    <div class="container">
+        <p class="section-eyebrow">The Global Proof</p>
+        <h2 class="section-headline">What New Zealand <strong>built</strong></h2>
+        <p class="section-desc">Three structural achievements that no other country has replicated. This is why the Aurora Institute cites New Zealand as the global best practice for competency-based education.</p>
+        <div class="proof-grid">
+            <div class="proof-text">
+                <h3>The Learner Record</h3>
+                <p>The New Zealand Qualifications Authority (NZQA) oversees a genuine learner record system. Every student has a Record of Achievement that captures mastery of competency development — including evidence of actual student work, not just test scores.</p>
+                <p>This is the evidentiary standard VERA aspires to at the classroom level. The CA-60 work H-EDU has already done for California maps directly onto this architecture.</p>
+
+                <h3 style="margin-top: 30px;">Locally-Driven Accountability</h3>
+                <p>The national framework sets standards. But implementation is the responsibility of each school, its educators, its community, its families, and its students. Genuine shared responsibility — not top-down mandate.</p>
+                <p>This is the structural argument VERA is designed to verify rather than replace.</p>
+
+                <h3 style="margin-top: 30px;">The Scale Translation</h3>
+                <p>New Zealand has five million people. Twenty-six U.S. states plus the District of Columbia are smaller. That makes New Zealand not a foreign experiment but a directly portable model — the exact size of a mid-large American state.</p>
+            </div>
+            <div class="proof-box">
+                <h3>NZ Population Equivalents</h3>
+                <ul>
+                    <li>New Zealand <span>5.1M</span></li>
+                    <li>South Carolina <span>5.2M</span></li>
+                    <li>Alabama <span>5.0M</span></li>
+                    <li>Louisiana <span>4.6M</span></li>
+                    <li>Kentucky <span>4.5M</span></li>
+                    <li>Oregon <span>4.2M</span></li>
+                    <li>Oklahoma <span>4.0M</span></li>
+                    <li>Connecticut <span>3.6M</span></li>
+                    <li>Iowa <span>3.2M</span></li>
+                    <li>Nevada <span>3.1M</span></li>
+                </ul>
+                <p style="margin-top: 20px; font-size: 0.9rem; color: #666;">26 U.S. states + DC have populations below 5 million. NZ's model is directly translatable.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="equity-section" id="equity">
+    <div class="container">
+        <p class="section-eyebrow" style="color: #888;">The Equity Crisis</p>
+        <h2 class="section-headline" style="color: #fff;">The gap New Zealand is <strong style="color: #fff;">working to close</strong></h2>
+        <p class="equity-intro">Despite having the infrastructure, the outcomes gap persists. Māori and Pasifika students face the same structural barriers California's underserved populations face. This is where VERA's methodology applies directly.</p>
+        <div class="equity-grid">
+            <div class="equity-card">
+                <p class="stat">78%</p>
+                <h4>Māori Non-Attainment</h4>
+                <p>78% of Māori students do not achieve University Entrance. Compare to 25% for Asian students. The gap is stark and persistent.</p>
+            </div>
+            <div class="equity-card">
+                <p class="stat">70%</p>
+                <h4>Pasifika Non-Attainment</h4>
+                <p>70% of Pasifika students do not achieve University Entrance. By 2040, Māori and Pasifika will comprise the majority of primary school students.</p>
+            </div>
+            <div class="equity-card">
+                <p class="stat">33%</p>
+                <h4>Regular Attendance</h4>
+                <p>Only a third of Māori and Pasifika students attended school regularly in 2023, compared to half of Pākehā students and 59% of Asian students.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="framework-section">
+    <div class="container">
+        <p class="section-eyebrow">The Framework</p>
+        <h2 class="section-headline">New Zealand's <strong>accountability architecture</strong></h2>
+        <p class="section-desc">Four systems that create the infrastructure VERA-NZ can connect to. Every one of these has a direct analog to California's data systems.</p>
+        <div class="framework-grid">
+            <div class="framework-card">
+                <h4>Equity Index (EQI)</h4>
+                <p>Replaced the old socioeconomic decile system in January 2023. Uses 37 factors per pupil to calculate a school index between 344 and 569, grouped into three bands: fewer, moderate, and more barriers. The direct analog to California's LCFF concentration factors.</p>
+            </div>
+            <div class="framework-card">
+                <h4>NCEA Assessment</h4>
+                <p>The National Certificate of Educational Achievement is NZ's secondary qualification framework. NCEA reform now includes a mandatory oral language co-requisite — Te Reo Matatini — creating a direct policy hook for VERA's oral-written delta methodology.</p>
+            </div>
+            <div class="framework-card">
+                <h4>ENRICH Programme</h4>
+                <p>Mandated oral language investment for ECE teachers, including tools to monitor children's oral language development. This is the Type 4 detection opportunity — students who speak well but may not write at grade level.</p>
+            </div>
+            <div class="framework-card">
+                <h4>data.govt.nz APIs</h4>
+                <p>The Ministry of Education maintains two live APIs — the School Directory and Early Childhood Directory — providing contact details, geospatial data, and enrolment information. SQL-queryable and public.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="vera-section" id="vera">
+    <div class="container">
+        <div class="vera-content">
+            <div class="vera-text">
+                <p class="section-eyebrow">The Platform</p>
+                <h2>VERA-NZ brings verification to <strong>Aotearoa</strong></h2>
+                <p>The same verification infrastructure deployed for California and New South Wales, adapted for New Zealand's Equity Index, NCEA framework, and Ministry of Education data systems.</p>
+                <p>Plain-English queries against NZ education data. Māori and Pasifika achievement tracking. Oral-written delta analysis aligned with NCEA's oral language co-requisite.</p>
+                <div class="vera-features">
+                    <div class="vera-feature">Equity Index (EQI) correlation analysis</div>
+                    <div class="vera-feature">NCEA achievement tracking by demographic</div>
+                    <div class="vera-feature">Oral language / written expression delta</div>
+                    <div class="vera-feature">data.govt.nz API integration</div>
+                    <div class="vera-feature">School-level intervention verification</div>
+                    <div class="vera-feature">Plain-English queries via Claude AI</div>
+                </div>
+            </div>
+            <div class="vera-visual">
+                <div class="logo-text">VERA</div>
+                <p class="tagline">Verification Engine for Results & Accountability</p>
+                <span class="status">New Zealand — Coming 2026</span>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="quote-section">
+    <div class="container">
+        <blockquote>"New Zealand proved it works. California is building the American version. VERA is what makes it verifiable."</blockquote>
+        <cite>The H-EDU thesis</cite>
+    </div>
+</section>
+
+<section class="cta-section" id="contact">
+    <div class="container">
+        <h2>The global model. The local proof.</h2>
+        <p>New Zealand demonstrates what's possible. H-EDU provides the verification infrastructure to replicate it. Contact us to discuss VERA-NZ.</p>
+        <a href="mailto:brian@h-edu.solutions" class="cta-button">Get in Touch</a>
+    </div>
+</section>
+
+<footer>
+    <div class="container">
+        <a href="../index.html" class="logo">H-EDU.SOLUTIONS</a>
+        <p style="margin-top: 20px;">&copy; 2026 H-EDU.solutions | A <a href="https://hallucinations.cloud">Hallucinations.cloud</a> Initiative</p>
+        <p style="margin-top: 12px;"><a href="../index.html">Global</a> &bull; <a href="california.html">California</a> &bull; <a href="nsw.html">New South Wales</a> &bull; New Zealand</p>
+    </div>
+</footer>
+
+</body>
+</html>
