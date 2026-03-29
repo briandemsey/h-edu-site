@@ -1,0 +1,354 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>H-EDU New South Wales | Education Accountability</title>
+    <meta name="description" content="H-EDU provides the verification layer for New South Wales education. VERA-NSW analyzes LBOTE risk profiles across 2,200+ government schools.">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: 'Georgia', 'Times New Roman', serif; line-height: 1.7; color: #000; background: #fff; }
+
+        /* Header */
+        header {
+            background: #fff;
+            padding: 20px 0;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            border-bottom: 1px solid #e0e0e0;
+        }
+        .container { max-width: 1200px; margin: 0 auto; padding: 0 24px; }
+        header .container { display: flex; justify-content: space-between; align-items: center; }
+        .logo { color: #000; font-size: 1.5rem; font-weight: 700; text-decoration: none; letter-spacing: 1px; font-family: 'Segoe UI', 'Helvetica Neue', sans-serif; }
+        nav { display: flex; gap: 32px; align-items: center; }
+        nav a { color: #333; text-decoration: none; font-size: 0.9rem; font-weight: 400; transition: color 0.2s; font-family: 'Segoe UI', 'Helvetica Neue', sans-serif; }
+        nav a:hover { color: #2251ff; }
+        nav .nav-cta { background: #000; color: #fff; padding: 10px 24px; font-weight: 500; }
+        nav .nav-cta:hover { background: #333; color: #fff; }
+
+        /* Hero */
+        .hero {
+            min-height: 70vh;
+            background: #000;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: 140px 24px 80px;
+            position: relative;
+            color: #fff;
+        }
+        .hero-content { position: relative; z-index: 10; max-width: 800px; }
+        .hero-eyebrow {
+            font-size: 1rem;
+            color: #999;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            margin-bottom: 24px;
+            font-weight: 400;
+            font-family: 'Segoe UI', 'Helvetica Neue', sans-serif;
+        }
+        .hero h1 {
+            font-size: 3.2rem;
+            font-weight: 400;
+            margin-bottom: 28px;
+            letter-spacing: -0.5px;
+            line-height: 1.25;
+            color: #fff;
+        }
+        .hero h1 strong { font-weight: 700; }
+        .hero .subtitle {
+            font-size: 1.2rem;
+            color: #bbb;
+            max-width: 650px;
+            margin: 0 auto 40px;
+            line-height: 1.9;
+        }
+        .hero-cta {
+            display: inline-block;
+            background: #fff;
+            color: #000;
+            padding: 16px 40px;
+            font-size: 0.9rem;
+            font-weight: 600;
+            text-decoration: none;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            transition: background 0.3s;
+            font-family: 'Segoe UI', 'Helvetica Neue', sans-serif;
+        }
+        .hero-cta:hover { background: #e0e0e0; }
+
+        /* Stats Section */
+        .stats-section { background: #f7f7f7; padding: 80px 0; }
+        .stats-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 40px; text-align: center; }
+        .stat-card { padding: 30px; }
+        .stat-card .number { font-size: 3.5rem; font-weight: 700; color: #000; font-family: 'Georgia', serif; }
+        .stat-card .label { font-size: 0.95rem; color: #555; margin-top: 10px; font-family: 'Segoe UI', 'Helvetica Neue', sans-serif; }
+
+        /* Section styling */
+        section { padding: 80px 0; }
+        .section-eyebrow {
+            font-size: 0.75rem;
+            color: #666;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            margin-bottom: 16px;
+            font-weight: 400;
+            font-family: 'Segoe UI', 'Helvetica Neue', sans-serif;
+        }
+        .section-headline {
+            font-size: 2.5rem;
+            font-weight: 400;
+            margin-bottom: 24px;
+            color: #000;
+        }
+        .section-headline strong { font-weight: 700; }
+        .section-desc {
+            font-size: 1.1rem;
+            color: #444;
+            max-width: 700px;
+            margin-bottom: 50px;
+        }
+
+        /* Context Section */
+        .context-section { background: #fff; }
+        .context-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 40px;
+        }
+        .context-card {
+            background: #f7f7f7;
+            border: 1px solid #e0e0e0;
+            padding: 40px;
+        }
+        .context-card h3 {
+            font-size: 1.3rem;
+            font-weight: 600;
+            margin-bottom: 16px;
+            color: #000;
+            font-family: 'Segoe UI', 'Helvetica Neue', sans-serif;
+        }
+        .context-card p {
+            font-size: 0.95rem;
+            color: #555;
+            line-height: 1.8;
+        }
+
+        /* VERA Section */
+        .vera-section { background: #000; color: #fff; padding: 100px 0; }
+        .vera-content { max-width: 800px; }
+        .vera-content h2 {
+            font-size: 2.5rem;
+            font-weight: 400;
+            margin-bottom: 24px;
+        }
+        .vera-content p {
+            font-size: 1.1rem;
+            color: #bbb;
+            margin-bottom: 20px;
+            line-height: 1.8;
+        }
+        .vera-features {
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+            margin: 40px 0;
+        }
+        .vera-feature {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            font-size: 1rem;
+            color: #fff;
+        }
+        .vera-feature::before {
+            content: '';
+            width: 8px;
+            height: 8px;
+            background: #fff;
+            border-radius: 50%;
+        }
+        .vera-cta {
+            display: inline-block;
+            background: #fff;
+            color: #000;
+            padding: 16px 40px;
+            font-size: 0.9rem;
+            font-weight: 600;
+            text-decoration: none;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            margin-top: 20px;
+            font-family: 'Segoe UI', 'Helvetica Neue', sans-serif;
+        }
+        .vera-cta:hover { background: #e0e0e0; }
+
+        /* CTA Section */
+        .cta-section {
+            background: #f7f7f7;
+            text-align: center;
+            padding: 100px 24px;
+        }
+        .cta-section h2 {
+            font-size: 2.5rem;
+            font-weight: 400;
+            margin-bottom: 20px;
+            color: #000;
+        }
+        .cta-section p {
+            font-size: 1.1rem;
+            color: #555;
+            max-width: 600px;
+            margin: 0 auto 40px;
+        }
+        .cta-button {
+            display: inline-block;
+            background: #000;
+            color: #fff;
+            padding: 18px 50px;
+            font-size: 0.9rem;
+            font-weight: 600;
+            text-decoration: none;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            font-family: 'Segoe UI', 'Helvetica Neue', sans-serif;
+        }
+        .cta-button:hover { background: #333; }
+
+        /* Footer */
+        footer {
+            background: #000;
+            padding: 60px 0;
+            text-align: center;
+        }
+        footer .logo {
+            font-size: 1.4rem;
+            margin-bottom: 20px;
+            display: inline-block;
+            color: #fff;
+        }
+        footer p {
+            font-size: 0.85rem;
+            color: rgba(255,255,255,0.6);
+        }
+        footer a { color: #fff; text-decoration: none; }
+        footer a:hover { color: #ccc; }
+
+        /* Responsive */
+        @media (max-width: 900px) {
+            .hero h1 { font-size: 2.2rem; }
+            .stats-grid, .context-grid { grid-template-columns: 1fr; }
+            nav { display: none; }
+        }
+    </style>
+</head>
+<body>
+
+<header>
+    <div class="container">
+        <a href="../index.html" class="logo">H-EDU.SOLUTIONS</a>
+        <nav>
+            <a href="../index.html" style="font-weight: 600;">Global</a>
+            <a href="#context">Context</a>
+            <a href="#vera">VERA-NSW</a>
+            <a href="california.html">California</a>
+            <a href="https://vera-nsw.onrender.com" target="_blank" class="nav-cta">Launch VERA-NSW</a>
+        </nav>
+    </div>
+</header>
+
+<section class="hero">
+    <div class="hero-content">
+        <p class="hero-eyebrow">New South Wales, Australia</p>
+        <h1>Education accountability <strong>across 2,200+ schools.</strong></h1>
+        <p class="subtitle">VERA-NSW analyzes LBOTE risk profiles, FOEI/ICSEA correlations with literacy gaps, and school-level performance data across New South Wales government schools.</p>
+        <a href="https://vera-nsw.onrender.com" target="_blank" class="hero-cta">Launch VERA-NSW</a>
+    </div>
+</section>
+
+<section class="stats-section">
+    <div class="container">
+        <div class="stats-grid">
+            <div class="stat-card">
+                <div class="number">2,200+</div>
+                <div class="label">Government Schools Analyzed</div>
+            </div>
+            <div class="stat-card">
+                <div class="number">800K+</div>
+                <div class="label">Students in NSW Public Schools</div>
+            </div>
+            <div class="stat-card">
+                <div class="number">Live</div>
+                <div class="label">Data.NSW Integration</div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="context-section" id="context">
+    <div class="container">
+        <p class="section-eyebrow">NSW Context</p>
+        <h2 class="section-headline">Understanding <strong>the landscape</strong></h2>
+        <p class="section-desc">New South Wales faces unique challenges in education accountability. VERA-NSW provides the verification infrastructure adapted for Australian frameworks.</p>
+        <div class="context-grid">
+            <div class="context-card">
+                <h3>LBOTE Risk Profiles</h3>
+                <p>Language Background Other Than English (LBOTE) students represent a significant portion of NSW schools. VERA-NSW identifies schools where LBOTE correlates with literacy gaps, enabling targeted intervention.</p>
+            </div>
+            <div class="context-card">
+                <h3>FOEI & ICSEA Analysis</h3>
+                <p>Family Occupation and Education Index (FOEI) and Index of Community Socio-Educational Advantage (ICSEA) provide socioeconomic context. VERA correlates these with academic outcomes.</p>
+            </div>
+            <div class="context-card">
+                <h3>NAPLAN Integration</h3>
+                <p>National Assessment Program - Literacy and Numeracy data provides standardized benchmarks. VERA-NSW enables plain-English queries against NAPLAN results.</p>
+            </div>
+            <div class="context-card">
+                <h3>Data.NSW Partnership</h3>
+                <p>Live integration with NSW government open data portals ensures VERA-NSW operates on current, authoritative education statistics.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="vera-section" id="vera">
+    <div class="container">
+        <div class="vera-content">
+            <h2>VERA-NSW Platform</h2>
+            <p>The Verification Engine for Results & Accountability, adapted for New South Wales education data and Australian accountability frameworks.</p>
+            <p>Plain-English queries against NSW education databases. No SQL required. Ask questions, get answers.</p>
+            <div class="vera-features">
+                <div class="vera-feature">School-level LBOTE risk identification</div>
+                <div class="vera-feature">FOEI/ICSEA correlation analysis</div>
+                <div class="vera-feature">NAPLAN performance tracking</div>
+                <div class="vera-feature">Cross-school pattern detection</div>
+                <div class="vera-feature">Intervention verification</div>
+            </div>
+            <a href="https://vera-nsw.onrender.com" target="_blank" class="vera-cta">Launch VERA-NSW</a>
+        </div>
+    </div>
+</section>
+
+<section class="cta-section" id="contact">
+    <div class="container">
+        <h2>Accountability infrastructure for NSW.</h2>
+        <p>H-EDU provides the verification layer that education systems need. Contact us to learn how VERA-NSW can support your district or school.</p>
+        <a href="mailto:brian@h-edu.solutions" class="cta-button">Get in Touch</a>
+    </div>
+</section>
+
+<footer>
+    <div class="container">
+        <a href="../index.html" class="logo">H-EDU.SOLUTIONS</a>
+        <p style="margin-top: 20px;">&copy; 2026 H-EDU.solutions | A <a href="https://hallucinations.cloud">Hallucinations.cloud</a> Initiative</p>
+        <p style="margin-top: 12px;"><a href="../index.html">Global</a> &bull; <a href="california.html">California</a> &bull; New South Wales</p>
+    </div>
+</footer>
+
+</body>
+</html>
