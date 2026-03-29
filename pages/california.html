@@ -3,184 +3,449 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>H-EDU California | Every Child</title>
-    <meta name="description" content="H-EDU provides the data to close the achievement gap. California spends $146 billion a year to educate 5.8 million children. Fewer than half can read at grade level.">
+    <title>H-EDU California | The Legislative Moment</title>
+    <meta name="description" content="H-EDU is positioned to answer California's AB 2225 procurement. VERA provides the verification infrastructure the state's accountability legislation requires.">
     <style>
         * { margin: 0; padding: 0; box-sizing: border-box; }
-        body { font-family: 'Georgia', 'Times New Roman', serif; line-height: 1.7; color: #2c2c2c; background: #F8F4EE; }
-        .container { max-width: 1200px; margin: 0 auto; padding: 0 24px; }
+        body { font-family: 'Georgia', 'Times New Roman', serif; line-height: 1.7; color: #000; background: #fff; }
 
         /* Header */
-        header { background: #1B2A4A; padding: 16px 0; position: fixed; width: 100%; top: 0; z-index: 1000; }
+        header {
+            background: #fff;
+            padding: 20px 0;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            border-bottom: 1px solid #e0e0e0;
+        }
+        .container { max-width: 1200px; margin: 0 auto; padding: 0 24px; }
         header .container { display: flex; justify-content: space-between; align-items: center; }
-        .logo { color: #B8902A; font-size: 1.6rem; font-weight: 700; text-decoration: none; font-family: 'Calibri', sans-serif; }
-        .logo span { color: #fff; }
-        nav { display: flex; gap: 32px; }
-        nav a { color: rgba(255,255,255,0.85); text-decoration: none; font-size: 0.95rem; font-family: 'Calibri', sans-serif; }
-        nav a:hover { color: #B8902A; }
+        .logo { color: #000; font-size: 1.5rem; font-weight: 700; text-decoration: none; letter-spacing: 1px; font-family: 'Segoe UI', 'Helvetica Neue', sans-serif; }
+        nav { display: flex; gap: 32px; align-items: center; }
+        nav a { color: #333; text-decoration: none; font-size: 0.9rem; font-weight: 400; transition: color 0.2s; font-family: 'Segoe UI', 'Helvetica Neue', sans-serif; }
+        nav a:hover { color: #2251ff; }
+        nav .nav-cta { background: #000; color: #fff; padding: 10px 24px; font-weight: 500; }
+        nav .nav-cta:hover { background: #333; color: #fff; }
 
         /* Hero */
-        .hero { background: linear-gradient(135deg, #1B2A4A 0%, #162238 100%); color: white; padding: 140px 24px 80px; text-align: center; position: relative; }
-        .hero::before { content: ''; position: absolute; left: 0; top: 60px; width: 6px; height: calc(100% - 60px); background: #B8902A; }
-        .hero h1 { font-size: 4rem; font-weight: 700; margin-bottom: 20px; font-family: 'Calibri', sans-serif; letter-spacing: 2px; }
-        .hero .subtitle { font-size: 1.3rem; opacity: 0.9; max-width: 700px; margin: 0 auto 30px; line-height: 1.8; }
-        .hero .stat-highlight { font-size: 1.1rem; color: #B8902A; font-style: italic; max-width: 600px; margin: 0 auto; }
-
-        /* Stats Section */
-        .stats-section { background: #fff; padding: 60px 0; border-bottom: 4px solid #B8902A; }
-        .stats-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 40px; text-align: center; }
-        .stat-card { padding: 30px; }
-        .stat-card .number { font-size: 3.5rem; font-weight: 700; color: #B8902A; font-family: 'Georgia', serif; }
-        .stat-card .label { font-size: 0.95rem; color: #555; margin-top: 10px; font-family: 'Calibri', sans-serif; }
-
-        /* Problem Section */
-        .problem-section { background: #1B2A4A; color: white; padding: 80px 0; }
-        .problem-section h2 { font-size: 0.9rem; color: #B8902A; letter-spacing: 3px; margin-bottom: 20px; font-family: 'Calibri', sans-serif; font-weight: 700; }
-        .problem-section .headline { font-size: 2rem; font-weight: 400; margin-bottom: 40px; max-width: 800px; }
-        .problem-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 30px; margin-top: 40px; }
-        .problem-card { background: #162238; padding: 30px; border-top: 3px solid #B8902A; }
-        .problem-card .value { font-size: 2.5rem; color: #B8902A; font-weight: 700; font-family: 'Georgia', serif; }
-        .problem-card .desc { font-size: 0.9rem; color: #B0BED0; margin-top: 10px; font-family: 'Calibri', sans-serif; }
-
-        /* What Works Section */
-        .works-section { background: #F8F4EE; padding: 80px 0; }
-        .works-section h2 { font-size: 0.9rem; color: #B8902A; letter-spacing: 3px; margin-bottom: 20px; font-family: 'Calibri', sans-serif; font-weight: 700; }
-        .works-section .headline { font-size: 2rem; font-weight: 400; color: #1B2A4A; margin-bottom: 40px; }
-        .works-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 30px; }
-        .works-card { background: #fff; padding: 30px; border-left: 4px solid #1A5C38; box-shadow: 0 2px 10px rgba(0,0,0,0.06); }
-        .works-card h3 { font-size: 1.1rem; color: #1B2A4A; margin-bottom: 10px; font-family: 'Calibri', sans-serif; font-weight: 700; }
-        .works-card .program { font-size: 0.85rem; color: #777; font-style: italic; margin-bottom: 10px; }
-        .works-card p { font-size: 0.95rem; color: #444; }
-        .works-card .result { display: inline-block; background: #E8E3D8; padding: 8px 16px; margin-top: 15px; font-size: 0.85rem; color: #1A5C38; font-weight: 600; font-family: 'Calibri', sans-serif; }
-
-        /* What Failed Section */
-        .failed-section { background: #fff; padding: 80px 0; border-top: 4px solid #8B2A2A; }
-        .failed-section h2 { font-size: 0.9rem; color: #8B2A2A; letter-spacing: 3px; margin-bottom: 20px; font-family: 'Calibri', sans-serif; font-weight: 700; }
-        .failed-section .headline { font-size: 2rem; font-weight: 400; color: #1B2A4A; margin-bottom: 40px; }
-        .failed-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
-        .failed-card { background: #F8F4EE; padding: 25px; border-left: 4px solid #8B2A2A; }
-        .failed-card h3 { font-size: 1rem; color: #1B2A4A; margin-bottom: 8px; font-family: 'Calibri', sans-serif; font-weight: 700; }
-        .failed-card p { font-size: 0.85rem; color: #555; }
-        .failed-card .reason { display: inline-block; background: #E8E3D8; padding: 6px 12px; margin-top: 12px; font-size: 0.75rem; color: #8B2A2A; font-weight: 600; font-family: 'Calibri', sans-serif; }
-
-        /* Solution Section */
-        .solution-section { background: linear-gradient(135deg, #1B2A4A 0%, #162238 100%); color: white; padding: 80px 0; position: relative; }
-        .solution-section::before { content: ''; position: absolute; left: 0; top: 0; width: 6px; height: 100%; background: #B8902A; }
-        .solution-section h2 { font-size: 0.9rem; color: #B8902A; letter-spacing: 3px; margin-bottom: 20px; font-family: 'Calibri', sans-serif; font-weight: 700; }
-        .solution-section .headline { font-size: 2.5rem; font-weight: 400; margin-bottom: 30px; }
-        .solution-section p { font-size: 1.1rem; color: #B0BED0; max-width: 700px; margin-bottom: 20px; }
-        .solution-features { display: grid; grid-template-columns: repeat(3, 1fr); gap: 30px; margin-top: 50px; }
-        .solution-feature { text-align: center; }
-        .solution-feature .icon { width: 60px; height: 60px; background: #B8902A; border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 20px; font-size: 1.5rem; color: #1B2A4A; font-weight: 700; }
-        .solution-feature h3 { font-size: 1.1rem; margin-bottom: 10px; font-family: 'Calibri', sans-serif; }
-        .solution-feature p { font-size: 0.9rem; color: #B0BED0; }
-
-        /* Quote Section */
-        .quote-section { background: #8B2A2A; color: white; padding: 60px 0; text-align: center; }
-        .quote-section blockquote { font-size: 1.4rem; font-style: italic; max-width: 900px; margin: 0 auto; line-height: 1.8; }
-        .quote-section cite { display: block; margin-top: 20px; font-size: 0.95rem; color: rgba(255,255,255,0.7); font-style: normal; }
-
-        /* CTA Section */
-        .cta-section { background: #F8F4EE; padding: 80px 0; text-align: center; }
-        .cta-section h2 { font-size: 2.5rem; color: #1B2A4A; margin-bottom: 20px; font-family: 'Calibri', sans-serif; }
-        .cta-section p { font-size: 1.1rem; color: #555; max-width: 600px; margin: 0 auto 30px; }
-        .cta-button { display: inline-block; background: #B8902A; color: #1B2A4A; padding: 18px 50px; font-size: 1rem; font-weight: 700; text-decoration: none; font-family: 'Calibri', sans-serif; letter-spacing: 1px; text-transform: uppercase; transition: background 0.3s; }
-        .cta-button:hover { background: #9A7820; }
-
-        /* Footer */
-        footer { background: #1B2A4A; color: white; padding: 40px 0; text-align: center; }
-        footer p { font-size: 0.9rem; color: rgba(255,255,255,0.6); }
-        footer a { color: #B8902A; text-decoration: none; }
-
-        /* Image Hero - Opening Section */
-        .image-hero {
-            height: 100vh;
-            min-height: 600px;
-            background: linear-gradient(to bottom, rgba(27, 42, 74, 0.4) 0%, rgba(27, 42, 74, 0.7) 100%), url('../children-hero.jpg') center/cover no-repeat;
+        .hero {
+            min-height: 80vh;
+            background: #000;
             display: flex;
             flex-direction: column;
             justify-content: center;
-            align-items: center;
-            text-align: center;
-            color: white;
-            padding: 100px 24px 60px;
+            padding: 140px 24px 80px;
             position: relative;
+            color: #fff;
         }
-        .image-hero h2 {
-            font-size: 3.5rem;
-            font-weight: 300;
-            margin-bottom: 20px;
-            font-family: 'Georgia', serif;
-            text-shadow: 2px 2px 8px rgba(0,0,0,0.5);
-        }
-        .image-hero p {
-            font-size: 1.4rem;
-            max-width: 700px;
-            margin: 0 auto;
-            opacity: 0.95;
-            text-shadow: 1px 1px 4px rgba(0,0,0,0.5);
-        }
-        .image-hero .scroll-indicator {
-            position: absolute;
-            bottom: 40px;
-            left: 50%;
-            transform: translateX(-50%);
+        .hero-content { position: relative; z-index: 10; max-width: 900px; }
+        .hero-eyebrow {
             font-size: 0.9rem;
-            color: #B8902A;
-            animation: bounce 2s infinite;
+            color: #999;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            margin-bottom: 24px;
+            font-weight: 400;
+            font-family: 'Segoe UI', 'Helvetica Neue', sans-serif;
         }
-        @keyframes bounce {
-            0%, 20%, 50%, 80%, 100% { transform: translateX(-50%) translateY(0); }
-            40% { transform: translateX(-50%) translateY(-10px); }
-            60% { transform: translateX(-50%) translateY(-5px); }
+        .hero h1 {
+            font-size: 3rem;
+            font-weight: 400;
+            margin-bottom: 28px;
+            letter-spacing: -0.5px;
+            line-height: 1.25;
+            color: #fff;
+        }
+        .hero h1 strong { font-weight: 700; }
+        .hero .subtitle {
+            font-size: 1.15rem;
+            color: #bbb;
+            max-width: 750px;
+            margin-bottom: 30px;
+            line-height: 1.9;
+        }
+        .hero-date {
+            font-size: 1rem;
+            color: #666;
+            font-family: 'Segoe UI', 'Helvetica Neue', sans-serif;
+            margin-top: 40px;
+            padding-top: 30px;
+            border-top: 1px solid #333;
+        }
+        .hero-date strong { color: #fff; }
+
+        /* Section styling */
+        section { padding: 80px 0; }
+        .section-eyebrow {
+            font-size: 0.75rem;
+            color: #666;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            margin-bottom: 16px;
+            font-weight: 400;
+            font-family: 'Segoe UI', 'Helvetica Neue', sans-serif;
+        }
+        .section-headline {
+            font-size: 2.2rem;
+            font-weight: 400;
+            margin-bottom: 24px;
+            color: #000;
+        }
+        .section-headline strong { font-weight: 700; }
+        .section-desc {
+            font-size: 1.05rem;
+            color: #444;
+            max-width: 750px;
+            margin-bottom: 40px;
+            line-height: 1.8;
         }
 
-        /* What Success Requires Section */
-        .success-section { background: #F8F4EE; padding: 80px 0; }
-        .success-section h2 { font-size: 0.9rem; color: #1A5C38; letter-spacing: 3px; margin-bottom: 20px; font-family: 'Calibri', sans-serif; font-weight: 700; }
-        .success-section .headline { font-size: 2rem; font-weight: 400; color: #1B2A4A; margin-bottom: 40px; }
-        .success-grid { display: grid; grid-template-columns: repeat(5, 1fr); gap: 20px; }
-        .success-card { background: #fff; padding: 25px 20px; text-align: center; border-top: 4px solid #1B2A4A; box-shadow: 0 2px 10px rgba(0,0,0,0.06); }
-        .success-card .number { font-size: 1.8rem; font-weight: 700; color: #B8902A; font-family: 'Georgia', serif; margin-bottom: 10px; }
-        .success-card h3 { font-size: 0.95rem; color: #1B2A4A; margin-bottom: 15px; font-family: 'Calibri', sans-serif; font-weight: 700; min-height: 40px; }
-        .success-card .status { display: inline-block; padding: 8px 16px; font-size: 0.75rem; font-weight: 700; font-family: 'Calibri', sans-serif; letter-spacing: 1px; border-radius: 3px; }
-        .success-card .status.partial { background: #FFF3CD; color: #856404; }
-        .success-card .status.absent { background: #F8D7DA; color: #721C24; }
-        .success-card .status.present { background: #D4EDDA; color: #155724; }
-        .success-quote { text-align: center; margin-top: 40px; font-size: 1.3rem; font-style: italic; color: #8B2A2A; font-family: 'Georgia', serif; }
+        /* Timeline Section */
+        .timeline-section { background: #f7f7f7; }
+        .timeline-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 30px;
+        }
+        .timeline-card {
+            background: #fff;
+            border: 1px solid #e0e0e0;
+            padding: 30px;
+            border-top: 4px solid #000;
+        }
+        .timeline-card .date {
+            font-size: 0.8rem;
+            color: #666;
+            font-family: 'Segoe UI', 'Helvetica Neue', sans-serif;
+            margin-bottom: 12px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+        .timeline-card h3 {
+            font-size: 1.1rem;
+            font-weight: 600;
+            margin-bottom: 12px;
+            color: #000;
+            font-family: 'Segoe UI', 'Helvetica Neue', sans-serif;
+        }
+        .timeline-card p {
+            font-size: 0.9rem;
+            color: #555;
+            line-height: 1.7;
+        }
 
-        /* Newsom Effect Section */
-        .newsom-section { background: #1B2A4A; color: white; padding: 80px 0; }
-        .newsom-section h2 { font-size: 0.9rem; color: #B8902A; letter-spacing: 3px; margin-bottom: 20px; font-family: 'Calibri', sans-serif; font-weight: 700; }
-        .newsom-section .headline { font-size: 2rem; font-weight: 400; margin-bottom: 20px; }
-        .newsom-section .subhead { font-size: 1.1rem; color: #B0BED0; margin-bottom: 40px; max-width: 700px; }
-        .newsom-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 25px; }
-        .newsom-card { background: #162238; padding: 30px 25px; border-top: 3px solid #B8902A; text-align: center; }
-        .newsom-card .icon { font-size: 2rem; margin-bottom: 15px; }
-        .newsom-card h3 { font-size: 1.1rem; margin-bottom: 10px; font-family: 'Calibri', sans-serif; }
-        .newsom-card p { font-size: 0.9rem; color: #B0BED0; }
-        .newsom-quote { text-align: center; margin-top: 40px; font-size: 1.3rem; font-style: italic; color: #B8902A; font-family: 'Georgia', serif; }
+        /* Bills Section */
+        .bills-section { background: #fff; }
+        .bills-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 30px;
+        }
+        .bill-card {
+            background: #f7f7f7;
+            border: 1px solid #e0e0e0;
+            padding: 35px;
+        }
+        .bill-card .bill-number {
+            font-size: 1.4rem;
+            font-weight: 700;
+            color: #000;
+            font-family: 'Segoe UI', 'Helvetica Neue', sans-serif;
+            margin-bottom: 8px;
+        }
+        .bill-card h3 {
+            font-size: 1.1rem;
+            font-weight: 600;
+            margin-bottom: 16px;
+            color: #000;
+            font-family: 'Segoe UI', 'Helvetica Neue', sans-serif;
+        }
+        .bill-card p {
+            font-size: 0.95rem;
+            color: #555;
+            line-height: 1.8;
+        }
 
-        /* Articles Section */
-        .articles-section { background: #fff; padding: 80px 0; }
-        .articles-section h2 { font-size: 0.9rem; color: #B8902A; letter-spacing: 3px; margin-bottom: 20px; font-family: 'Calibri', sans-serif; font-weight: 700; }
-        .articles-section .headline { font-size: 2rem; font-weight: 400; color: #1B2A4A; margin-bottom: 40px; }
-        .articles-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(350px, 1fr)); gap: 30px; }
-        .article-card { background: #F8F4EE; text-decoration: none; color: inherit; display: block; box-shadow: 0 2px 10px rgba(0,0,0,0.06); transition: transform 0.2s, box-shadow 0.2s; overflow: hidden; }
-        .article-card:hover { transform: translateY(-4px); box-shadow: 0 8px 20px rgba(0,0,0,0.1); }
-        .article-image { height: 180px; background-size: cover; background-position: center; }
-        .article-card .article-content { padding: 24px; }
-        .article-tag { display: inline-block; background: #1B2A4A; color: #B8902A; font-size: 0.7rem; font-weight: 700; padding: 4px 10px; margin-bottom: 12px; font-family: 'Calibri', sans-serif; letter-spacing: 1px; text-transform: uppercase; }
-        .article-card h3 { font-size: 1.2rem; color: #1B2A4A; margin-bottom: 12px; font-family: 'Calibri', sans-serif; font-weight: 700; line-height: 1.4; }
-        .article-card p { font-size: 0.95rem; color: #555; line-height: 1.6; margin-bottom: 16px; }
-        .article-meta { font-size: 0.8rem; color: #888; font-family: 'Calibri', sans-serif; }
+        /* Data Systems Section */
+        .data-section { background: #000; color: #fff; }
+        .data-intro {
+            font-size: 1.15rem;
+            color: #bbb;
+            max-width: 800px;
+            margin-bottom: 50px;
+            line-height: 1.9;
+        }
+        .data-grid {
+            display: grid;
+            grid-template-columns: repeat(5, 1fr);
+            gap: 20px;
+            margin-bottom: 50px;
+        }
+        .data-card {
+            background: #111;
+            border: 1px solid #333;
+            padding: 25px 20px;
+        }
+        .data-card h4 {
+            font-size: 1rem;
+            font-weight: 600;
+            margin-bottom: 10px;
+            color: #fff;
+            font-family: 'Segoe UI', 'Helvetica Neue', sans-serif;
+        }
+        .data-card p {
+            font-size: 0.85rem;
+            color: #888;
+            line-height: 1.6;
+        }
+        .data-gap {
+            background: #1a1a1a;
+            border: 1px solid #333;
+            padding: 40px;
+            max-width: 800px;
+        }
+        .data-gap h3 {
+            font-size: 1.3rem;
+            font-weight: 600;
+            margin-bottom: 16px;
+            color: #fff;
+            font-family: 'Segoe UI', 'Helvetica Neue', sans-serif;
+        }
+        .data-gap p {
+            font-size: 1rem;
+            color: #bbb;
+            line-height: 1.8;
+        }
+
+        /* Type 4 Section */
+        .type4-section { background: #f7f7f7; }
+        .type4-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+            align-items: center;
+        }
+        .type4-text h2 {
+            font-size: 2.2rem;
+            font-weight: 400;
+            margin-bottom: 24px;
+            color: #000;
+        }
+        .type4-text h2 strong { font-weight: 700; }
+        .type4-text p {
+            font-size: 1.05rem;
+            color: #444;
+            line-height: 1.9;
+            margin-bottom: 20px;
+        }
+        .type4-box {
+            background: #000;
+            color: #fff;
+            padding: 50px;
+        }
+        .type4-box h3 {
+            font-size: 1.5rem;
+            font-weight: 600;
+            margin-bottom: 20px;
+            font-family: 'Segoe UI', 'Helvetica Neue', sans-serif;
+        }
+        .type4-box p {
+            font-size: 1rem;
+            color: #bbb;
+            line-height: 1.8;
+        }
+
+        /* Credentials Section */
+        .credentials-section { background: #fff; border-top: 1px solid #e0e0e0; }
+        .credentials-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+        }
+        .credential-block h3 {
+            font-size: 1.3rem;
+            font-weight: 600;
+            margin-bottom: 20px;
+            color: #000;
+            font-family: 'Segoe UI', 'Helvetica Neue', sans-serif;
+        }
+        .credential-block p {
+            font-size: 1rem;
+            color: #444;
+            line-height: 1.8;
+            margin-bottom: 16px;
+        }
+        .credential-stat {
+            display: flex;
+            gap: 40px;
+            margin-top: 30px;
+        }
+        .credential-stat div {
+            text-align: center;
+        }
+        .credential-stat .number {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: #000;
+        }
+        .credential-stat .label {
+            font-size: 0.85rem;
+            color: #666;
+            font-family: 'Segoe UI', 'Helvetica Neue', sans-serif;
+        }
+
+        /* Why Large Firms Fail */
+        .firms-section { background: #f7f7f7; }
+        .firms-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 30px;
+        }
+        .firm-card {
+            background: #fff;
+            border: 1px solid #e0e0e0;
+            padding: 35px;
+            border-left: 4px solid #000;
+        }
+        .firm-card h3 {
+            font-size: 1.1rem;
+            font-weight: 600;
+            margin-bottom: 16px;
+            color: #000;
+            font-family: 'Segoe UI', 'Helvetica Neue', sans-serif;
+        }
+        .firm-card p {
+            font-size: 0.95rem;
+            color: #555;
+            line-height: 1.8;
+        }
+
+        /* VERA Section */
+        .vera-section { background: #000; color: #fff; padding: 100px 0; }
+        .vera-content { max-width: 800px; }
+        .vera-content h2 {
+            font-size: 2.5rem;
+            font-weight: 400;
+            margin-bottom: 24px;
+        }
+        .vera-content p {
+            font-size: 1.1rem;
+            color: #bbb;
+            margin-bottom: 20px;
+            line-height: 1.8;
+        }
+        .vera-features {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+            margin: 40px 0;
+        }
+        .vera-feature {
+            display: flex;
+            align-items: flex-start;
+            gap: 12px;
+            font-size: 0.95rem;
+            color: #fff;
+        }
+        .vera-feature::before {
+            content: '';
+            width: 8px;
+            height: 8px;
+            background: #fff;
+            border-radius: 50%;
+            margin-top: 8px;
+            flex-shrink: 0;
+        }
+        .vera-cta {
+            display: inline-block;
+            background: #fff;
+            color: #000;
+            padding: 16px 40px;
+            font-size: 0.9rem;
+            font-weight: 600;
+            text-decoration: none;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            margin-top: 20px;
+            font-family: 'Segoe UI', 'Helvetica Neue', sans-serif;
+        }
+        .vera-cta:hover { background: #e0e0e0; }
+
+        /* Quote Section */
+        .quote-section {
+            background: #f7f7f7;
+            padding: 80px 0;
+            text-align: center;
+        }
+        .quote-section blockquote {
+            font-size: 1.6rem;
+            font-style: italic;
+            max-width: 900px;
+            margin: 0 auto;
+            line-height: 1.7;
+            color: #000;
+        }
+
+        /* CTA Section */
+        .cta-section {
+            background: #fff;
+            text-align: center;
+            padding: 100px 24px;
+            border-top: 1px solid #e0e0e0;
+        }
+        .cta-section h2 {
+            font-size: 2.2rem;
+            font-weight: 400;
+            margin-bottom: 20px;
+            color: #000;
+        }
+        .cta-section p {
+            font-size: 1.1rem;
+            color: #555;
+            max-width: 600px;
+            margin: 0 auto 40px;
+        }
+        .cta-button {
+            display: inline-block;
+            background: #000;
+            color: #fff;
+            padding: 18px 50px;
+            font-size: 0.9rem;
+            font-weight: 600;
+            text-decoration: none;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            font-family: 'Segoe UI', 'Helvetica Neue', sans-serif;
+        }
+        .cta-button:hover { background: #333; }
+
+        /* Footer */
+        footer {
+            background: #000;
+            padding: 60px 0;
+            text-align: center;
+        }
+        footer .logo {
+            font-size: 1.4rem;
+            margin-bottom: 20px;
+            display: inline-block;
+            color: #fff;
+        }
+        footer p {
+            font-size: 0.85rem;
+            color: rgba(255,255,255,0.6);
+        }
+        footer a { color: #fff; text-decoration: none; }
+        footer a:hover { color: #ccc; }
 
         /* Responsive */
-        @media (max-width: 900px) {
-            .stats-grid, .problem-grid, .works-grid, .failed-grid, .solution-features, .success-grid, .newsom-grid, .articles-grid { grid-template-columns: 1fr; }
-            .hero h1 { font-size: 2.5rem; }
-            .image-hero h2 { font-size: 2.2rem; }
-            .image-hero p { font-size: 1.1rem; }
+        @media (max-width: 1000px) {
+            .timeline-grid, .data-grid { grid-template-columns: repeat(2, 1fr); }
+        }
+        @media (max-width: 768px) {
+            .hero h1 { font-size: 2.2rem; }
+            .timeline-grid, .bills-grid, .data-grid, .firms-grid, .vera-features, .type4-content, .credentials-content { grid-template-columns: 1fr; }
             nav { display: none; }
         }
     </style>
@@ -189,319 +454,261 @@
 
 <header>
     <div class="container">
-        <a href="../index.html" class="logo">H-<span>EDU</span></a>
+        <a href="../index.html" class="logo">H-EDU.SOLUTIONS</a>
         <nav>
-            <a href="../index.html" style="color: #B8902A;">Global</a>
-            <a href="#problem">The Problem</a>
-            <a href="#works">What Works</a>
-            <a href="#success">Requirements</a>
-            <a href="#solution">The Solution</a>
-            <a href="https://vera-h-edu.onrender.com" target="_blank" style="color: #B8902A; font-weight: 600;">VERA</a>
-            <a href="#articles">Articles</a>
-            <a href="#contact">Contact</a>
+            <a href="../index.html" style="font-weight: 600;">Global</a>
+            <a href="#legislation">Legislation</a>
+            <a href="#data">Data Systems</a>
+            <a href="#type4">Type 4</a>
+            <a href="#vera">VERA</a>
+            <a href="https://vera-h-edu.onrender.com" target="_blank" class="nav-cta">Launch VERA</a>
         </nav>
     </div>
 </header>
 
-<section class="image-hero">
-    <h2>They deserve better.</h2>
-    <p>Every child in California has the right to an education that works. The data exists. The solutions are proven. What's missing is accountability.</p>
-    <div class="scroll-indicator">▼</div>
-</section>
-
 <section class="hero">
     <div class="container">
-        <h1>EVERY CHILD.</h1>
-        <p class="subtitle">California spends $146 billion a year to educate 5.8 million children. Fewer than half can read at grade level.</p>
-        <p class="stat-highlight">"The achievement gap is not a data problem. It is a will problem. H-EDU provides the data."</p>
+        <div class="hero-content">
+            <p class="hero-eyebrow">California</p>
+            <h1>The most structurally ambitious <strong>state-level education accountability initiative</strong> in the country.</h1>
+            <p class="subtitle">On March 17, 2026, CSBA stood at the Capitol with three Assembly members and launched four bills in three days. A mandate that the state — not just its districts — be held accountable for student outcomes.</p>
+            <p class="subtitle">Every one of those mandates requires measurement infrastructure that does not yet exist anywhere in California's education system.</p>
+            <p class="subtitle" style="color: #fff;"><strong>Except at H-EDU.Solutions.</strong></p>
+            <p class="hero-date"><strong>AB 2225</strong> requires competitive procurement by <strong>March 1, 2027</strong>. The working group must deliver a plan by <strong>December 1, 2027</strong>.</p>
+        </div>
     </div>
 </section>
 
-<section class="stats-section">
+<section class="timeline-section">
     <div class="container">
-        <div class="stats-grid">
-            <div class="stat-card">
-                <div class="number">$146B</div>
-                <div class="label">Annual California Education Spending</div>
+        <p class="section-eyebrow">Legislative Timeline</p>
+        <h2 class="section-headline">California is on a <strong>legislative clock</strong></h2>
+        <div class="timeline-grid">
+            <div class="timeline-card">
+                <p class="date">March 17, 2026</p>
+                <h3>CSBA Capitol Launch</h3>
+                <p>Four bills introduced. Public campaign. State accountability mandate established.</p>
             </div>
-            <div class="stat-card">
-                <div class="number">5.8M</div>
-                <div class="label">Students in California Schools</div>
+            <div class="timeline-card">
+                <p class="date">March 1, 2027</p>
+                <h3>AB 2225 Procurement</h3>
+                <p>Competitive procurement opens for organization to assess governance and close achievement gaps.</p>
             </div>
-            <div class="stat-card">
-                <div class="number">&lt;50%</div>
-                <div class="label">Read at Grade Level</div>
+            <div class="timeline-card">
+                <p class="date">December 1, 2027</p>
+                <h3>Working Group Plan</h3>
+                <p>State Operations and Support Plan delivered. Dashboard, commission, and LAO report frameworks defined.</p>
+            </div>
+            <div class="timeline-card">
+                <p class="date">2028+</p>
+                <h3>Implementation</h3>
+                <p>Dashboard live. Annual LAO performance assessment. Statewide accountability infrastructure operational.</p>
             </div>
         </div>
     </div>
 </section>
 
-<section class="problem-section" id="problem">
+<section class="bills-section" id="legislation">
     <div class="container">
-        <h2>THE PROBLEM</h2>
-        <p class="headline">California has no coherent plan to close the achievement gap.</p>
-        <div class="problem-grid">
-            <div class="problem-card">
-                <div class="value">&lt;50%</div>
-                <div class="desc">of students meet ELA standards</div>
+        <p class="section-eyebrow">The Four Bills</p>
+        <h2 class="section-headline">What the legislation <strong>requires</strong></h2>
+        <p class="section-desc">Each bill creates specific mandates. Each mandate requires measurement infrastructure. VERA provides the evidentiary foundation for all four.</p>
+        <div class="bills-grid">
+            <div class="bill-card">
+                <p class="bill-number">AB 2225</p>
+                <h3>Closing the Achievement Gap Act</h3>
+                <p>Establishes working group and competitive procurement. Requires assessment of governance structures and strategies to close pupil academic achievement gaps. Plan must rely on existing statewide data — no new reporting burdens on districts.</p>
             </div>
-            <div class="problem-card">
-                <div class="value">&lt;40%</div>
-                <div class="desc">are proficient in math</div>
+            <div class="bill-card">
+                <p class="bill-number">AB 2514</p>
+                <h3>State Accountability Dashboard</h3>
+                <p>Mandates public-facing dashboard showing state performance on closing achievement gaps. Requires visual, accessible, publicly accountable reporting — not aggregates.</p>
             </div>
-            <div class="problem-card">
-                <div class="value">20-30%</div>
-                <div class="desc">proficiency for low-income, Black & Latino students</div>
+            <div class="bill-card">
+                <p class="bill-number">AB 2202</p>
+                <h3>LEA Match-Rate Verification</h3>
+                <p>Requires verification that interventions funded in district LCAPs actually reach the students they're designed to serve. The missing link between spending and outcomes.</p>
             </div>
+            <div class="bill-card">
+                <p class="bill-number">AB 2149</p>
+                <h3>LAO Annual Assessment</h3>
+                <p>Directs Legislative Analyst's Office to conduct annual performance assessment of state accountability efforts. Requires measurable outcomes, not activity reports.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="data-section" id="data">
+    <div class="container">
+        <p class="section-eyebrow" style="color: #888;">California's Data Infrastructure</p>
+        <h2 class="section-headline" style="color: #fff;">Ten systems. Decades of investment. <strong style="color: #fff;">One question unanswered.</strong></h2>
+        <p class="data-intro">California already collects an extraordinary volume of student data. The state operates ten distinct data systems, updated annually across millions of students.</p>
+        <div class="data-grid">
+            <div class="data-card">
+                <h4>CALPADS</h4>
+                <p>Individual student records: demographics, EL status, discipline, graduation.</p>
+            </div>
+            <div class="data-card">
+                <h4>CAASPP</h4>
+                <p>Annual Smarter Balanced ELA and Math scores with claim-level breakdowns.</p>
+            </div>
+            <div class="data-card">
+                <h4>ELPAC</h4>
+                <p>Speaking, listening, reading, writing scores for English Learners K-12.</p>
+            </div>
+            <div class="data-card">
+                <h4>Dashboard</h4>
+                <p>Aggregates CALPADS and CAASPP into public accountability indicators.</p>
+            </div>
+            <div class="data-card">
+                <h4>LCAP</h4>
+                <p>District three-year plans of goals, actions, services, and expenditures.</p>
+            </div>
+            <div class="data-card">
+                <h4>CBEDS</h4>
+                <p>Teacher hires, school calendars, classified staff data.</p>
+            </div>
+            <div class="data-card">
+                <h4>Ed-Data</h4>
+                <p>Fiscal, demographic, and performance data from CDE, EdSource, FCMAT.</p>
+            </div>
+            <div class="data-card">
+                <h4>C2C</h4>
+                <p>Links K-12 to higher ed, workforce, financial aid across 11 agencies.</p>
+            </div>
+            <div class="data-card">
+                <h4>FCMAT</h4>
+                <p>LCFF calculations and fiscal health analysis for every district.</p>
+            </div>
+            <div class="data-card">
+                <h4>CCGI</h4>
+                <p>College/career planning linked to transcripts and A-G completion.</p>
+            </div>
+        </div>
+        <div class="data-gap">
+            <h3>The question none of them answers:</h3>
+            <p>Are the state's interventions actually closing the gap for the students who need it most? Every system measures outcomes — what a student scored, whether they graduated. None measures whether the intervention a district funded is reaching the right student, in the right way, at the right time. That is the accountability gap CSBA named. That is what the working group must close.</p>
+        </div>
+    </div>
+</section>
+
+<section class="type4-section" id="type4">
+    <div class="container">
+        <div class="type4-content">
+            <div class="type4-text">
+                <p class="section-eyebrow">The Student No System Sees</p>
+                <h2>The <strong>Type 4 Student</strong></h2>
+                <p>The child who can speak English but cannot write it at grade level. Not a data point in any state system. No large firm's proposal will name that student, define that gap, or explain why it matters.</p>
+                <p>VERA uses CAASPP ELA Claim 2 written expression scores and ELPAC speaking scores to compute a district-level oral-written delta that identifies precisely which students have been left behind.</p>
+            </div>
+            <div class="type4-box">
+                <h3>The AI Economy Reality</h3>
+                <p>Artificial intelligence is rapidly automating every task that does not require structured written thinking. The student who leaves California's schools without written expression skills is the student who will be sorted out of tomorrow's workforce.</p>
+                <p style="margin-top: 20px; color: #fff;">That is not a policy concern. <strong>It is a moral emergency.</strong></p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="credentials-section">
+    <div class="container">
+        <p class="section-eyebrow">Why H-EDU</p>
+        <h2 class="section-headline">Twenty years of <strong>California public sector experience</strong></h2>
+        <div class="credentials-content">
+            <div class="credential-block">
+                <h3>The Governance Experience</h3>
+                <p>Brian Demsey spent more than two decades serving California's public sector education community through Demsey, Filliger & Associates. The firm served CSBA and more than 400 California public sector entities — school districts, county offices of education, and related agencies — with actuarial services.</p>
+                <p>That program, built on the GASB 45 and GASB 75 frameworks, is still running today through Foster & Foster following the firm's acquisition. At one time or another, Demsey, Filliger & Associates worked directly with each organization represented on the working group.</p>
+            </div>
+            <div class="credential-block">
+                <h3>Those are colleagues, not strangers.</h3>
+                <p>The relationships built during those twenty years are not historical. They are current. Trust is not transferable and it cannot be purchased.</p>
+                <p>The procurement that AB 2225 will open is looking for an organization with experience assessing governance structures, improving strategies to close pupil academic achievement gaps, and working with stakeholders throughout the state.</p>
+                <p><strong>H-EDU meets every criterion. Not on paper. In practice.</strong></p>
+                <div class="credential-stat">
+                    <div>
+                        <p class="number">20+</p>
+                        <p class="label">Years</p>
+                    </div>
+                    <div>
+                        <p class="number">400+</p>
+                        <p class="label">Entities Served</p>
+                    </div>
+                    <div>
+                        <p class="number">CSBA</p>
+                        <p class="label">Client</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="firms-section">
+    <div class="container">
+        <p class="section-eyebrow">The Competition</p>
+        <h2 class="section-headline">Why large firms <strong>will get it wrong</strong></h2>
+        <p class="section-desc">When the procurement opens in March 2027, McKinsey, Deloitte, Accenture will arrive with polished proposals and timelines measured in years. They will get it wrong for four reasons.</p>
+        <div class="firms-grid">
+            <div class="firm-card">
+                <h3>They will start from zero.</h3>
+                <p>No large firm has spent years working inside California's K-12 data ecosystem. None has mapped CAASPP ELA Claim 2 scores against ELPAC speaking scores. They will spend the first year learning what H-EDU already knows.</p>
+            </div>
+            <div class="firm-card">
+                <h3>They will build what is billable.</h3>
+                <p>Large firms have a structural incentive to propose complex new data infrastructure. AB 2225 explicitly forbids new reporting burdens on districts. They will propose exactly what the bill forbids.</p>
+            </div>
+            <div class="firm-card">
+                <h3>They will not know the districts.</h3>
+                <p>The organizations on the working group collectively represent the people who run California's schools. Many worked directly with Demsey, Filliger & Associates. That relationship does not exist with any large consulting firm.</p>
+            </div>
+            <div class="firm-card">
+                <h3>They will not understand the stakes.</h3>
+                <p>The Type 4 student is not a data point in any state system. No large firm's proposal will name that student. H-EDU built VERA because of that emergency. No procurement process produces that motivation.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="vera-section" id="vera">
+    <div class="container">
+        <div class="vera-content">
+            <p class="section-eyebrow" style="color: #888;">The Platform</p>
+            <h2>VERA is not a proposal. <strong style="color: #fff;">It is a working system.</strong></h2>
+            <p>The Verification Engine for Results and Accountability is live, built on California's existing public data, producing district-level oral-written delta measurements today. No new data collection. No new burden on districts.</p>
+            <p>VERA produces the evidentiary foundation for everything the four bills require: the dashboard AB 2514 mandates, the LEA match-rate reports AB 2202 requires, the annual performance assessment AB 2149 directs.</p>
+            <div class="vera-features">
+                <div class="vera-feature">CAASPP + ELPAC oral-written delta analysis</div>
+                <div class="vera-feature">District-level Type 4 identification</div>
+                <div class="vera-feature">LCAP intervention verification</div>
+                <div class="vera-feature">Cross-district pattern detection</div>
+                <div class="vera-feature">Plain-English queries via Claude AI</div>
+                <div class="vera-feature">No new reporting burden on districts</div>
+            </div>
+            <a href="https://vera-h-edu.onrender.com" target="_blank" class="vera-cta">Launch VERA</a>
         </div>
     </div>
 </section>
 
 <section class="quote-section">
     <div class="container">
-        <blockquote>"At the current pace, it would take GENERATIONS for many student groups to reach proficiency."</blockquote>
-        <cite>— California School Boards Association, 2025</cite>
-    </div>
-</section>
-
-<section class="works-section" id="works">
-    <div class="container">
-        <h2>PROOF OF CONCEPT EXISTS</h2>
-        <p class="headline">Programs that actually closed the achievement gap.</p>
-        <div class="works-grid">
-            <div class="works-card">
-                <h3>Mississippi</h3>
-                <p class="program">Science of Reading + 3rd-Grade Gate + Accountability</p>
-                <p>49th to Top 10 in 4th-grade reading. Black students #3 nationally; Hispanic students #1.</p>
-                <span class="result">Cost: $32/student</span>
-            </div>
-            <div class="works-card">
-                <h3>Tennessee</h3>
-                <p class="program">Reading 360 + Math Support Act + Curriculum Reform</p>
-                <p>4th-grade math ranking jumped 10 places in one year. 8th-grade reading growth #1 nationally.</p>
-                <span class="result">Gains across all grades</span>
-            </div>
-            <div class="works-card">
-                <h3>Louisiana</h3>
-                <p class="program">READ Louisiana + Back-to-Basics Accountability</p>
-                <p>Only state to surpass pre-pandemic NAEP levels. 4th-grade reading: 15th nationally — highest-ever ranking.</p>
-                <span class="result">Post-pandemic recovery leader</span>
-            </div>
-            <div class="works-card">
-                <h3>Harlem Children's Zone</h3>
-                <p class="program">Cradle-to-Career Wraparound Model</p>
-                <p>Closed the Black-white math gap entirely. 99% of 2025 seniors accepted to college.</p>
-                <span class="result">Replicated in 600+ organizations globally</span>
-            </div>
-            <div class="works-card">
-                <h3>AI: Tutor CoPilot</h3>
-                <p class="program">Stanford RCT — AI coaching for tutors, not students</p>
-                <p>4-9 percentage point math mastery gains. Largest gains for weakest tutors (9 pp). Levels the playing field at scale.</p>
-                <span class="result">Cost: ~$20/tutor/year</span>
-            </div>
-            <div class="works-card" style="border-left-color: #B8902A; background: #1B2A4A; color: white;">
-                <h3 style="color: #B8902A;">The Pattern</h3>
-                <p class="program" style="color: #B0BED0;">What all successful programs share</p>
-                <p style="color: #B0BED0;">Clear goals. Measured outcomes. Accountability for delivery. Verification at every step.</p>
-                <span class="result" style="background: #B8902A; color: #1B2A4A;">The intervention works. The delivery system is where it breaks down.</span>
-            </div>
-        </div>
-    </div>
-</section>
-
-<section class="failed-section" id="failed">
-    <div class="container">
-        <h2>THE RECORD</h2>
-        <p class="headline">What failed — and why. $190 billion in ESSER funds with no verified outcomes.</p>
-        <div class="failed-grid">
-            <div class="failed-card">
-                <h3>Whole Language / Three-Cueing</h3>
-                <p>Taught children to guess words from context instead of decode. Decades of use despite contrary science.</p>
-                <span class="reason">Ideology over evidence</span>
-            </div>
-            <div class="failed-card">
-                <h3>NCLB-Era Tutoring</h3>
-                <p>Poorly trained tutors, embezzlement scandals, contracts paid for 1,100 students when 200 showed up.</p>
-                <span class="reason">No verification</span>
-            </div>
-            <div class="failed-card">
-                <h3>Federal School Turnarounds</h3>
-                <p>Mass firings of teachers and principals, school closures. Disruption produced no measurable gains.</p>
-                <span class="reason">Wrong theory of change</span>
-            </div>
-            <div class="failed-card">
-                <h3>Vouchers & Private School Lotteries</h3>
-                <p>Multiple rigorous studies found no consistent academic gains. Moving students doesn't transfer quality.</p>
-                <span class="reason">Misdiagnosed problem</span>
-            </div>
-            <div class="failed-card">
-                <h3>Oklahoma's Defanged Retention Law</h3>
-                <p>Copied Mississippi's law in 2012, then repealed accountability teeth in 2014. Scores plummeted.</p>
-                <span class="reason">Political retreat</span>
-            </div>
-            <div class="failed-card">
-                <h3>Post-ESSER Spending ($190B)</h3>
-                <p>Record spending on tutoring, technology, and staffing. Most districts cannot produce credible evidence of outcomes.</p>
-                <span class="reason">Inputs without outcomes</span>
-            </div>
-        </div>
-    </div>
-</section>
-
-<section class="quote-section" style="background: #1B2A4A;">
-    <div class="container">
-        <blockquote style="color: #B8902A;">"The failure mode is the same every time: spend without verifying, reform without measuring, retreat when accountability becomes uncomfortable."</blockquote>
-    </div>
-</section>
-
-<section class="success-section" id="success">
-    <div class="container">
-        <h2>WHAT SUCCESS REQUIRES</h2>
-        <p class="headline">Five enabling conditions. No state succeeded with fewer than five.</p>
-        <div class="success-grid">
-            <div class="success-card">
-                <div class="number">01</div>
-                <h3>Rigorous Standards</h3>
-                <span class="status partial">PARTIAL</span>
-            </div>
-            <div class="success-card">
-                <div class="number">02</div>
-                <h3>Evidence-Based Curriculum</h3>
-                <span class="status partial">PARTIAL</span>
-            </div>
-            <div class="success-card">
-                <div class="number">03</div>
-                <h3>Teacher Development</h3>
-                <span class="status absent">ABSENT</span>
-            </div>
-            <div class="success-card">
-                <div class="number">04</div>
-                <h3>Early Intervention with Accountability</h3>
-                <span class="status absent">ABSENT</span>
-            </div>
-            <div class="success-card">
-                <div class="number">05</div>
-                <h3>Independent Verification</h3>
-                <span class="status absent">ABSENT</span>
-            </div>
-        </div>
-        <p class="success-quote">"No state succeeded with fewer than five. California has one."</p>
-    </div>
-</section>
-
-<section class="newsom-section" id="newsom">
-    <div class="container">
-        <h2>THE NEWSOM EFFECT</h2>
-        <p class="headline">January 2026: A governance structure that makes real change possible.</p>
-        <p class="subhead">Governor Newsom's education governance reform consolidates authority and creates a chain of command. For the first time, California has the architecture for coordinated action. But architecture alone does not produce results.</p>
-        <div class="newsom-grid">
-            <div class="newsom-card">
-                <div class="icon">🎯</div>
-                <h3>Policy Coherence</h3>
-                <p>One chain of command. One strategic direction. No more fragmented authority across competing boards.</p>
-            </div>
-            <div class="newsom-card">
-                <div class="icon">💰</div>
-                <h3>Budget Alignment</h3>
-                <p>Resources can now follow strategy. Spending can be tied to measurable outcomes instead of political inertia.</p>
-            </div>
-            <div class="newsom-card">
-                <div class="icon">⚡</div>
-                <h3>Implementation Speed</h3>
-                <p>Streamlined governance means faster adoption of evidence-based practices. No more death by committee.</p>
-            </div>
-            <div class="newsom-card">
-                <div class="icon">📊</div>
-                <h3>Accountability at the Top</h3>
-                <p>A single point of responsibility. Success or failure now has a name attached to it.</p>
-            </div>
-        </div>
-        <p class="newsom-quote">"Newsom built the cockpit. Someone still has to plot the course."</p>
-    </div>
-</section>
-
-<section class="solution-section" id="solution">
-    <div class="container">
-        <h2>THE SOLUTION</h2>
-        <p class="headline">H-EDU provides the verification layer California needs.</p>
-        <p>Governor Newsom's January 2026 governance reform restructures the cockpit. It does not change the destination or tell the pilot where to land. H-EDU fills that gap.</p>
-        <div class="solution-features">
-            <div class="solution-feature">
-                <div class="icon">1</div>
-                <h3>Measurable Goals</h3>
-                <p>Clear, specific targets for closing the achievement gap — not aspirations, but accountable benchmarks.</p>
-            </div>
-            <div class="solution-feature">
-                <div class="icon">2</div>
-                <h3>Independent Verification</h3>
-                <p>Real-time tracking of whether interventions are being delivered as designed — the missing third pathway.</p>
-            </div>
-            <div class="solution-feature">
-                <div class="icon">3</div>
-                <h3>Public Dashboard</h3>
-                <p>State of the Gap visibility. Visual, accessible, publicly accountable. No more hiding behind aggregates.</p>
-            </div>
-        </div>
-    </div>
-</section>
-
-<!-- Articles Section -->
-<section class="articles-section" id="articles">
-    <div class="container">
-        <h2>ARTICLES & ANALYSIS</h2>
-        <p class="headline">Research, reports, and strategic analysis supporting the H-EDU mission.</p>
-        <div class="articles-grid">
-            <a href="article-csba-presentation.html" class="article-card">
-                <div class="article-image" style="background: linear-gradient(135deg, rgba(27, 42, 74, 0.6), rgba(22, 34, 56, 0.7)), url('../assets/csba-sos.jpg') center/cover no-repeat; background-color: #1B2A4A;"></div>
-                <div class="article-content">
-                    <span class="article-tag">Presentation</span>
-                    <h3>H-EDU Solutions for CSBA</h3>
-                    <p>Presentation for the California School Boards Association on data-driven accountability and how VERA enables boards to identify and close achievement gaps.</p>
-                    <span class="article-meta">March 2026 · PowerPoint Download</span>
-                </div>
-            </a>
-            <a href="article-vera-operational-guide.html" class="article-card">
-                <div class="article-image" style="background: linear-gradient(135deg, rgba(27, 42, 74, 0.75), rgba(22, 34, 56, 0.85)), url('../assets/vera-children.jpg') center/cover no-repeat; background-color: #1B2A4A;"></div>
-                <div class="article-content">
-                    <span class="article-tag">Documentation</span>
-                    <h3>VERA Operational Guide</h3>
-                    <p>Complete setup and usage guide for the Verification Engine for Results & Accountability. Connect Claude Desktop to California education data with plain-English queries.</p>
-                    <span class="article-meta">March 2026 · Technical Guide</span>
-                </div>
-            </a>
-            <a href="article-millstone-california.html" class="article-card">
-                <div class="article-image" style="background: linear-gradient(135deg, rgba(139, 42, 42, 0.75), rgba(27, 42, 74, 0.8)), url('../assets/millstone.jpg') center/cover no-repeat; background-color: #8B2A2A;"></div>
-                <div class="article-content">
-                    <span class="article-tag">Opinion</span>
-                    <h3>The Millstone We Built</h3>
-                    <p>California's achievement gap, fifty years of failure, and the AI reckoning we can no longer defer. Silicon Valley built the instrument panel for everything except the one system that matters most.</p>
-                    <span class="article-meta">March 2026 · Brian Demsey</span>
-                </div>
-            </a>
-            <a href="article-mckinsey-vera.html" class="article-card">
-                <div class="article-image" style="background: linear-gradient(135deg, rgba(27, 42, 74, 0.8), rgba(22, 34, 56, 0.9)), url('../assets/manufacturing-workforce.jpg') center/cover no-repeat; background-color: #1B2A4A;"></div>
-                <div class="article-content">
-                    <span class="article-tag">McKinsey Analysis</span>
-                    <h3>How the McKinsey Manufacturing Workforce Article Supports VERA</h3>
-                    <p>The achievement gap is the workforce gap — identified twelve years too late. Manufacturing has named the problem from the demand side. VERA names it from the supply side.</p>
-                    <span class="article-meta">February 2026 · Strategic Analysis</span>
-                </div>
-            </a>
-        </div>
+        <blockquote>"The legislation has created the conditions. The system is built. The relationships are real. The only question is whether California moves fast enough to seize the moment before it passes."</blockquote>
     </div>
 </section>
 
 <section class="cta-section" id="contact">
     <div class="container">
-        <h2>The Data Exists. The Will Is the Question.</h2>
-        <p>H-EDU provides the infrastructure for accountability. Contact us to learn how verification changes outcomes.</p>
-        <a href="mailto:brian@h-edu.solutions" class="cta-button">Get in Touch</a>
+        <h2>H-EDU will compete for this business.</h2>
+        <p>Better prepared. Already with a solution. With a deeper understanding of what California's students actually need.</p>
+        <a href="mailto:brian@h-edu.solutions" class="cta-button">Request Briefing</a>
     </div>
 </section>
 
 <footer>
     <div class="container">
-        <p>&copy; 2026 H-EDU.solutions | A <a href="https://hallucinations.cloud">Hallucinations.cloud</a> Initiative</p>
+        <a href="../index.html" class="logo">H-EDU.SOLUTIONS</a>
+        <p style="margin-top: 20px;">&copy; 2026 H-EDU.solutions | A <a href="https://hallucinations.cloud">Hallucinations.cloud</a> Initiative</p>
+        <p style="margin-top: 12px;"><a href="../index.html">Global</a> &bull; California &bull; <a href="nsw.html">New South Wales</a></p>
     </div>
 </footer>
 
