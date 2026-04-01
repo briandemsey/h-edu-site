@@ -1,0 +1,608 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>H-EDU South Dakota | The Paradox State</title>
+    <meta name="description" content="South Dakota ranks 5th in adult literacy but has the lowest ELL progress baseline in America. VERA exposes what the headline number conceals.">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: 'Georgia', 'Times New Roman', serif; line-height: 1.7; color: #000; background: #fff; }
+
+        /* South Dakota Colors */
+        :root {
+            --sd-blue: #1B4F72;
+            --sd-gold: #D4A017;
+        }
+
+        /* Header */
+        header {
+            background: #fff;
+            padding: 20px 0;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            border-bottom: 1px solid #e0e0e0;
+        }
+        .container { max-width: 1200px; margin: 0 auto; padding: 0 24px; }
+        header .container { display: flex; justify-content: space-between; align-items: center; }
+        .logo { color: #000; font-size: 1.5rem; font-weight: 700; text-decoration: none; letter-spacing: 1px; font-family: 'Segoe UI', 'Helvetica Neue', sans-serif; }
+        nav { display: flex; gap: 32px; align-items: center; }
+        nav a { color: #333; text-decoration: none; font-size: 0.9rem; font-weight: 400; transition: color 0.2s; font-family: 'Segoe UI', 'Helvetica Neue', sans-serif; }
+        nav a:hover { color: var(--sd-blue); }
+        nav .nav-cta { background: var(--sd-blue); color: #fff; padding: 10px 24px; font-weight: 500; }
+        nav .nav-cta:hover { background: #154360; color: #fff; }
+
+        /* Hero */
+        .hero {
+            min-height: 85vh;
+            background: var(--sd-blue);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            padding: 140px 24px 80px;
+            position: relative;
+            color: #fff;
+        }
+        .hero-content { position: relative; z-index: 10; max-width: 900px; }
+        .hero-eyebrow {
+            font-size: 1.4rem;
+            color: var(--sd-gold);
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            margin-bottom: 24px;
+            font-weight: 400;
+            font-family: 'Segoe UI', 'Helvetica Neue', sans-serif;
+        }
+        .hero h1 {
+            font-size: 2.8rem;
+            font-weight: 400;
+            margin-bottom: 28px;
+            letter-spacing: -0.5px;
+            line-height: 1.25;
+            color: #fff;
+        }
+        .hero h1 strong { font-weight: 700; color: var(--sd-gold); }
+        .hero .subtitle {
+            font-size: 1.15rem;
+            color: rgba(255,255,255,0.85);
+            max-width: 750px;
+            margin-bottom: 20px;
+            line-height: 1.9;
+        }
+        .hero-stat-row {
+            display: flex;
+            gap: 50px;
+            margin-top: 50px;
+            padding-top: 40px;
+            border-top: 1px solid rgba(255,255,255,0.2);
+        }
+        .hero-stat {
+            text-align: left;
+        }
+        .hero-stat .number {
+            font-size: 3rem;
+            font-weight: 700;
+            color: var(--sd-gold);
+        }
+        .hero-stat .label {
+            font-size: 0.9rem;
+            color: rgba(255,255,255,0.7);
+            font-family: 'Segoe UI', 'Helvetica Neue', sans-serif;
+        }
+
+        /* Section styling */
+        section { padding: 80px 0; }
+        .section-eyebrow {
+            font-size: 0.75rem;
+            color: #666;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            margin-bottom: 16px;
+            font-weight: 400;
+            font-family: 'Segoe UI', 'Helvetica Neue', sans-serif;
+        }
+        .section-headline {
+            font-size: 2.2rem;
+            font-weight: 400;
+            margin-bottom: 24px;
+            color: #000;
+        }
+        .section-headline strong { font-weight: 700; }
+        .section-desc {
+            font-size: 1.05rem;
+            color: #444;
+            max-width: 750px;
+            margin-bottom: 40px;
+            line-height: 1.8;
+        }
+
+        /* Three Gaps Section */
+        .gaps-section { background: #f7f7f7; }
+        .gaps-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 30px;
+        }
+        .gap-card {
+            background: #fff;
+            border: 1px solid #e0e0e0;
+            padding: 35px;
+            border-top: 4px solid var(--sd-blue);
+        }
+        .gap-card .gap-number {
+            font-size: 0.8rem;
+            color: var(--sd-gold);
+            font-family: 'Segoe UI', 'Helvetica Neue', sans-serif;
+            margin-bottom: 12px;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            font-weight: 600;
+        }
+        .gap-card h3 {
+            font-size: 1.3rem;
+            font-weight: 600;
+            margin-bottom: 16px;
+            color: #000;
+            font-family: 'Segoe UI', 'Helvetica Neue', sans-serif;
+        }
+        .gap-card p {
+            font-size: 0.95rem;
+            color: #555;
+            line-height: 1.8;
+        }
+        .gap-card .stat {
+            font-size: 2rem;
+            font-weight: 700;
+            color: var(--sd-blue);
+            margin-top: 20px;
+        }
+
+        /* Data Section */
+        .data-section { background: var(--sd-blue); color: #fff; }
+        .data-intro {
+            font-size: 1.15rem;
+            color: rgba(255,255,255,0.85);
+            max-width: 800px;
+            margin-bottom: 50px;
+            line-height: 1.9;
+        }
+        .data-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 20px;
+            margin-bottom: 50px;
+        }
+        .data-card {
+            background: rgba(255,255,255,0.05);
+            border: 1px solid rgba(255,255,255,0.15);
+            padding: 25px 20px;
+        }
+        .data-card h4 {
+            font-size: 1rem;
+            font-weight: 600;
+            margin-bottom: 10px;
+            color: var(--sd-gold);
+            font-family: 'Segoe UI', 'Helvetica Neue', sans-serif;
+        }
+        .data-card p {
+            font-size: 0.85rem;
+            color: rgba(255,255,255,0.7);
+            line-height: 1.6;
+        }
+        .data-vera {
+            background: rgba(255,255,255,0.08);
+            border: 1px solid rgba(255,255,255,0.2);
+            padding: 40px;
+            max-width: 800px;
+        }
+        .data-vera h3 {
+            font-size: 1.3rem;
+            font-weight: 600;
+            margin-bottom: 16px;
+            color: var(--sd-gold);
+            font-family: 'Segoe UI', 'Helvetica Neue', sans-serif;
+        }
+        .data-vera p {
+            font-size: 1rem;
+            color: rgba(255,255,255,0.85);
+            line-height: 1.8;
+        }
+
+        /* Type 4 Section */
+        .type4-section { background: #fff; }
+        .type4-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+            align-items: center;
+        }
+        .type4-text h2 {
+            font-size: 2.2rem;
+            font-weight: 400;
+            margin-bottom: 24px;
+            color: #000;
+        }
+        .type4-text h2 strong { font-weight: 700; }
+        .type4-text p {
+            font-size: 1.05rem;
+            color: #444;
+            line-height: 1.9;
+            margin-bottom: 20px;
+        }
+        .type4-box {
+            background: var(--sd-blue);
+            color: #fff;
+            padding: 50px;
+        }
+        .type4-box h3 {
+            font-size: 1.5rem;
+            font-weight: 600;
+            margin-bottom: 20px;
+            font-family: 'Segoe UI', 'Helvetica Neue', sans-serif;
+            color: var(--sd-gold);
+        }
+        .type4-box p {
+            font-size: 1rem;
+            color: rgba(255,255,255,0.85);
+            line-height: 1.8;
+        }
+
+        /* Populations Section */
+        .populations-section { background: #f7f7f7; }
+        .populations-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 30px;
+        }
+        .population-card {
+            background: #fff;
+            border: 1px solid #e0e0e0;
+            padding: 35px;
+            border-left: 4px solid var(--sd-gold);
+        }
+        .population-card h3 {
+            font-size: 1.1rem;
+            font-weight: 600;
+            margin-bottom: 16px;
+            color: #000;
+            font-family: 'Segoe UI', 'Helvetica Neue', sans-serif;
+        }
+        .population-card p {
+            font-size: 0.95rem;
+            color: #555;
+            line-height: 1.8;
+        }
+
+        /* VERA Section */
+        .vera-section { background: var(--sd-blue); color: #fff; padding: 100px 0; }
+        .vera-content { max-width: 800px; }
+        .vera-content h2 {
+            font-size: 2.5rem;
+            font-weight: 400;
+            margin-bottom: 24px;
+        }
+        .vera-content h2 strong { color: var(--sd-gold); }
+        .vera-content p {
+            font-size: 1.1rem;
+            color: rgba(255,255,255,0.85);
+            margin-bottom: 20px;
+            line-height: 1.8;
+        }
+        .vera-features {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+            margin: 40px 0;
+        }
+        .vera-feature {
+            display: flex;
+            align-items: flex-start;
+            gap: 12px;
+            font-size: 0.95rem;
+            color: #fff;
+        }
+        .vera-feature::before {
+            content: '';
+            width: 8px;
+            height: 8px;
+            background: var(--sd-gold);
+            border-radius: 50%;
+            margin-top: 8px;
+            flex-shrink: 0;
+        }
+        .vera-cta {
+            display: inline-block;
+            background: var(--sd-gold);
+            color: #000;
+            padding: 16px 40px;
+            font-size: 0.9rem;
+            font-weight: 600;
+            text-decoration: none;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            margin-top: 20px;
+            font-family: 'Segoe UI', 'Helvetica Neue', sans-serif;
+        }
+        .vera-cta:hover { background: #b8860b; }
+
+        /* Personal Section */
+        .personal-section { background: #fff; border-top: 1px solid #e0e0e0; }
+        .personal-content {
+            max-width: 750px;
+        }
+        .personal-content h2 {
+            font-size: 1.8rem;
+            font-weight: 400;
+            margin-bottom: 24px;
+            color: #000;
+        }
+        .personal-content p {
+            font-size: 1.05rem;
+            color: #444;
+            line-height: 1.9;
+            margin-bottom: 20px;
+        }
+
+        /* CTA Section */
+        .cta-section {
+            background: #f7f7f7;
+            text-align: center;
+            padding: 100px 24px;
+        }
+        .cta-section h2 {
+            font-size: 2.2rem;
+            font-weight: 400;
+            margin-bottom: 20px;
+            color: #000;
+        }
+        .cta-section p {
+            font-size: 1.1rem;
+            color: #555;
+            max-width: 600px;
+            margin: 0 auto 40px;
+        }
+        .cta-button {
+            display: inline-block;
+            background: var(--sd-blue);
+            color: #fff;
+            padding: 18px 50px;
+            font-size: 0.9rem;
+            font-weight: 600;
+            text-decoration: none;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            font-family: 'Segoe UI', 'Helvetica Neue', sans-serif;
+        }
+        .cta-button:hover { background: #154360; }
+
+        /* Footer */
+        footer {
+            background: var(--sd-blue);
+            padding: 60px 0;
+            text-align: center;
+        }
+        footer .logo {
+            font-size: 1.4rem;
+            margin-bottom: 20px;
+            display: inline-block;
+            color: #fff;
+        }
+        footer p {
+            font-size: 0.85rem;
+            color: rgba(255,255,255,0.6);
+        }
+        footer a { color: var(--sd-gold); text-decoration: none; }
+        footer a:hover { color: #fff; }
+
+        /* Responsive */
+        @media (max-width: 1000px) {
+            .gaps-grid, .data-grid { grid-template-columns: repeat(2, 1fr); }
+            .hero-stat-row { flex-wrap: wrap; }
+        }
+        @media (max-width: 768px) {
+            .hero h1 { font-size: 2rem; }
+            .gaps-grid, .data-grid, .populations-grid, .vera-features, .type4-content { grid-template-columns: 1fr; }
+            nav { display: none; }
+        }
+    </style>
+</head>
+<body>
+
+<header>
+    <div class="container">
+        <a href="../index.html" class="logo">H-EDU.SOLUTIONS</a>
+        <nav>
+            <a href="../index.html" style="font-weight: 600;">Global</a>
+            <a href="#gaps">Three Gaps</a>
+            <a href="#data">Data Systems</a>
+            <a href="#type4">Type 4</a>
+            <a href="#vera">VERA</a>
+            <a href="https://vera-sd.onrender.com" target="_blank" class="nav-cta">Launch VERA</a>
+        </nav>
+    </div>
+</header>
+
+<section class="hero">
+    <div class="container">
+        <div class="hero-content">
+            <p class="hero-eyebrow">South Dakota</p>
+            <h1>The <strong>5th most literate state</strong> in America. A 36-point reading gap between Native and white students. The <strong>lowest ELL progress baseline</strong> in the country.</h1>
+            <p class="subtitle">The state that looks fine — until you look at who's inside it.</p>
+            <p class="subtitle">South Dakota ranks 5th nationally in adult literacy at 93%. But that headline conceals a 36-point achievement gap for Native American students and an ELL system that started with 1.9% meeting growth targets — the lowest baseline in the United States.</p>
+            <p class="subtitle" style="color: #fff;"><strong>VERA exposes what the aggregate number hides.</strong></p>
+            <div class="hero-stat-row">
+                <div class="hero-stat">
+                    <p class="number">93%</p>
+                    <p class="label">Adult Literacy Rate (5th in US)</p>
+                </div>
+                <div class="hero-stat">
+                    <p class="number">36pt</p>
+                    <p class="label">Native-White ELA Gap</p>
+                </div>
+                <div class="hero-stat">
+                    <p class="number">1.9%</p>
+                    <p class="label">ELL Progress Baseline (2017)</p>
+                </div>
+                <div class="hero-stat">
+                    <p class="number">46%</p>
+                    <p class="label">Native Graduation Rate</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="gaps-section" id="gaps">
+    <div class="container">
+        <p class="section-eyebrow">The Three Gaps</p>
+        <h2 class="section-headline">What the <strong>headline number</strong> conceals</h2>
+        <p class="section-desc">South Dakota's 93% adult literacy rate masks three distinct, severe gaps — each invisible in aggregate reporting, each measurable with existing data.</p>
+        <div class="gaps-grid">
+            <div class="gap-card">
+                <p class="gap-number">Gap 1</p>
+                <h3>Native American Achievement</h3>
+                <p>The defining education story of South Dakota. Nine tribal nations. Three school systems (public, BIE, tribal). High student mobility. Native students proficient in ELA: 23%. White students: 59%.</p>
+                <p class="stat">36 points</p>
+            </div>
+            <div class="gap-card">
+                <p class="gap-number">Gap 2</p>
+                <h3>Refugee ELL Profile</h3>
+                <p>Karen and Nepali students arrive with strong community oral language but limited academic literacy. They are classic Type 4 profiles: oral fluency exceeds written academic register. Concentrated in Sioux Falls and Aberdeen.</p>
+                <p class="stat">+0.9 WIDA</p>
+            </div>
+            <div class="gap-card">
+                <p class="gap-number">Gap 3</p>
+                <h3>ELP Progress Collapse</h3>
+                <p>1.9% baseline. 100% goal. The lowest ELL progress baseline in the United States. South Dakota has acknowledged the gap. It has not closed it. The verification layer does not exist.</p>
+                <p class="stat">98 pt gap</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="data-section" id="data">
+    <div class="container">
+        <p class="section-eyebrow" style="color: var(--sd-gold);">South Dakota's Data Infrastructure</p>
+        <h2 class="section-headline" style="color: #fff;">The data exists. <strong style="color: var(--sd-gold);">The connection does not.</strong></h2>
+        <p class="data-intro">South Dakota collects comprehensive student data through state and federal systems. The WIDA ACCESS assessment provides Speaking and Writing domain scores for every EL student. The School Performance Index tracks accountability. The data is there.</p>
+        <div class="data-grid">
+            <div class="data-card">
+                <h4>WIDA ACCESS 2.0</h4>
+                <p>Four domain scores per EL student: Listening, Speaking, Reading, Writing. Scale 1.0-6.0.</p>
+            </div>
+            <div class="data-card">
+                <h4>SD Report Card</h4>
+                <p>School Performance Index, ELA proficiency by subgroup, ELL Progress Indicator.</p>
+            </div>
+            <div class="data-card">
+                <h4>CSI/TSI List</h4>
+                <p>39 CSI schools, 89 TSI schools. Federal accountability designations.</p>
+            </div>
+            <div class="data-card">
+                <h4>SD-STARS</h4>
+                <p>Longitudinal student data linking assessments to outcomes across years.</p>
+            </div>
+        </div>
+        <div class="data-vera">
+            <h3>What VERA computes that no one else does:</h3>
+            <p>WIDA Speaking score minus WIDA Writing score equals the oral-written delta. When Speaking exceeds Writing by 0.5+ points on the WIDA scale, that student is a Type 4 — speaking well but writing poorly. No state system in South Dakota makes this computation. VERA does.</p>
+        </div>
+    </div>
+</section>
+
+<section class="type4-section" id="type4">
+    <div class="container">
+        <div class="type4-content">
+            <div class="type4-text">
+                <p class="section-eyebrow">The Student No System Sees</p>
+                <h2>The <strong>Type 4 Student</strong></h2>
+                <p>The child who can speak English — or Lakota, or Karen, or Nepali — but cannot write academic English at grade level. Not a data point in any state system.</p>
+                <p>VERA uses WIDA ACCESS Speaking and Writing domain scores to compute a district-level oral-written delta. Delta ≥ 0.5 on the WIDA scale (1.0-6.0) flags Type 4 students for verification.</p>
+                <p>In South Dakota, this gap runs in two directions: ELLs who speak English but don't write it, and Native students who speak Lakota but write neither language at grade level. No system has ever measured it.</p>
+            </div>
+            <div class="type4-box">
+                <h3>The Lakota Paradox</h3>
+                <p>Lakota is an oral language with deep spoken tradition. Native students may have strong oral Lakota — and weak written English. The oral-written gap runs here in two languages simultaneously.</p>
+                <p style="margin-top: 20px;">That is not a cultural observation. <strong style="color: var(--sd-gold);">It is a measurement requirement.</strong></p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="populations-section">
+    <div class="container">
+        <p class="section-eyebrow">Populations of Concern</p>
+        <h2 class="section-headline">Who the aggregate <strong>leaves behind</strong></h2>
+        <div class="populations-grid">
+            <div class="population-card">
+                <h3>Native American Students</h3>
+                <p>9% of South Dakota's population. Nine recognized tribal nations. Students span public schools, Bureau of Indian Education, and tribal schools. High mobility between systems creates built-in data fragmentation. Graduation rate: 46%.</p>
+            </div>
+            <div class="population-card">
+                <h3>Karen Refugees</h3>
+                <p>Burmese Karen refugees concentrated in Sioux Falls. Strong community oral language, limited academic literacy in any language. Classic Type 4 profile. Speaking ~3.8, Writing ~2.9 — a delta of +0.9.</p>
+            </div>
+            <div class="population-card">
+                <h3>Nepali/Bhutanese Refugees</h3>
+                <p>Bhutanese refugees resettled across the state. Same Type 4 pattern: oral fluency exceeds written academic register. Significant populations in Sioux Falls, Aberdeen, and Huron.</p>
+            </div>
+            <div class="population-card">
+                <h3>Spanish-Speaking ELLs</h3>
+                <p>The largest ELL language group in South Dakota. Present in every district with ELL population. Type 4 patterns vary by district and grade level.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="vera-section" id="vera">
+    <div class="container">
+        <div class="vera-content">
+            <p class="section-eyebrow" style="color: var(--sd-gold);">The Platform</p>
+            <h2>VERA-SD is live. <strong>The verification layer South Dakota has been missing.</strong></h2>
+            <p>The Verification Engine for Results and Accountability is deployed for South Dakota, using WIDA ACCESS domain scores to compute the oral-written delta for every district with ELL population.</p>
+            <p>VERA produces district-level Type 4 identification, SPI match-rate analysis, and cross-district pattern detection — all from existing data. No new reporting burden on districts.</p>
+            <div class="vera-features">
+                <div class="vera-feature">WIDA Speaking vs. Writing delta analysis</div>
+                <div class="vera-feature">District-level Type 4 identification</div>
+                <div class="vera-feature">SPI accountability match-rate</div>
+                <div class="vera-feature">Cross-district pattern detection</div>
+                <div class="vera-feature">CSI/TSI designation integration</div>
+                <div class="vera-feature">No new reporting burden</div>
+            </div>
+            <a href="https://vera-sd.onrender.com" target="_blank" class="vera-cta">Launch VERA-SD</a>
+        </div>
+    </div>
+</section>
+
+<section class="personal-section">
+    <div class="container">
+        <div class="personal-content">
+            <p class="section-eyebrow">A Personal Note</p>
+            <h2>This is home.</h2>
+            <p>H-EDU's founder, Brian Demsey, is based in Spearfish, South Dakota — in the Black Hills. This is the one state where the professional is also personal.</p>
+            <p>The 36-point gap. The 1.9% baseline. The Karen students in Sioux Falls. The Lakota students at Oglala. These are not statistics in a procurement document. They are the students who live here.</p>
+            <p>VERA-SD exists because accountability systems that look good in the aggregate have failed the students who actually live in South Dakota.</p>
+        </div>
+    </div>
+</section>
+
+<section class="cta-section" id="contact">
+    <div class="container">
+        <h2>South Dakota can do better.</h2>
+        <p>The data exists. The computation is straightforward. The students are waiting. Request a briefing to see what VERA reveals about your district.</p>
+        <a href="mailto:brian@h-edu.solutions" class="cta-button">Request Briefing</a>
+    </div>
+</section>
+
+<footer>
+    <div class="container">
+        <a href="../index.html" class="logo">H-EDU.SOLUTIONS</a>
+        <p style="margin-top: 20px;">&copy; 2026 H-EDU.solutions | A <a href="https://hallucinations.cloud">Hallucinations.cloud</a> Initiative</p>
+        <p style="margin-top: 12px;"><a href="../index.html">Global</a> &bull; <a href="california.html">California</a> &bull; <a href="new-york.html">New York</a> &bull; South Dakota</p>
+    </div>
+</footer>
+
+</body>
+</html>
