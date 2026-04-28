@@ -258,6 +258,7 @@
         .jurisdiction-card.live { border-left: 4px solid #000; }
         .jurisdiction-card.engagement { border-left: 4px solid #666; }
         .jurisdiction-card.coming { border-left: 4px solid #ccc; }
+        .jurisdiction-card.provisional { border-left: 4px solid #8B5E00; }
         .jurisdiction-flag {
             font-size: 2.5rem;
             line-height: 1;
@@ -287,6 +288,7 @@
         .status-live { background: #000; color: #fff; }
         .status-engagement { background: #666; color: #fff; }
         .status-coming { background: #e0e0e0; color: #666; }
+        .status-provisional { background: #8B5E00; color: #fff; }
 
         /* The Problem */
         .problem-section {
@@ -488,7 +490,7 @@
             <a href="#jurisdictions" class="portal-card">
                 <div class="portal-icon">C</div>
                 <h3>Explore Jurisdictions</h3>
-                <p>Live VERA deployments across 8 jurisdictions: California, New York, Washington, Indiana, Tennessee, New South Wales, New Zealand, and South Dakota.</p>
+                <p>Live VERA deployments across 8 jurisdictions, with Texas now in provisional review for expansion.</p>
                 <span class="portal-cta">View All Jurisdictions</span>
             </a>
         </div>
@@ -528,7 +530,7 @@
 
 <section class="jurisdictions-section" id="jurisdictions">
     <div class="container">
-        <p class="section-eyebrow">Active Jurisdictions</p>
+        <p class="section-eyebrow">Live And Provisional Jurisdictions</p>
         <h2 class="section-headline">Where We <strong>Operate</strong></h2>
         <p class="section-desc">Live deployments, active engagements, and expansion targets across the United States and Pacific region.</p>
         <div class="jurisdictions-grid">
@@ -596,6 +598,14 @@
                     <span class="jurisdiction-status status-live">Live</span>
                 </div>
             </a>
+            <a href="pages/texas.html" class="jurisdiction-card provisional">
+                <div class="jurisdiction-flag"><img src="assets/texas-flag.svg" alt="TX" style="width: 40px; height: 40px;"></div>
+                <div class="jurisdiction-info">
+                    <h3>Texas</h3>
+                    <p>Provisional jurisdiction. H-EDU is validating TELPAS speaking-writing measurement architecture, CDN-based district joins, and TEA public reporting pathways before any live Type 4 deployment.</p>
+                    <span class="jurisdiction-status status-provisional">Provisional</span>
+                </div>
+            </a>
         </div>
     </div>
 </section>
@@ -637,7 +647,7 @@
     <div class="container">
         <a href="/" class="logo">H-<span>EDU.SOLUTIONS</span></a>
         <p style="margin-top: 20px;">&copy; 2026 H-EDU.solutions | A <a href="https://hallucinations.cloud">Hallucinations.cloud</a> Initiative</p>
-        <p style="margin-top: 12px;">California &bull; New York &bull; New South Wales &bull; Washington &bull; Indiana &bull; Tennessee &bull; New Zealand &bull; South Dakota</p>
+        <p style="margin-top: 12px;">California &bull; New York &bull; New South Wales &bull; Washington &bull; Indiana &bull; Tennessee &bull; New Zealand &bull; South Dakota &bull; Texas (Provisional)</p>
     </div>
 </footer>
 

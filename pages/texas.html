@@ -1,0 +1,317 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>H-EDU Texas | Provisional Jurisdiction Review</title>
+    <meta name="description" content="Texas is a provisional H-EDU jurisdiction under review. H-EDU is validating TELPAS speaking-writing architecture, CDN-based joins, and TEA public reporting pathways before any live deployment.">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: 'Georgia', 'Times New Roman', serif; line-height: 1.7; color: #000; background: #fff; }
+
+        :root {
+            --tx-blue: #002868;
+            --tx-red: #bf0a30;
+            --tx-gold: #8B5E00;
+        }
+
+        header {
+            background: #fff;
+            padding: 20px 0;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            border-bottom: 1px solid #e0e0e0;
+        }
+        .container { max-width: 1200px; margin: 0 auto; padding: 0 24px; }
+        header .container { display: flex; justify-content: space-between; align-items: center; }
+        .logo { color: #000; font-size: 1.5rem; font-weight: 700; text-decoration: none; letter-spacing: 1px; font-family: 'Segoe UI', 'Helvetica Neue', sans-serif; }
+        nav { display: flex; gap: 32px; align-items: center; }
+        nav a { color: #333; text-decoration: none; font-size: 0.9rem; font-weight: 400; transition: color 0.2s; font-family: 'Segoe UI', 'Helvetica Neue', sans-serif; }
+        nav a:hover { color: var(--tx-blue); }
+        nav .nav-cta { background: var(--tx-blue); color: #fff; padding: 10px 24px; font-weight: 500; }
+        nav .nav-cta:hover { background: #001a4d; color: #fff; }
+
+        .hero {
+            min-height: 75vh;
+            background: linear-gradient(135deg, var(--tx-blue) 0%, #123d8a 55%, var(--tx-red) 100%);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            padding: 140px 24px 80px;
+            color: #fff;
+        }
+        .hero-content { max-width: 900px; }
+        .hero-eyebrow {
+            font-size: 1.1rem;
+            color: #f6d27a;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            margin-bottom: 20px;
+            font-family: 'Segoe UI', 'Helvetica Neue', sans-serif;
+        }
+        .hero h1 {
+            font-size: 3rem;
+            font-weight: 400;
+            line-height: 1.2;
+            margin-bottom: 24px;
+        }
+        .hero h1 strong { font-weight: 700; }
+        .hero .subtitle {
+            font-size: 1.15rem;
+            max-width: 760px;
+            color: rgba(255,255,255,0.9);
+            margin-bottom: 28px;
+            line-height: 1.9;
+        }
+        .hero-status {
+            display: inline-block;
+            background: #f6d27a;
+            color: #3d2a00;
+            padding: 6px 14px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            font-size: 0.75rem;
+            font-weight: 700;
+            font-family: 'Segoe UI', 'Helvetica Neue', sans-serif;
+        }
+
+        section { padding: 80px 0; }
+        .section-eyebrow {
+            font-size: 0.75rem;
+            color: #666;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            margin-bottom: 16px;
+            font-family: 'Segoe UI', 'Helvetica Neue', sans-serif;
+        }
+        .section-headline {
+            font-size: 2.2rem;
+            font-weight: 400;
+            margin-bottom: 24px;
+            color: #000;
+        }
+        .section-headline strong { font-weight: 700; }
+        .section-desc {
+            font-size: 1.05rem;
+            color: #444;
+            max-width: 760px;
+            margin-bottom: 40px;
+            line-height: 1.8;
+        }
+
+        .summary-section { background: #f7f7f7; }
+        .summary-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 24px;
+        }
+        .summary-card {
+            background: #fff;
+            border: 1px solid #e0e0e0;
+            border-top: 4px solid var(--tx-blue);
+            padding: 30px;
+        }
+        .summary-card h3 {
+            font-size: 1.1rem;
+            margin-bottom: 12px;
+            font-weight: 600;
+            font-family: 'Segoe UI', 'Helvetica Neue', sans-serif;
+        }
+        .summary-card p {
+            font-size: 0.95rem;
+            color: #555;
+            line-height: 1.8;
+        }
+
+        .data-section { background: #fff; }
+        .data-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 20px;
+            margin-top: 30px;
+        }
+        .data-card {
+            background: #f7f7f7;
+            border: 1px solid #e0e0e0;
+            padding: 24px 20px;
+        }
+        .data-card h4 {
+            font-size: 1rem;
+            margin-bottom: 10px;
+            color: var(--tx-blue);
+            font-weight: 600;
+            font-family: 'Segoe UI', 'Helvetica Neue', sans-serif;
+        }
+        .data-card p {
+            font-size: 0.9rem;
+            color: #555;
+            line-height: 1.7;
+        }
+
+        .decision-section {
+            background: #111;
+            color: #fff;
+        }
+        .decision-box {
+            max-width: 900px;
+            border: 1px solid rgba(255,255,255,0.15);
+            background: rgba(255,255,255,0.03);
+            padding: 36px;
+        }
+        .decision-box h3 {
+            font-size: 1.35rem;
+            margin-bottom: 16px;
+            color: #f6d27a;
+            font-family: 'Segoe UI', 'Helvetica Neue', sans-serif;
+        }
+        .decision-box p,
+        .decision-box li {
+            color: rgba(255,255,255,0.86);
+            font-size: 1rem;
+            line-height: 1.8;
+        }
+        .decision-box ul {
+            margin-top: 18px;
+            padding-left: 22px;
+        }
+
+        .cta-section {
+            background: #f7f7f7;
+            text-align: center;
+        }
+        .cta-button {
+            display: inline-block;
+            background: var(--tx-blue);
+            color: #fff;
+            text-decoration: none;
+            padding: 16px 34px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            font-family: 'Segoe UI', 'Helvetica Neue', sans-serif;
+        }
+        .cta-button:hover { background: #001a4d; }
+
+        footer {
+            background: #000;
+            padding: 50px 0;
+            text-align: center;
+        }
+        footer p, footer a { color: rgba(255,255,255,0.7); text-decoration: none; }
+
+        @media (max-width: 900px) {
+            nav { display: none; }
+            .hero h1 { font-size: 2.2rem; }
+            .summary-grid,
+            .data-grid { grid-template-columns: 1fr; }
+        }
+    </style>
+</head>
+<body>
+
+<header>
+    <div class="container">
+        <a href="../index.html" class="logo">H-EDU.SOLUTIONS</a>
+        <nav>
+            <a href="../index.html#portals">Portals</a>
+            <a href="../index.html#what">What We Do</a>
+            <a href="../index.html#jurisdictions">Jurisdictions</a>
+            <a href="mailto:brian@h-edu.solutions" class="nav-cta">Request Briefing</a>
+        </nav>
+    </div>
+</header>
+
+<section class="hero">
+    <div class="container">
+        <div class="hero-content">
+            <p class="hero-eyebrow">Texas Jurisdiction Review</p>
+            <h1>Texas is a <strong>provisional H-EDU jurisdiction</strong>, not yet a live deployment.</h1>
+            <p class="subtitle">H-EDU is validating Texas as a possible Type 4 state by testing whether TEA public reporting supports clean district-level extraction of TELPAS speaking and writing values, joined statewide by county-district number.</p>
+            <span class="hero-status">Provisional</span>
+        </div>
+    </div>
+</section>
+
+<section class="summary-section">
+    <div class="container">
+        <p class="section-eyebrow">Decision Status</p>
+        <h2 class="section-headline">Texas is a strong expansion target, but <strong>verification still controls the build</strong>.</h2>
+        <div class="summary-grid">
+            <div class="summary-card">
+                <h3>What Texas Is</h3>
+                <p>A provisional new-state jurisdiction under active review for H-EDU expansion.</p>
+            </div>
+            <div class="summary-card">
+                <h3>Best-Case Path</h3>
+                <p>A true Type 4 build using <code>TELPAS Speaking</code> versus <code>TELPAS Writing</code> at district grain.</p>
+            </div>
+            <div class="summary-card">
+                <h3>Current Constraint</h3>
+                <p>The exact public extraction path for side-by-side district speaking and writing values has not yet been confirmed.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="data-section">
+    <div class="container">
+        <p class="section-eyebrow">Measurement Architecture</p>
+        <h2 class="section-headline">The Texas structure is already clear. <strong>The public data path is not.</strong></h2>
+        <p class="section-desc">Texas is unusually promising because TELPAS already measures listening, speaking, reading, and writing inside one statewide EL proficiency system. That gives H-EDU a plausible direct oral-written path without forcing a weak crosswalk first.</p>
+        <div class="data-grid">
+            <div class="data-card">
+                <h4>Academic System</h4>
+                <p><code>STAAR</code> is the statewide academic assessment surface.</p>
+            </div>
+            <div class="data-card">
+                <h4>EL System</h4>
+                <p><code>TELPAS</code> measures listening, speaking, reading, and writing.</p>
+            </div>
+            <div class="data-card">
+                <h4>Data Backbone</h4>
+                <p><code>TSDS</code> and <code>PEIMS</code> define the statewide reporting structure.</p>
+            </div>
+            <div class="data-card">
+                <h4>Join Key</h4>
+                <p><code>CDN</code> is the preferred district identifier for a statewide build.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="decision-section">
+    <div class="container">
+        <p class="section-eyebrow" style="color: rgba(255,255,255,0.55);">Build Judgment</p>
+        <div class="decision-box">
+            <h3>Current H-EDU judgment</h3>
+            <p>Texas is structurally promising, strategically important, and ready for website placement as a provisional jurisdiction. It is not yet ready to be described as live or confirmed Type 4.</p>
+            <ul>
+                <li><strong>Go</strong> for continued jurisdiction research and provisional website placement.</li>
+                <li><strong>No-Go</strong> for app build until the district-level speaking-writing extraction path is proven.</li>
+                <li>If the public file exists, Texas becomes a serious Type 4 candidate.</li>
+                <li>If it does not, Texas shifts toward a mixed-model or accountability-monitoring classification.</li>
+            </ul>
+        </div>
+    </div>
+</section>
+
+<section class="cta-section">
+    <div class="container">
+        <p class="section-eyebrow">Next Step</p>
+        <h2 class="section-headline">The next step is not deployment. <strong>It is extraction proof.</strong></h2>
+        <p class="section-desc" style="margin-left:auto; margin-right:auto;">H-EDU's next Texas task is one practical extraction test against official TEA public reporting surfaces to determine whether district-level <code>TELPAS Speaking</code> and <code>TELPAS Writing</code> can be pulled statewide in a clean, buildable format.</p>
+        <a href="mailto:brian@h-edu.solutions" class="cta-button">Request Texas Briefing</a>
+    </div>
+</section>
+
+<footer>
+    <div class="container">
+        <p>&copy; 2026 H-EDU.solutions</p>
+    </div>
+</footer>
+
+</body>
+</html>
