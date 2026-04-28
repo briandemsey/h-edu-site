@@ -1,0 +1,316 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>H-EDU Oregon | Provisional Jurisdiction Review</title>
+    <meta name="description" content="Oregon is a provisional H-EDU jurisdiction under review. H-EDU is validating ELPA speaking-writing reporting through SAR and AWE, district institution joins, and Oregon secure assessment pathways before any live deployment.">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: 'Georgia', 'Times New Roman', serif; line-height: 1.7; color: #000; background: #fff; }
+
+        :root {
+            --or-blue: #00205b;
+            --or-gold: #d4af37;
+        }
+
+        header {
+            background: #fff;
+            padding: 20px 0;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            border-bottom: 1px solid #e0e0e0;
+        }
+        .container { max-width: 1200px; margin: 0 auto; padding: 0 24px; }
+        header .container { display: flex; justify-content: space-between; align-items: center; }
+        .logo { color: #000; font-size: 1.5rem; font-weight: 700; text-decoration: none; letter-spacing: 1px; font-family: 'Segoe UI', 'Helvetica Neue', sans-serif; }
+        nav { display: flex; gap: 32px; align-items: center; }
+        nav a { color: #333; text-decoration: none; font-size: 0.9rem; font-weight: 400; transition: color 0.2s; font-family: 'Segoe UI', 'Helvetica Neue', sans-serif; }
+        nav a:hover { color: var(--or-blue); }
+        nav .nav-cta { background: var(--or-blue); color: #fff; padding: 10px 24px; font-weight: 500; }
+        nav .nav-cta:hover { background: #001338; color: #fff; }
+
+        .hero {
+            min-height: 75vh;
+            background: linear-gradient(135deg, var(--or-blue) 0%, #183a76 60%, #355894 100%);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            padding: 140px 24px 80px;
+            color: #fff;
+        }
+        .hero-content { max-width: 900px; }
+        .hero-eyebrow {
+            font-size: 1.1rem;
+            color: #f0d88a;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            margin-bottom: 20px;
+            font-family: 'Segoe UI', 'Helvetica Neue', sans-serif;
+        }
+        .hero h1 {
+            font-size: 3rem;
+            font-weight: 400;
+            line-height: 1.2;
+            margin-bottom: 24px;
+        }
+        .hero h1 strong { font-weight: 700; }
+        .hero .subtitle {
+            font-size: 1.15rem;
+            max-width: 760px;
+            color: rgba(255,255,255,0.9);
+            margin-bottom: 28px;
+            line-height: 1.9;
+        }
+        .hero-status {
+            display: inline-block;
+            background: #f0d88a;
+            color: #3d2a00;
+            padding: 6px 14px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            font-size: 0.75rem;
+            font-weight: 700;
+            font-family: 'Segoe UI', 'Helvetica Neue', sans-serif;
+        }
+
+        section { padding: 80px 0; }
+        .section-eyebrow {
+            font-size: 0.75rem;
+            color: #666;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            margin-bottom: 16px;
+            font-family: 'Segoe UI', 'Helvetica Neue', sans-serif;
+        }
+        .section-headline {
+            font-size: 2.2rem;
+            font-weight: 400;
+            margin-bottom: 24px;
+            color: #000;
+        }
+        .section-headline strong { font-weight: 700; }
+        .section-desc {
+            font-size: 1.05rem;
+            color: #444;
+            max-width: 760px;
+            margin-bottom: 40px;
+            line-height: 1.8;
+        }
+
+        .summary-section { background: #f7f7f7; }
+        .summary-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 24px;
+        }
+        .summary-card {
+            background: #fff;
+            border: 1px solid #e0e0e0;
+            border-top: 4px solid var(--or-blue);
+            padding: 30px;
+        }
+        .summary-card h3 {
+            font-size: 1.1rem;
+            margin-bottom: 12px;
+            font-weight: 600;
+            font-family: 'Segoe UI', 'Helvetica Neue', sans-serif;
+        }
+        .summary-card p {
+            font-size: 0.95rem;
+            color: #555;
+            line-height: 1.8;
+        }
+
+        .data-section { background: #fff; }
+        .data-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 20px;
+            margin-top: 30px;
+        }
+        .data-card {
+            background: #f7f7f7;
+            border: 1px solid #e0e0e0;
+            padding: 24px 20px;
+        }
+        .data-card h4 {
+            font-size: 1rem;
+            margin-bottom: 10px;
+            color: var(--or-blue);
+            font-weight: 600;
+            font-family: 'Segoe UI', 'Helvetica Neue', sans-serif;
+        }
+        .data-card p {
+            font-size: 0.9rem;
+            color: #555;
+            line-height: 1.7;
+        }
+
+        .decision-section {
+            background: #111;
+            color: #fff;
+        }
+        .decision-box {
+            max-width: 900px;
+            border: 1px solid rgba(255,255,255,0.15);
+            background: rgba(255,255,255,0.03);
+            padding: 36px;
+        }
+        .decision-box h3 {
+            font-size: 1.35rem;
+            margin-bottom: 16px;
+            color: #f0d88a;
+            font-family: 'Segoe UI', 'Helvetica Neue', sans-serif;
+        }
+        .decision-box p,
+        .decision-box li {
+            color: rgba(255,255,255,0.86);
+            font-size: 1rem;
+            line-height: 1.8;
+        }
+        .decision-box ul {
+            margin-top: 18px;
+            padding-left: 22px;
+        }
+
+        .cta-section {
+            background: #f7f7f7;
+            text-align: center;
+        }
+        .cta-button {
+            display: inline-block;
+            background: var(--or-blue);
+            color: #fff;
+            text-decoration: none;
+            padding: 16px 34px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            font-family: 'Segoe UI', 'Helvetica Neue', sans-serif;
+        }
+        .cta-button:hover { background: #001338; }
+
+        footer {
+            background: #000;
+            padding: 50px 0;
+            text-align: center;
+        }
+        footer p, footer a { color: rgba(255,255,255,0.7); text-decoration: none; }
+
+        @media (max-width: 900px) {
+            nav { display: none; }
+            .hero h1 { font-size: 2.2rem; }
+            .summary-grid,
+            .data-grid { grid-template-columns: 1fr; }
+        }
+    </style>
+</head>
+<body>
+
+<header>
+    <div class="container">
+        <a href="../index.html" class="logo">H-EDU.SOLUTIONS</a>
+        <nav>
+            <a href="../index.html#portals">Portals</a>
+            <a href="../index.html#what">What We Do</a>
+            <a href="../index.html#jurisdictions">Jurisdictions</a>
+            <a href="mailto:brian@h-edu.solutions" class="nav-cta">Request Briefing</a>
+        </nav>
+    </div>
+</header>
+
+<section class="hero">
+    <div class="container">
+        <div class="hero-content">
+            <p class="hero-eyebrow">Oregon Jurisdiction Review</p>
+            <h1>Oregon is a <strong>provisional H-EDU jurisdiction</strong>, not yet a live deployment.</h1>
+            <p class="subtitle">H-EDU is validating Oregon as a possible Type 4 state by testing whether secure district reporting through SAR and AWE can support a clean ELPA Speaking versus ELPA Writing extraction path, supported by Oregon's existing statewide assessment and accountability environment.</p>
+            <span class="hero-status">Provisional</span>
+        </div>
+    </div>
+</section>
+
+<section class="summary-section">
+    <div class="container">
+        <p class="section-eyebrow">Current Judgment</p>
+        <h2 class="section-headline">Oregon is structurally strong, but <strong>the secure extract path still controls the build</strong>.</h2>
+        <div class="summary-grid">
+            <div class="summary-card">
+                <h3>What Oregon Is</h3>
+                <p>A serious expansion target with statewide academic, EL, secure-reporting, and accountability systems already in place.</p>
+            </div>
+            <div class="summary-card">
+                <h3>Best H-EDU Path</h3>
+                <p>The strongest Oregon model is a direct ELPA Speaking versus ELPA Writing oral-written comparison at district level.</p>
+            </div>
+            <div class="summary-card">
+                <h3>What Still Controls The Build</h3>
+                <p>The gating issue is whether Oregon district or state users can supply the needed SAR or AWE artifact in a clean reusable district format.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="data-section">
+    <div class="container">
+        <p class="section-eyebrow">Measurement Architecture</p>
+        <h2 class="section-headline">Oregon already has the right systems. <strong>The extract artifact is the open question.</strong></h2>
+        <p class="section-desc">Oregon is promising because it combines OSAS, ELPA, SAR, AWE, ARUA, CRS, and official district accountability reporting inside one coherent state environment. That makes Oregon stronger than states that require immediate cross-system improvisation.</p>
+        <div class="data-grid">
+            <div class="data-card">
+                <h4>Academic System</h4>
+                <p>OSAS ELA provides the statewide academic assessment structure and public district reporting context.</p>
+            </div>
+            <div class="data-card">
+                <h4>EL System</h4>
+                <p>ELPA is the clearest H-EDU oral-written pathway because it already contains speaking and writing domains inside one statewide EL assessment system.</p>
+            </div>
+            <div class="data-card">
+                <h4>Accountability Layer</h4>
+                <p>At-A-Glance Profiles and Accountability Detail Sheets give Oregon strong interpretation context once the district extract path is confirmed.</p>
+            </div>
+            <div class="data-card">
+                <h4>Likely Access Path</h4>
+                <p>The strongest likely reporting path is SAR and AWE, supported by ARUA and CRS for score review and validation.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="decision-section">
+    <div class="container">
+        <div class="decision-box">
+            <h3>Build Decision</h3>
+            <p>Oregon is ready for research and provisional website placement, but not yet for a live H-EDU build. The right next step is to confirm whether Oregon district or state users can access an existing SAR report, AWE extract, or related file that shows ELPA Speaking and ELPA Writing side by side for the same year.</p>
+            <ul>
+                <li>If that file exists, Oregon becomes a serious Type 4 candidate.</li>
+                <li>If it does not, Oregon shifts toward a mixed-model or partner-access build path.</li>
+                <li>Until that point, Oregon should remain explicitly provisional.</li>
+            </ul>
+        </div>
+    </div>
+</section>
+
+<section class="cta-section">
+    <div class="container">
+        <p class="section-eyebrow">Next Step</p>
+        <h2 class="section-headline">Oregon needs one practical secure-reporting test before any live deployment.</h2>
+        <p class="section-desc" style="margin-left:auto; margin-right:auto;">H-EDU's next Oregon task is to confirm whether SAR, AWE, ARUA, CRS, or an Oregon district partner can provide district-level ELPA Speaking and ELPA Writing reporting in a clean buildable format.</p>
+        <a href="mailto:brian@h-edu.solutions" class="cta-button">Request Oregon Briefing</a>
+    </div>
+</section>
+
+<footer>
+    <div class="container">
+        <a href="../index.html" class="logo">H-<span>EDU.SOLUTIONS</span></a>
+        <p style="margin-top: 20px;">&copy; 2026 H-EDU.solutions | A <a href="https://hallucinations.cloud">Hallucinations.cloud</a> Initiative</p>
+        <p style="margin-top: 12px;"><a href="../index.html">Global</a> &bull; Oregon (Provisional)</p>
+    </div>
+</footer>
+
+</body>
+</html>

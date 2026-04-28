@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 60 40" role="img" aria-labelledby="title desc">
+  <title id="title">Oregon Flag</title>
+  <desc id="desc">Stylized Oregon state flag with navy field and gold emblem.</desc>
+  <rect width="60" height="40" fill="#00205b"/>
+  <circle cx="30" cy="20" r="10.5" fill="none" stroke="#d4af37" stroke-width="1.5"/>
+  <circle cx="30" cy="20" r="1.8" fill="#d4af37"/>
+  <g fill="#d4af37">
+    <circle cx="30" cy="8.5" r="0.8"/>
+    <circle cx="36.8" cy="10.6" r="0.8"/>
+    <circle cx="41.2" cy="16.2" r="0.8"/>
+    <circle cx="41.2" cy="23.8" r="0.8"/>
+    <circle cx="36.8" cy="29.4" r="0.8"/>
+    <circle cx="30" cy="31.5" r="0.8"/>
+    <circle cx="23.2" cy="29.4" r="0.8"/>
+    <circle cx="18.8" cy="23.8" r="0.8"/>
+    <circle cx="18.8" cy="16.2" r="0.8"/>
+    <circle cx="23.2" cy="10.6" r="0.8"/>
+  </g>
+</svg>
