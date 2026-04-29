@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" role="img" aria-label="Nevada flag">
+  <rect width="64" height="64" rx="8" fill="#003f87"/>
+  <path d="M12 18h18l3 4 3-4h16" fill="none" stroke="#d6b04d" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+  <path d="M32 23l2.2 6.6h6.9l-5.6 4.1 2.2 6.6-5.7-4.1-5.7 4.1 2.2-6.6-5.6-4.1h6.9z" fill="#cbd2dc" stroke="#ffffff" stroke-width="1"/>
+  <text x="32" y="16" text-anchor="middle" font-family="Segoe UI, Arial, sans-serif" font-size="6" font-weight="700" fill="#ffffff">NEVADA</text>
+  <text x="32" y="52" text-anchor="middle" font-family="Segoe UI, Arial, sans-serif" font-size="5" fill="#ffffff">Battle Born</text>
+</svg>
