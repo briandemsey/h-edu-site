@@ -1,0 +1,480 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>H-EDU New Jersey | ESSA Accountability</title>
+    <meta name="description" content="H-EDU provides the verification infrastructure New Jersey's ESSA accountability system requires. VERA-NJ analyzes ACCESS/NJSLA oral-written deltas across 600+ districts.">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: 'Georgia', 'Times New Roman', serif; line-height: 1.7; color: #000; background: #fff; }
+
+        /* Header */
+        header {
+            background: #fff;
+            padding: 20px 0;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            border-bottom: 1px solid #e0e0e0;
+        }
+        .container { max-width: 1200px; margin: 0 auto; padding: 0 24px; }
+        header .container { display: flex; justify-content: space-between; align-items: center; }
+        .logo { color: #000; font-size: 1.5rem; font-weight: 700; text-decoration: none; letter-spacing: 1px; font-family: 'Segoe UI', 'Helvetica Neue', sans-serif; }
+        nav { display: flex; gap: 32px; align-items: center; }
+        nav a { color: #333; text-decoration: none; font-size: 0.9rem; font-weight: 400; transition: color 0.2s; font-family: 'Segoe UI', 'Helvetica Neue', sans-serif; }
+        nav a:hover { color: #1C3B6A; }
+        nav .nav-cta { background: #1C3B6A; color: #fff; padding: 10px 24px; font-weight: 500; }
+        nav .nav-cta:hover { background: #142d52; color: #fff; }
+
+        /* Hero */
+        .hero {
+            min-height: 80vh;
+            background: #1C3B6A;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            padding: 140px 24px 80px;
+            position: relative;
+            color: #fff;
+        }
+        .hero-content { position: relative; z-index: 10; max-width: 900px; }
+        .hero-eyebrow {
+            font-size: 1.4rem;
+            color: #C4A35A;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            margin-bottom: 24px;
+            font-weight: 400;
+            font-family: 'Segoe UI', 'Helvetica Neue', sans-serif;
+        }
+        .hero h1 {
+            font-size: 3rem;
+            font-weight: 400;
+            margin-bottom: 28px;
+            letter-spacing: -0.5px;
+            line-height: 1.25;
+            color: #fff;
+        }
+        .hero h1 strong { font-weight: 700; }
+        .hero .subtitle {
+            font-size: 1.15rem;
+            color: #bbb;
+            max-width: 750px;
+            margin-bottom: 30px;
+            line-height: 1.9;
+        }
+        .hero-date {
+            font-size: 1rem;
+            color: #999;
+            font-family: 'Segoe UI', 'Helvetica Neue', sans-serif;
+            margin-top: 40px;
+            padding-top: 30px;
+            border-top: 1px solid #334;
+        }
+        .hero-date strong { color: #C4A35A; }
+
+        /* Section styling */
+        section { padding: 80px 0; }
+        .section-eyebrow {
+            font-size: 0.75rem;
+            color: #666;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            margin-bottom: 16px;
+            font-weight: 400;
+            font-family: 'Segoe UI', 'Helvetica Neue', sans-serif;
+        }
+        .section-headline {
+            font-size: 2.2rem;
+            font-weight: 400;
+            margin-bottom: 24px;
+            color: #000;
+        }
+        .section-headline strong { font-weight: 700; }
+        .section-desc {
+            font-size: 1.05rem;
+            color: #444;
+            max-width: 750px;
+            margin-bottom: 40px;
+            line-height: 1.8;
+        }
+
+        /* ESSA Section */
+        .essa-section { background: #f7f7f7; }
+        .essa-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 30px;
+        }
+        .essa-card {
+            background: #fff;
+            border: 1px solid #e0e0e0;
+            padding: 30px;
+            border-top: 4px solid #1C3B6A;
+        }
+        .essa-card .status {
+            font-size: 1.4rem;
+            font-weight: 700;
+            color: #1C3B6A;
+            font-family: 'Segoe UI', 'Helvetica Neue', sans-serif;
+            margin-bottom: 8px;
+        }
+        .essa-card h3 {
+            font-size: 1.1rem;
+            font-weight: 600;
+            margin-bottom: 12px;
+            color: #000;
+            font-family: 'Segoe UI', 'Helvetica Neue', sans-serif;
+        }
+        .essa-card p {
+            font-size: 0.9rem;
+            color: #555;
+            line-height: 1.7;
+        }
+
+        /* Data Systems Section */
+        .data-section { background: #1C3B6A; color: #fff; }
+        .data-intro {
+            font-size: 1.15rem;
+            color: #bbb;
+            max-width: 800px;
+            margin-bottom: 50px;
+            line-height: 1.9;
+        }
+        .data-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 20px;
+            margin-bottom: 50px;
+        }
+        .data-card {
+            background: #142d52;
+            border: 1px solid #334;
+            padding: 25px 20px;
+        }
+        .data-card h4 {
+            font-size: 1rem;
+            font-weight: 600;
+            margin-bottom: 10px;
+            color: #C4A35A;
+            font-family: 'Segoe UI', 'Helvetica Neue', sans-serif;
+        }
+        .data-card p {
+            font-size: 0.85rem;
+            color: #888;
+            line-height: 1.6;
+        }
+        .data-gap {
+            background: #142d52;
+            border: 1px solid #334;
+            padding: 40px;
+            max-width: 800px;
+        }
+        .data-gap h3 {
+            font-size: 1.3rem;
+            font-weight: 600;
+            margin-bottom: 16px;
+            color: #fff;
+            font-family: 'Segoe UI', 'Helvetica Neue', sans-serif;
+        }
+        .data-gap p {
+            font-size: 1rem;
+            color: #bbb;
+            line-height: 1.8;
+        }
+
+        /* Type 4 Section */
+        .type4-section { background: #f7f7f7; }
+        .type4-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+            align-items: center;
+        }
+        .type4-text h2 {
+            font-size: 2.2rem;
+            font-weight: 400;
+            margin-bottom: 24px;
+            color: #000;
+        }
+        .type4-text h2 strong { font-weight: 700; }
+        .type4-text p {
+            font-size: 1.05rem;
+            color: #444;
+            line-height: 1.9;
+            margin-bottom: 20px;
+        }
+        .type4-box {
+            background: #1C3B6A;
+            color: #fff;
+            padding: 50px;
+        }
+        .type4-box h3 {
+            font-size: 1.5rem;
+            font-weight: 600;
+            margin-bottom: 20px;
+            font-family: 'Segoe UI', 'Helvetica Neue', sans-serif;
+            color: #C4A35A;
+        }
+        .type4-box p {
+            font-size: 1rem;
+            color: #bbb;
+            line-height: 1.8;
+        }
+
+        /* VERA Section */
+        .vera-section { background: #1C3B6A; color: #fff; padding: 100px 0; }
+        .vera-content { max-width: 800px; }
+        .vera-content h2 {
+            font-size: 2.5rem;
+            font-weight: 400;
+            margin-bottom: 24px;
+        }
+        .vera-content p {
+            font-size: 1.1rem;
+            color: #bbb;
+            margin-bottom: 20px;
+            line-height: 1.8;
+        }
+        .vera-features {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+            margin: 40px 0;
+        }
+        .vera-feature {
+            display: flex;
+            align-items: flex-start;
+            gap: 12px;
+            font-size: 0.95rem;
+            color: #fff;
+        }
+        .vera-feature::before {
+            content: '';
+            width: 8px;
+            height: 8px;
+            background: #C4A35A;
+            border-radius: 50%;
+            margin-top: 8px;
+            flex-shrink: 0;
+        }
+        .vera-cta {
+            display: inline-block;
+            background: #C4A35A;
+            color: #1C3B6A;
+            padding: 16px 40px;
+            font-size: 0.9rem;
+            font-weight: 600;
+            text-decoration: none;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            margin-top: 20px;
+            font-family: 'Segoe UI', 'Helvetica Neue', sans-serif;
+        }
+        .vera-cta:hover { background: #b8944d; }
+
+        /* CTA Section */
+        .cta-section {
+            background: #fff;
+            text-align: center;
+            padding: 100px 24px;
+            border-top: 1px solid #e0e0e0;
+        }
+        .cta-section h2 {
+            font-size: 2.2rem;
+            font-weight: 400;
+            margin-bottom: 20px;
+            color: #000;
+        }
+        .cta-section p {
+            font-size: 1.1rem;
+            color: #555;
+            max-width: 600px;
+            margin: 0 auto 40px;
+        }
+        .cta-button {
+            display: inline-block;
+            background: #1C3B6A;
+            color: #fff;
+            padding: 18px 50px;
+            font-size: 0.9rem;
+            font-weight: 600;
+            text-decoration: none;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            font-family: 'Segoe UI', 'Helvetica Neue', sans-serif;
+        }
+        .cta-button:hover { background: #142d52; }
+
+        /* Footer */
+        footer {
+            background: #1C3B6A;
+            padding: 60px 0;
+            text-align: center;
+        }
+        footer .logo {
+            font-size: 1.4rem;
+            margin-bottom: 20px;
+            display: inline-block;
+            color: #fff;
+        }
+        footer p {
+            font-size: 0.85rem;
+            color: rgba(255,255,255,0.6);
+        }
+        footer a { color: #C4A35A; text-decoration: none; }
+        footer a:hover { color: #fff; }
+
+        /* Responsive */
+        @media (max-width: 1000px) {
+            .essa-grid, .data-grid { grid-template-columns: repeat(2, 1fr); }
+        }
+        @media (max-width: 768px) {
+            .hero h1 { font-size: 2.2rem; }
+            .essa-grid, .data-grid, .vera-features, .type4-content { grid-template-columns: 1fr; }
+            nav { display: none; }
+        }
+    </style>
+</head>
+<body>
+
+<header>
+    <div class="container">
+        <a href="../index.html" class="logo">H-EDU.SOLUTIONS</a>
+        <nav>
+            <a href="../index.html" style="font-weight: 600;">Global</a>
+            <a href="#essa">ESSA Accountability</a>
+            <a href="#data">Data Systems</a>
+            <a href="#type4">Type 4</a>
+            <a href="#vera">VERA</a>
+            <a href="https://vera-nj.onrender.com" target="_blank" class="nav-cta">Launch VERA</a>
+        </nav>
+    </div>
+</header>
+
+<section class="hero">
+    <div class="container">
+        <div class="hero-content">
+            <p class="hero-eyebrow">New Jersey</p>
+            <h1><strong>ESSA Accountability</strong> requires verification infrastructure.</h1>
+            <p class="subtitle">New Jersey's education accountability system identifies schools for Comprehensive Support and Improvement (CSI), Additional Targeted Support (ATSI), and Targeted Support (TSI). Every designation requires measurement infrastructure that identifies which students need help — and whether they're getting it.</p>
+            <p class="subtitle">NJDOE has the assessments. What's missing is the verification layer.</p>
+            <p class="subtitle" style="color: #fff;"><strong>That's what VERA provides.</strong></p>
+            <p class="hero-date"><strong>600+ districts</strong> across New Jersey. <strong>100,000+ ELL students</strong> statewide.</p>
+        </div>
+    </div>
+</section>
+
+<section class="essa-section" id="essa">
+    <div class="container">
+        <p class="section-eyebrow">Accountability Designations</p>
+        <h2 class="section-headline">What <strong>ESSA Accountability</strong> requires</h2>
+        <p class="section-desc">New Jersey's accountability system identifies schools and districts for targeted support. Each designation triggers intervention requirements — but do those interventions reach the students who need them most?</p>
+        <div class="essa-grid">
+            <div class="essa-card">
+                <p class="status">CSI</p>
+                <h3>Comprehensive Support & Improvement</h3>
+                <p>Schools in the bottom 5% of performance, or with graduation rates below 67%. Requires comprehensive needs assessment and evidence-based interventions.</p>
+            </div>
+            <div class="essa-card">
+                <p class="status">ATSI</p>
+                <h3>Additional Targeted Support</h3>
+                <p>Schools with student subgroups performing at CSI level. Requires targeted interventions for specific populations — but which students within those subgroups?</p>
+            </div>
+            <div class="essa-card">
+                <p class="status">TSI</p>
+                <h3>Targeted Support & Improvement</h3>
+                <p>Schools with chronically underperforming subgroups. The designation exists. The infrastructure to verify intervention effectiveness does not.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="data-section" id="data">
+    <div class="container">
+        <p class="section-eyebrow" style="color: #888;">New Jersey's Data Infrastructure</p>
+        <h2 class="section-headline" style="color: #fff;">Robust assessments. <strong style="color: #fff;">One question unanswered.</strong></h2>
+        <p class="data-intro">New Jersey operates comprehensive education data systems. NJSLA assessments, School Performance Reports, NJSLEDS longitudinal tracking — millions of data points.</p>
+        <div class="data-grid">
+            <div class="data-card">
+                <h4>ACCESS for ELLs</h4>
+                <p>Speaking, listening, reading, writing scores for English Language Learners across all grades.</p>
+            </div>
+            <div class="data-card">
+                <h4>NJSLA</h4>
+                <p>New Jersey Student Learning Assessments in ELA, Mathematics, and Science with claim-level breakdowns.</p>
+            </div>
+            <div class="data-card">
+                <h4>NJGPA</h4>
+                <p>New Jersey Graduation Proficiency Assessment for high school graduation requirements.</p>
+            </div>
+            <div class="data-card">
+                <h4>School Performance Reports</h4>
+                <p>Public accountability data with district-level performance metrics, demographics, and growth data.</p>
+            </div>
+        </div>
+        <div class="data-gap">
+            <h3>The question none of them answers:</h3>
+            <p>Are the state's interventions actually reaching the students who need them most? Every system measures outcomes — what a student scored, whether they graduated. None measures whether the intervention a district funded is reaching the right student, in the right way, at the right time. That is the accountability gap New Jersey must close.</p>
+        </div>
+    </div>
+</section>
+
+<section class="type4-section" id="type4">
+    <div class="container">
+        <div class="type4-content">
+            <div class="type4-text">
+                <p class="section-eyebrow">The Student No System Sees</p>
+                <h2>The <strong>Type 4 Student</strong></h2>
+                <p>The child who can speak English fluently but cannot write it at grade level. Present in every large district. Invisible in every aggregate report. No accountability system in New Jersey — or anywhere — identifies these students by name.</p>
+                <p>VERA uses ACCESS for ELLs speaking scores against NJSLA ELA writing scores to compute a district-level oral-written delta that identifies precisely which populations have been left behind.</p>
+            </div>
+            <div class="type4-box">
+                <h3>Newark Grade 7: +34 Points</h3>
+                <p>In Newark's Grade 7 ELL population, speaking proficiency exceeds writing by 34 scale score points. These students are receiving oral language support when they need writing intervention.</p>
+                <p style="margin-top: 20px; color: #fff;">That's not a data anomaly. <strong>It's thousands of students.</strong></p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="vera-section" id="vera">
+    <div class="container">
+        <div class="vera-content">
+            <p class="section-eyebrow" style="color: #888;">The Platform</p>
+            <h2>VERA is not a proposal. <strong style="color: #fff;">It is a working system.</strong></h2>
+            <p>The Verification Engine for Results and Accountability is live, built on New Jersey's existing public data, producing district-level oral-written delta measurements today. No new data collection. No new burden on districts.</p>
+            <p>VERA produces the evidentiary foundation for everything ESSA accountability requires: verification that CSI interventions reach CSI students, that ATSI supports target the right subgroups, that TSI designations trigger appropriate responses.</p>
+            <div class="vera-features">
+                <div class="vera-feature">ACCESS for ELLs + NJSLA delta analysis</div>
+                <div class="vera-feature">District-level Type 4 identification</div>
+                <div class="vera-feature">ESSA accountability alignment</div>
+                <div class="vera-feature">Cross-district pattern detection</div>
+                <div class="vera-feature">10 largest urban districts profiled</div>
+                <div class="vera-feature">No new reporting burden on districts</div>
+            </div>
+            <a href="https://vera-nj.onrender.com" target="_blank" class="vera-cta">Launch VERA-NJ</a>
+        </div>
+    </div>
+</section>
+
+<section class="cta-section" id="contact">
+    <div class="container">
+        <h2>New Jersey deserves accountability that works.</h2>
+        <p>Not more dashboards. Not more designations. Verification that interventions actually reach the students who need them.</p>
+        <a href="mailto:brian@h-edu.solutions" class="cta-button">Request Briefing</a>
+    </div>
+</section>
+
+<footer>
+    <div class="container">
+        <a href="../index.html" class="logo">H-EDU.SOLUTIONS</a>
+        <p style="margin-top: 20px;">&copy; 2026 H-EDU.solutions | A <a href="https://hallucinations.cloud">Hallucinations.cloud</a> Initiative</p>
+        <p style="margin-top: 12px;"><a href="../index.html">Global</a> &bull; <a href="california.html">California</a> &bull; <a href="new-york.html">New York</a> &bull; New Jersey &bull; <a href="nsw.html">New South Wales</a></p>
+    </div>
+</footer>
+
+</body>
+</html>
