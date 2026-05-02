@@ -1,0 +1,449 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>VERA Colorado | Type 4 Dyslexia Screening for Colorado Schools</title>
+    <meta name="description" content="VERA-CO uses ACCESS for ELLs and CMAS assessment data to identify Type 4 dyslexia candidates in Colorado schools through oral-written delta analysis.">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: 'Georgia', 'Times New Roman', serif; line-height: 1.7; color: #000; background: #fff; }
+
+        :root {
+            --co-blue: #002868;
+            --co-red: #C8102E;
+            --co-gold: #CFB87C;
+        }
+
+        header {
+            background: #fff;
+            padding: 20px 0;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            border-bottom: 1px solid #e0e0e0;
+        }
+        .container { max-width: 1200px; margin: 0 auto; padding: 0 24px; }
+        header .container { display: flex; justify-content: space-between; align-items: center; }
+        .logo { color: #000; font-size: 1.5rem; font-weight: 700; text-decoration: none; letter-spacing: 1px; font-family: 'Segoe UI', 'Helvetica Neue', sans-serif; }
+        nav { display: flex; gap: 32px; align-items: center; }
+        nav a { color: #333; text-decoration: none; font-size: 0.9rem; font-weight: 400; transition: color 0.2s; font-family: 'Segoe UI', 'Helvetica Neue', sans-serif; }
+        nav a:hover { color: var(--co-blue); }
+        nav .nav-cta { background: var(--co-blue); color: #fff; padding: 10px 24px; font-weight: 500; }
+        nav .nav-cta:hover { background: #001a44; color: #fff; }
+
+        .hero {
+            min-height: 75vh;
+            background: linear-gradient(135deg, var(--co-blue) 0%, #1a4480 50%, var(--co-red) 100%);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            padding: 140px 24px 80px;
+            color: #fff;
+        }
+        .hero-content { max-width: 900px; }
+        .hero-eyebrow {
+            font-size: 1.1rem;
+            color: var(--co-gold);
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            margin-bottom: 20px;
+            font-family: 'Segoe UI', 'Helvetica Neue', sans-serif;
+        }
+        .hero h1 {
+            font-size: 3rem;
+            font-weight: 400;
+            line-height: 1.2;
+            margin-bottom: 24px;
+        }
+        .hero h1 strong { font-weight: 700; }
+        .hero .subtitle {
+            font-size: 1.15rem;
+            max-width: 760px;
+            color: rgba(255,255,255,0.9);
+            margin-bottom: 28px;
+            line-height: 1.9;
+        }
+        .hero-cta {
+            display: inline-block;
+            background: var(--co-gold);
+            color: #1a1a1a;
+            text-decoration: none;
+            padding: 16px 34px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            font-family: 'Segoe UI', 'Helvetica Neue', sans-serif;
+            margin-right: 16px;
+            margin-bottom: 12px;
+        }
+        .hero-cta:hover { background: #b8a56e; }
+        .hero-cta-secondary {
+            display: inline-block;
+            background: transparent;
+            color: #fff;
+            text-decoration: none;
+            padding: 14px 32px;
+            border: 2px solid rgba(255,255,255,0.5);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            font-family: 'Segoe UI', 'Helvetica Neue', sans-serif;
+        }
+        .hero-cta-secondary:hover { border-color: #fff; background: rgba(255,255,255,0.1); }
+
+        section { padding: 80px 0; }
+        .section-eyebrow {
+            font-size: 0.75rem;
+            color: #666;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            margin-bottom: 16px;
+            font-family: 'Segoe UI', 'Helvetica Neue', sans-serif;
+        }
+        .section-headline {
+            font-size: 2.2rem;
+            font-weight: 400;
+            margin-bottom: 24px;
+            color: #000;
+        }
+        .section-headline strong { font-weight: 700; }
+        .section-desc {
+            font-size: 1.05rem;
+            color: #444;
+            max-width: 760px;
+            margin-bottom: 40px;
+            line-height: 1.8;
+        }
+
+        .type4-section { background: #f7f7f7; }
+        .type4-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 24px;
+        }
+        .type4-card {
+            background: #fff;
+            border: 1px solid #e0e0e0;
+            border-top: 4px solid var(--co-blue);
+            padding: 30px;
+        }
+        .type4-card h3 {
+            font-size: 1.1rem;
+            margin-bottom: 12px;
+            font-weight: 600;
+            font-family: 'Segoe UI', 'Helvetica Neue', sans-serif;
+        }
+        .type4-card p {
+            font-size: 0.95rem;
+            color: #555;
+            line-height: 1.8;
+        }
+
+        .data-section { background: #fff; }
+        .data-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 20px;
+            margin-top: 30px;
+        }
+        .data-card {
+            background: #f7f7f7;
+            border: 1px solid #e0e0e0;
+            padding: 24px 20px;
+        }
+        .data-card h4 {
+            font-size: 1rem;
+            margin-bottom: 10px;
+            color: var(--co-blue);
+            font-weight: 600;
+            font-family: 'Segoe UI', 'Helvetica Neue', sans-serif;
+        }
+        .data-card p {
+            font-size: 0.9rem;
+            color: #555;
+            line-height: 1.7;
+        }
+
+        .accountability-section {
+            background: #111;
+            color: #fff;
+        }
+        .accountability-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 30px;
+            margin-top: 40px;
+        }
+        .accountability-card {
+            border: 1px solid rgba(255,255,255,0.15);
+            background: rgba(255,255,255,0.03);
+            padding: 30px;
+        }
+        .accountability-card h3 {
+            font-size: 1.2rem;
+            margin-bottom: 14px;
+            color: var(--co-gold);
+            font-family: 'Segoe UI', 'Helvetica Neue', sans-serif;
+        }
+        .accountability-card p {
+            color: rgba(255,255,255,0.86);
+            font-size: 0.95rem;
+            line-height: 1.8;
+        }
+
+        .districts-section { background: #f7f7f7; }
+        .districts-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 30px;
+            background: #fff;
+        }
+        .districts-table th,
+        .districts-table td {
+            padding: 16px 20px;
+            text-align: left;
+            border-bottom: 1px solid #e0e0e0;
+            font-family: 'Segoe UI', 'Helvetica Neue', sans-serif;
+        }
+        .districts-table th {
+            background: var(--co-blue);
+            color: #fff;
+            font-size: 0.85rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+        .districts-table td {
+            font-size: 0.95rem;
+            color: #333;
+        }
+        .districts-table tr:hover { background: #f9f9f9; }
+
+        .cta-section {
+            background: var(--co-blue);
+            text-align: center;
+            color: #fff;
+        }
+        .cta-section .section-eyebrow { color: var(--co-gold); }
+        .cta-section .section-headline { color: #fff; }
+        .cta-section .section-desc { color: rgba(255,255,255,0.9); margin-left: auto; margin-right: auto; }
+        .cta-button {
+            display: inline-block;
+            background: var(--co-gold);
+            color: #1a1a1a;
+            text-decoration: none;
+            padding: 16px 34px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            font-family: 'Segoe UI', 'Helvetica Neue', sans-serif;
+        }
+        .cta-button:hover { background: #b8a56e; }
+
+        footer {
+            background: #000;
+            padding: 50px 0;
+            text-align: center;
+        }
+        footer p, footer a { color: rgba(255,255,255,0.7); text-decoration: none; }
+
+        @media (max-width: 900px) {
+            nav { display: none; }
+            .hero h1 { font-size: 2.2rem; }
+            .type4-grid,
+            .data-grid { grid-template-columns: 1fr; }
+            .accountability-grid { grid-template-columns: 1fr; }
+            .districts-table { font-size: 0.85rem; }
+        }
+    </style>
+</head>
+<body>
+
+<header>
+    <div class="container">
+        <a href="../index.html" class="logo">H-EDU.SOLUTIONS</a>
+        <nav>
+            <a href="../index.html#portals">Portals</a>
+            <a href="../index.html#what">What We Do</a>
+            <a href="../index.html#jurisdictions">Jurisdictions</a>
+            <a href="mailto:brian@h-edu.solutions" class="nav-cta">Request Briefing</a>
+        </nav>
+    </div>
+</header>
+
+<section class="hero">
+    <div class="container">
+        <div class="hero-content">
+            <p class="hero-eyebrow">VERA Colorado</p>
+            <h1>Type 4 Dyslexia Screening for <strong>Colorado Public Schools</strong></h1>
+            <p class="subtitle">VERA-CO integrates ACCESS for ELLs (WIDA) and CMAS assessment data to identify students who speak well but struggle with writing. The oral-written delta reveals Type 4 dyslexia candidates who might otherwise be overlooked.</p>
+            <a href="https://vera-co.onrender.com" class="hero-cta">Launch VERA-CO</a>
+            <a href="mailto:brian@h-edu.solutions" class="hero-cta-secondary">Request Demo</a>
+        </div>
+    </div>
+</section>
+
+<section class="type4-section">
+    <div class="container">
+        <p class="section-eyebrow">Type 4 Detection</p>
+        <h2 class="section-headline">Identifying students who <strong>speak well but write poorly</strong></h2>
+        <p class="section-desc">Type 4 dyslexia candidates demonstrate strong oral communication abilities but significant challenges with written expression. VERA-CO uses the delta between ACCESS Speaking scores and Writing domain performance to flag students for further evaluation.</p>
+        <div class="type4-grid">
+            <div class="type4-card">
+                <h3>Oral Proficiency</h3>
+                <p>ACCESS for ELLs Speaking domain scores measure oral language production, fluency, and comprehension in classroom contexts.</p>
+            </div>
+            <div class="type4-card">
+                <h3>Written Performance</h3>
+                <p>ACCESS Writing domain and CMAS ELA scores capture written expression, organization, and conventions.</p>
+            </div>
+            <div class="type4-card">
+                <h3>Delta Analysis</h3>
+                <p>When the oral-written delta exceeds 8 points, the student is flagged as a Type 4 candidate requiring additional screening.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="data-section">
+    <div class="container">
+        <p class="section-eyebrow">Colorado Data Systems</p>
+        <h2 class="section-headline">Built on Colorado's <strong>official assessment infrastructure</strong></h2>
+        <p class="section-desc">VERA-CO integrates with Colorado's established assessment and accountability systems, using publicly available district-level data to identify patterns that warrant individual student review.</p>
+        <div class="data-grid">
+            <div class="data-card">
+                <h4>ACCESS for ELLs</h4>
+                <p>WIDA's English language proficiency assessment measuring Listening, Speaking, Reading, and Writing.</p>
+            </div>
+            <div class="data-card">
+                <h4>CMAS</h4>
+                <p>Colorado Measures of Academic Success for ELA and Mathematics aligned to Colorado Academic Standards.</p>
+            </div>
+            <div class="data-card">
+                <h4>CDE Reporting</h4>
+                <p>Colorado Department of Education provides comprehensive district and school performance data.</p>
+            </div>
+            <div class="data-card">
+                <h4>SPF Accountability</h4>
+                <p>School Performance Framework measures school progress across achievement, growth, and postsecondary readiness.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="accountability-section">
+    <div class="container">
+        <p class="section-eyebrow" style="color: var(--co-gold);">Accountability Integration</p>
+        <h2 class="section-headline" style="color: #fff;">VERA-CO connects <strong>assessment data to accountability</strong></h2>
+        <div class="accountability-grid">
+            <div class="accountability-card">
+                <h3>School Performance Framework</h3>
+                <p>Colorado's SPF rates schools across Academic Achievement, Academic Growth, and Postsecondary/Workforce Readiness. VERA-CO displays SPF scores alongside Type 4 detection to show how identification gaps affect performance.</p>
+            </div>
+            <div class="accountability-card">
+                <h3>EL Exit Criteria</h3>
+                <p>Colorado uses WIDA ACCESS composite and domain scores to determine English Learner exit eligibility. Students with high speaking but low writing scores may meet oral thresholds while struggling academically.</p>
+            </div>
+            <div class="accountability-card">
+                <h3>READ Act Compliance</h3>
+                <p>Colorado's READ Act requires literacy intervention for struggling readers. VERA-CO helps identify Type 4 candidates who need writing-specific support beyond traditional reading interventions.</p>
+            </div>
+            <div class="accountability-card">
+                <h3>Denver Metro Focus</h3>
+                <p>Denver, Aurora, and Adams 12 have significant English Learner populations. Early Type 4 identification in these districts can significantly improve statewide outcomes.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="districts-section">
+    <div class="container">
+        <p class="section-eyebrow">Pilot Districts</p>
+        <h2 class="section-headline">VERA-CO launches with <strong>Colorado's major school districts</strong></h2>
+        <p class="section-desc">Initial deployment includes Colorado's largest and most diverse districts, selected for their significant English Learner populations and established data reporting infrastructure.</p>
+        <table class="districts-table">
+            <thead>
+                <tr>
+                    <th>District</th>
+                    <th>Code</th>
+                    <th>EL Population</th>
+                    <th>SPF Score</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Denver Public Schools</td>
+                    <td>0880</td>
+                    <td>Very High (35%)</td>
+                    <td>62.5</td>
+                </tr>
+                <tr>
+                    <td>Aurora Public Schools</td>
+                    <td>0030</td>
+                    <td>Very High (40%)</td>
+                    <td>55.3</td>
+                </tr>
+                <tr>
+                    <td>Greeley-Evans 6</td>
+                    <td>1210</td>
+                    <td>Very High (40%)</td>
+                    <td>54.8</td>
+                </tr>
+                <tr>
+                    <td>Adams 12 Five Star</td>
+                    <td>0500</td>
+                    <td>High (20%)</td>
+                    <td>67.3</td>
+                </tr>
+                <tr>
+                    <td>Jefferson County R-1</td>
+                    <td>0010</td>
+                    <td>Moderate (11%)</td>
+                    <td>71.2</td>
+                </tr>
+                <tr>
+                    <td>Cherry Creek 5</td>
+                    <td>0080</td>
+                    <td>High (15%)</td>
+                    <td>74.8</td>
+                </tr>
+                <tr>
+                    <td>Douglas County RE-1</td>
+                    <td>0900</td>
+                    <td>Low (7%)</td>
+                    <td>78.4</td>
+                </tr>
+                <tr>
+                    <td>Poudre R-1</td>
+                    <td>2180</td>
+                    <td>Moderate (12%)</td>
+                    <td>70.2</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</section>
+
+<section class="cta-section">
+    <div class="container">
+        <p class="section-eyebrow">Get Started</p>
+        <h2 class="section-headline">Launch VERA-CO for your Colorado district</h2>
+        <p class="section-desc">Access district-level assessment data, run Type 4 screening analysis, and identify students who need additional evaluation for learning differences.</p>
+        <a href="https://vera-co.onrender.com" class="cta-button">Launch VERA-CO</a>
+    </div>
+</section>
+
+<footer>
+    <div class="container">
+        <a href="../index.html" class="logo">H-EDU.SOLUTIONS</a>
+        <p style="margin-top: 20px;">&copy; 2026 H-EDU.solutions | A <a href="https://hallucinations.cloud">Hallucinations.cloud</a> Initiative</p>
+        <p style="margin-top: 12px;"><a href="../index.html">Global</a> &bull; <a href="california.html">California</a> &bull; Colorado &bull; <a href="new-york.html">New York</a> &bull; <a href="texas.html">Texas</a></p>
+    </div>
+</footer>
+
+</body>
+</html>
