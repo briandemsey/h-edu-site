@@ -3,16 +3,16 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>H-EDU Texas | Provisional Jurisdiction Review</title>
-    <meta name="description" content="Texas is a provisional H-EDU jurisdiction under review. H-EDU is validating TELPAS speaking-writing architecture, CDN-based joins, and TEA public reporting pathways before any live deployment.">
+    <title>VERA Texas | Type 4 Dyslexia Screening for Texas Schools</title>
+    <meta name="description" content="VERA-TX uses TELPAS and STAAR assessment data to identify Type 4 dyslexia candidates in Texas schools through oral-written delta analysis.">
     <style>
         * { margin: 0; padding: 0; box-sizing: border-box; }
         body { font-family: 'Georgia', 'Times New Roman', serif; line-height: 1.7; color: #000; background: #fff; }
 
         :root {
             --tx-blue: #002868;
-            --tx-red: #bf0a30;
-            --tx-gold: #8B5E00;
+            --tx-red: #BF0A30;
+            --tx-white: #FFFFFF;
         }
 
         header {
@@ -31,11 +31,11 @@
         nav a { color: #333; text-decoration: none; font-size: 0.9rem; font-weight: 400; transition: color 0.2s; font-family: 'Segoe UI', 'Helvetica Neue', sans-serif; }
         nav a:hover { color: var(--tx-blue); }
         nav .nav-cta { background: var(--tx-blue); color: #fff; padding: 10px 24px; font-weight: 500; }
-        nav .nav-cta:hover { background: #001a4d; color: #fff; }
+        nav .nav-cta:hover { background: #001a44; color: #fff; }
 
         .hero {
             min-height: 75vh;
-            background: linear-gradient(135deg, var(--tx-blue) 0%, #123d8a 55%, var(--tx-red) 100%);
+            background: linear-gradient(135deg, var(--tx-blue) 0%, #1a4480 50%, var(--tx-red) 100%);
             display: flex;
             flex-direction: column;
             justify-content: center;
@@ -45,7 +45,7 @@
         .hero-content { max-width: 900px; }
         .hero-eyebrow {
             font-size: 1.1rem;
-            color: #f6d27a;
+            color: #fff;
             letter-spacing: 3px;
             text-transform: uppercase;
             margin-bottom: 20px;
@@ -65,17 +65,35 @@
             margin-bottom: 28px;
             line-height: 1.9;
         }
-        .hero-status {
+        .hero-cta {
             display: inline-block;
-            background: #f6d27a;
-            color: #3d2a00;
-            padding: 6px 14px;
+            background: #fff;
+            color: var(--tx-blue);
+            text-decoration: none;
+            padding: 16px 34px;
             text-transform: uppercase;
             letter-spacing: 1px;
-            font-size: 0.75rem;
-            font-weight: 700;
+            font-size: 0.85rem;
+            font-weight: 600;
+            font-family: 'Segoe UI', 'Helvetica Neue', sans-serif;
+            margin-right: 16px;
+            margin-bottom: 12px;
+        }
+        .hero-cta:hover { background: #f0f0f0; }
+        .hero-cta-secondary {
+            display: inline-block;
+            background: transparent;
+            color: #fff;
+            text-decoration: none;
+            padding: 14px 32px;
+            border: 2px solid rgba(255,255,255,0.5);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            font-size: 0.85rem;
+            font-weight: 600;
             font-family: 'Segoe UI', 'Helvetica Neue', sans-serif;
         }
+        .hero-cta-secondary:hover { border-color: #fff; background: rgba(255,255,255,0.1); }
 
         section { padding: 80px 0; }
         .section-eyebrow {
@@ -101,25 +119,25 @@
             line-height: 1.8;
         }
 
-        .summary-section { background: #f7f7f7; }
-        .summary-grid {
+        .type4-section { background: #f7f7f7; }
+        .type4-grid {
             display: grid;
             grid-template-columns: repeat(3, 1fr);
             gap: 24px;
         }
-        .summary-card {
+        .type4-card {
             background: #fff;
             border: 1px solid #e0e0e0;
             border-top: 4px solid var(--tx-blue);
             padding: 30px;
         }
-        .summary-card h3 {
+        .type4-card h3 {
             font-size: 1.1rem;
             margin-bottom: 12px;
             font-weight: 600;
             font-family: 'Segoe UI', 'Helvetica Neue', sans-serif;
         }
-        .summary-card p {
+        .type4-card p {
             font-size: 0.95rem;
             color: #555;
             line-height: 1.8;
@@ -150,41 +168,72 @@
             line-height: 1.7;
         }
 
-        .decision-section {
+        .accountability-section {
             background: #111;
             color: #fff;
         }
-        .decision-box {
-            max-width: 900px;
+        .accountability-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 30px;
+            margin-top: 40px;
+        }
+        .accountability-card {
             border: 1px solid rgba(255,255,255,0.15);
             background: rgba(255,255,255,0.03);
-            padding: 36px;
+            padding: 30px;
         }
-        .decision-box h3 {
-            font-size: 1.35rem;
-            margin-bottom: 16px;
-            color: #f6d27a;
+        .accountability-card h3 {
+            font-size: 1.2rem;
+            margin-bottom: 14px;
+            color: var(--tx-red);
             font-family: 'Segoe UI', 'Helvetica Neue', sans-serif;
         }
-        .decision-box p,
-        .decision-box li {
+        .accountability-card p {
             color: rgba(255,255,255,0.86);
-            font-size: 1rem;
+            font-size: 0.95rem;
             line-height: 1.8;
         }
-        .decision-box ul {
-            margin-top: 18px;
-            padding-left: 22px;
-        }
 
-        .cta-section {
-            background: #f7f7f7;
-            text-align: center;
+        .districts-section { background: #f7f7f7; }
+        .districts-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 30px;
+            background: #fff;
         }
-        .cta-button {
-            display: inline-block;
+        .districts-table th,
+        .districts-table td {
+            padding: 16px 20px;
+            text-align: left;
+            border-bottom: 1px solid #e0e0e0;
+            font-family: 'Segoe UI', 'Helvetica Neue', sans-serif;
+        }
+        .districts-table th {
             background: var(--tx-blue);
             color: #fff;
+            font-size: 0.85rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+        .districts-table td {
+            font-size: 0.95rem;
+            color: #333;
+        }
+        .districts-table tr:hover { background: #f9f9f9; }
+
+        .cta-section {
+            background: var(--tx-blue);
+            text-align: center;
+            color: #fff;
+        }
+        .cta-section .section-eyebrow { color: rgba(255,255,255,0.7); }
+        .cta-section .section-headline { color: #fff; }
+        .cta-section .section-desc { color: rgba(255,255,255,0.9); margin-left: auto; margin-right: auto; }
+        .cta-button {
+            display: inline-block;
+            background: #fff;
+            color: var(--tx-blue);
             text-decoration: none;
             padding: 16px 34px;
             text-transform: uppercase;
@@ -193,7 +242,7 @@
             font-weight: 600;
             font-family: 'Segoe UI', 'Helvetica Neue', sans-serif;
         }
-        .cta-button:hover { background: #001a4d; }
+        .cta-button:hover { background: #f0f0f0; }
 
         footer {
             background: #000;
@@ -205,8 +254,10 @@
         @media (max-width: 900px) {
             nav { display: none; }
             .hero h1 { font-size: 2.2rem; }
-            .summary-grid,
+            .type4-grid,
             .data-grid { grid-template-columns: 1fr; }
+            .accountability-grid { grid-template-columns: 1fr; }
+            .districts-table { font-size: 0.85rem; }
         }
     </style>
 </head>
@@ -227,30 +278,32 @@
 <section class="hero">
     <div class="container">
         <div class="hero-content">
-            <p class="hero-eyebrow">Texas Jurisdiction Review</p>
-            <h1>Texas is a <strong>provisional H-EDU jurisdiction</strong>, not yet a live deployment.</h1>
-            <p class="subtitle">H-EDU is validating Texas as a possible Type 4 state by testing whether TEA public reporting supports clean district-level extraction of TELPAS speaking and writing values, joined statewide by county-district number.</p>
-            <span class="hero-status">Provisional</span>
+            <p class="hero-eyebrow">VERA Texas</p>
+            <h1>Type 4 Dyslexia Screening for <strong>Texas Public Schools</strong></h1>
+            <p class="subtitle">VERA-TX integrates TELPAS and STAAR assessment data to identify students who speak well but struggle with writing. The oral-written delta reveals Type 4 dyslexia candidates who might otherwise be overlooked.</p>
+            <a href="https://vera-tx.onrender.com" class="hero-cta">Launch VERA-TX</a>
+            <a href="mailto:brian@h-edu.solutions" class="hero-cta-secondary">Request Demo</a>
         </div>
     </div>
 </section>
 
-<section class="summary-section">
+<section class="type4-section">
     <div class="container">
-        <p class="section-eyebrow">Decision Status</p>
-        <h2 class="section-headline">Texas is a strong expansion target, but <strong>verification still controls the build</strong>.</h2>
-        <div class="summary-grid">
-            <div class="summary-card">
-                <h3>What Texas Is</h3>
-                <p>A provisional new-state jurisdiction under active review for H-EDU expansion.</p>
+        <p class="section-eyebrow">Type 4 Detection</p>
+        <h2 class="section-headline">Identifying students who <strong>speak well but write poorly</strong></h2>
+        <p class="section-desc">Type 4 dyslexia candidates demonstrate strong oral communication abilities but significant challenges with written expression. VERA-TX uses the delta between TELPAS Speaking scores and Writing domain performance to flag students for further evaluation.</p>
+        <div class="type4-grid">
+            <div class="type4-card">
+                <h3>Oral Proficiency</h3>
+                <p>TELPAS Speaking domain scores measure oral language production, fluency, and comprehension in classroom contexts.</p>
             </div>
-            <div class="summary-card">
-                <h3>Best-Case Path</h3>
-                <p>A true Type 4 build using <code>TELPAS Speaking</code> versus <code>TELPAS Writing</code> at district grain.</p>
+            <div class="type4-card">
+                <h3>Written Performance</h3>
+                <p>TELPAS Writing domain and STAAR Reading/ELA scores capture written expression, organization, and conventions.</p>
             </div>
-            <div class="summary-card">
-                <h3>Current Constraint</h3>
-                <p>The exact public extraction path for side-by-side district speaking and writing values has not yet been confirmed.</p>
+            <div class="type4-card">
+                <h3>Delta Analysis</h3>
+                <p>When the oral-written delta exceeds 8 points, the student is flagged as a Type 4 candidate requiring additional screening.</p>
             </div>
         </div>
     </div>
@@ -258,58 +311,137 @@
 
 <section class="data-section">
     <div class="container">
-        <p class="section-eyebrow">Measurement Architecture</p>
-        <h2 class="section-headline">The Texas structure is already clear. <strong>The public data path is not.</strong></h2>
-        <p class="section-desc">Texas is unusually promising because TELPAS already measures listening, speaking, reading, and writing inside one statewide EL proficiency system. That gives H-EDU a plausible direct oral-written path without forcing a weak crosswalk first.</p>
+        <p class="section-eyebrow">Texas Data Systems</p>
+        <h2 class="section-headline">Built on Texas's <strong>official assessment infrastructure</strong></h2>
+        <p class="section-desc">VERA-TX integrates with Texas's established assessment and accountability systems, using publicly available district-level data to identify patterns that warrant individual student review.</p>
         <div class="data-grid">
             <div class="data-card">
-                <h4>Academic System</h4>
-                <p><code>STAAR</code> is the statewide academic assessment surface.</p>
+                <h4>TELPAS</h4>
+                <p>Texas English Language Proficiency Assessment System measuring Listening, Speaking, Reading, and Writing.</p>
             </div>
             <div class="data-card">
-                <h4>EL System</h4>
-                <p><code>TELPAS</code> measures listening, speaking, reading, and writing.</p>
+                <h4>STAAR</h4>
+                <p>State of Texas Assessments of Academic Readiness for Reading/ELA and Mathematics.</p>
             </div>
             <div class="data-card">
-                <h4>Data Backbone</h4>
-                <p><code>TSDS</code> and <code>PEIMS</code> define the statewide reporting structure.</p>
+                <h4>TEA Reporting</h4>
+                <p>Texas Education Agency provides comprehensive district and school performance data.</p>
             </div>
             <div class="data-card">
-                <h4>Join Key</h4>
-                <p><code>CDN</code> is the preferred district identifier for a statewide build.</p>
+                <h4>A-F Accountability</h4>
+                <p>Texas accountability system rates schools and districts on A-F scale across multiple domains.</p>
             </div>
         </div>
     </div>
 </section>
 
-<section class="decision-section">
+<section class="accountability-section">
     <div class="container">
-        <p class="section-eyebrow" style="color: rgba(255,255,255,0.55);">Build Judgment</p>
-        <div class="decision-box">
-            <h3>Current H-EDU judgment</h3>
-            <p>Texas is structurally promising, strategically important, and ready for website placement as a provisional jurisdiction. It is not yet ready to be described as live or confirmed Type 4.</p>
-            <ul>
-                <li><strong>Go</strong> for continued jurisdiction research and provisional website placement.</li>
-                <li><strong>No-Go</strong> for app build until the district-level speaking-writing extraction path is proven.</li>
-                <li>If the public file exists, Texas becomes a serious Type 4 candidate.</li>
-                <li>If it does not, Texas shifts toward a mixed-model or accountability-monitoring classification.</li>
-            </ul>
+        <p class="section-eyebrow" style="color: var(--tx-red);">Accountability Integration</p>
+        <h2 class="section-headline" style="color: #fff;">VERA-TX connects <strong>assessment data to accountability</strong></h2>
+        <div class="accountability-grid">
+            <div class="accountability-card">
+                <h3>A-F Accountability System</h3>
+                <p>Texas rates schools and districts on an A-F scale across Student Achievement, School Progress, and Closing the Gaps. VERA-TX displays A-F ratings alongside Type 4 detection to show how identification gaps affect accountability.</p>
+            </div>
+            <div class="accountability-card">
+                <h3>EL Exit Criteria</h3>
+                <p>Texas uses TELPAS composite and domain scores to determine English Learner exit eligibility. Students with high speaking but low writing scores may meet oral thresholds while struggling academically.</p>
+            </div>
+            <div class="accountability-card">
+                <h3>Texas Dyslexia Law</h3>
+                <p>Texas requires dyslexia screening for all students. VERA-TX helps identify Type 4 candidates who may be missed by traditional screening focusing only on decoding skills.</p>
+            </div>
+            <div class="accountability-card">
+                <h3>Scale of Impact</h3>
+                <p>Texas has over 1 million English Learners across 1,200+ districts. Early Type 4 identification in major districts like Houston, Dallas, and San Antonio can significantly improve statewide outcomes.</p>
+            </div>
         </div>
+    </div>
+</section>
+
+<section class="districts-section">
+    <div class="container">
+        <p class="section-eyebrow">Pilot Districts</p>
+        <h2 class="section-headline">VERA-TX launches with <strong>Texas's major school districts</strong></h2>
+        <p class="section-desc">Initial deployment includes Texas's largest and most diverse districts, selected for their significant English Learner populations and established data reporting infrastructure.</p>
+        <table class="districts-table">
+            <thead>
+                <tr>
+                    <th>District</th>
+                    <th>CDN</th>
+                    <th>EL Population</th>
+                    <th>A-F Rating</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Houston ISD</td>
+                    <td>101912</td>
+                    <td>Very High (30%)</td>
+                    <td>B</td>
+                </tr>
+                <tr>
+                    <td>Dallas ISD</td>
+                    <td>057905</td>
+                    <td>Very High (35%)</td>
+                    <td>B</td>
+                </tr>
+                <tr>
+                    <td>San Antonio ISD</td>
+                    <td>015907</td>
+                    <td>High (30%)</td>
+                    <td>C</td>
+                </tr>
+                <tr>
+                    <td>Fort Worth ISD</td>
+                    <td>220905</td>
+                    <td>Very High (34%)</td>
+                    <td>B</td>
+                </tr>
+                <tr>
+                    <td>Austin ISD</td>
+                    <td>227901</td>
+                    <td>High (25%)</td>
+                    <td>B</td>
+                </tr>
+                <tr>
+                    <td>El Paso ISD</td>
+                    <td>071902</td>
+                    <td>High (30%)</td>
+                    <td>B</td>
+                </tr>
+                <tr>
+                    <td>Plano ISD</td>
+                    <td>043910</td>
+                    <td>Moderate (15%)</td>
+                    <td>A</td>
+                </tr>
+                <tr>
+                    <td>Laredo ISD</td>
+                    <td>240901</td>
+                    <td>Very High (50%)</td>
+                    <td>C</td>
+                </tr>
+            </tbody>
+        </table>
     </div>
 </section>
 
 <section class="cta-section">
     <div class="container">
-        <p class="section-eyebrow">Next Step</p>
-        <h2 class="section-headline">The next step is not deployment. <strong>It is extraction proof.</strong></h2>
-        <p class="section-desc" style="margin-left:auto; margin-right:auto;">H-EDU's next Texas task is one practical extraction test against official TEA public reporting surfaces to determine whether district-level <code>TELPAS Speaking</code> and <code>TELPAS Writing</code> can be pulled statewide in a clean, buildable format.</p>
-        <a href="mailto:brian@h-edu.solutions" class="cta-button">Request Texas Briefing</a>
+        <p class="section-eyebrow">Get Started</p>
+        <h2 class="section-headline">Launch VERA-TX for your Texas district</h2>
+        <p class="section-desc">Access district-level assessment data, run Type 4 screening analysis, and identify students who need additional evaluation for learning differences.</p>
+        <a href="https://vera-tx.onrender.com" class="cta-button">Launch VERA-TX</a>
     </div>
 </section>
 
 <footer>
     <div class="container">
-        <p>&copy; 2026 H-EDU.solutions</p>
+        <a href="../index.html" class="logo">H-EDU.SOLUTIONS</a>
+        <p style="margin-top: 20px;">&copy; 2026 H-EDU.solutions | A <a href="https://hallucinations.cloud">Hallucinations.cloud</a> Initiative</p>
+        <p style="margin-top: 12px;"><a href="../index.html">Global</a> &bull; <a href="california.html">California</a> &bull; <a href="new-york.html">New York</a> &bull; <a href="new-jersey.html">New Jersey</a> &bull; <a href="georgia.html">Georgia</a> &bull; <a href="oregon.html">Oregon</a> &bull; <a href="nevada.html">Nevada</a> &bull; Texas</p>
     </div>
 </footer>
 
