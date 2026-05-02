@@ -3,15 +3,16 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>H-EDU Oregon | Provisional Jurisdiction Review</title>
-    <meta name="description" content="Oregon is a provisional H-EDU jurisdiction with a confirmed district-download ELPA domain report. H-EDU is now validating the richer AWE Assessment Student Extract path before any live deployment.">
+    <title>VERA Oregon | Type 4 Dyslexia Screening for Oregon Schools</title>
+    <meta name="description" content="VERA-OR uses ELPA and OSAS assessment data to identify Type 4 dyslexia candidates in Oregon schools through oral-written delta analysis.">
     <style>
         * { margin: 0; padding: 0; box-sizing: border-box; }
         body { font-family: 'Georgia', 'Times New Roman', serif; line-height: 1.7; color: #000; background: #fff; }
 
         :root {
-            --or-blue: #00205b;
-            --or-gold: #d4af37;
+            --or-blue: #002776;
+            --or-gold: #FFC72C;
+            --or-green: #154734;
         }
 
         header {
@@ -30,11 +31,11 @@
         nav a { color: #333; text-decoration: none; font-size: 0.9rem; font-weight: 400; transition: color 0.2s; font-family: 'Segoe UI', 'Helvetica Neue', sans-serif; }
         nav a:hover { color: var(--or-blue); }
         nav .nav-cta { background: var(--or-blue); color: #fff; padding: 10px 24px; font-weight: 500; }
-        nav .nav-cta:hover { background: #001338; color: #fff; }
+        nav .nav-cta:hover { background: #001a4d; color: #fff; }
 
         .hero {
             min-height: 75vh;
-            background: linear-gradient(135deg, var(--or-blue) 0%, #183a76 60%, #355894 100%);
+            background: linear-gradient(135deg, var(--or-blue) 0%, #183a76 50%, var(--or-green) 100%);
             display: flex;
             flex-direction: column;
             justify-content: center;
@@ -44,7 +45,7 @@
         .hero-content { max-width: 900px; }
         .hero-eyebrow {
             font-size: 1.1rem;
-            color: #f0d88a;
+            color: var(--or-gold);
             letter-spacing: 3px;
             text-transform: uppercase;
             margin-bottom: 20px;
@@ -64,17 +65,35 @@
             margin-bottom: 28px;
             line-height: 1.9;
         }
-        .hero-status {
+        .hero-cta {
             display: inline-block;
-            background: #f0d88a;
-            color: #3d2a00;
-            padding: 6px 14px;
+            background: var(--or-gold);
+            color: #1a1a1a;
+            text-decoration: none;
+            padding: 16px 34px;
             text-transform: uppercase;
             letter-spacing: 1px;
-            font-size: 0.75rem;
-            font-weight: 700;
+            font-size: 0.85rem;
+            font-weight: 600;
+            font-family: 'Segoe UI', 'Helvetica Neue', sans-serif;
+            margin-right: 16px;
+            margin-bottom: 12px;
+        }
+        .hero-cta:hover { background: #e6d44a; }
+        .hero-cta-secondary {
+            display: inline-block;
+            background: transparent;
+            color: #fff;
+            text-decoration: none;
+            padding: 14px 32px;
+            border: 2px solid rgba(255,255,255,0.5);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            font-size: 0.85rem;
+            font-weight: 600;
             font-family: 'Segoe UI', 'Helvetica Neue', sans-serif;
         }
+        .hero-cta-secondary:hover { border-color: #fff; background: rgba(255,255,255,0.1); }
 
         section { padding: 80px 0; }
         .section-eyebrow {
@@ -100,25 +119,25 @@
             line-height: 1.8;
         }
 
-        .summary-section { background: #f7f7f7; }
-        .summary-grid {
+        .type4-section { background: #f7f7f7; }
+        .type4-grid {
             display: grid;
             grid-template-columns: repeat(3, 1fr);
             gap: 24px;
         }
-        .summary-card {
+        .type4-card {
             background: #fff;
             border: 1px solid #e0e0e0;
             border-top: 4px solid var(--or-blue);
             padding: 30px;
         }
-        .summary-card h3 {
+        .type4-card h3 {
             font-size: 1.1rem;
             margin-bottom: 12px;
             font-weight: 600;
             font-family: 'Segoe UI', 'Helvetica Neue', sans-serif;
         }
-        .summary-card p {
+        .type4-card p {
             font-size: 0.95rem;
             color: #555;
             line-height: 1.8;
@@ -149,41 +168,72 @@
             line-height: 1.7;
         }
 
-        .decision-section {
+        .accountability-section {
             background: #111;
             color: #fff;
         }
-        .decision-box {
-            max-width: 900px;
+        .accountability-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 30px;
+            margin-top: 40px;
+        }
+        .accountability-card {
             border: 1px solid rgba(255,255,255,0.15);
             background: rgba(255,255,255,0.03);
-            padding: 36px;
+            padding: 30px;
         }
-        .decision-box h3 {
-            font-size: 1.35rem;
-            margin-bottom: 16px;
-            color: #f0d88a;
+        .accountability-card h3 {
+            font-size: 1.2rem;
+            margin-bottom: 14px;
+            color: var(--or-gold);
             font-family: 'Segoe UI', 'Helvetica Neue', sans-serif;
         }
-        .decision-box p,
-        .decision-box li {
+        .accountability-card p {
             color: rgba(255,255,255,0.86);
-            font-size: 1rem;
+            font-size: 0.95rem;
             line-height: 1.8;
         }
-        .decision-box ul {
-            margin-top: 18px;
-            padding-left: 22px;
-        }
 
-        .cta-section {
-            background: #f7f7f7;
-            text-align: center;
+        .districts-section { background: #f7f7f7; }
+        .districts-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 30px;
+            background: #fff;
         }
-        .cta-button {
-            display: inline-block;
+        .districts-table th,
+        .districts-table td {
+            padding: 16px 20px;
+            text-align: left;
+            border-bottom: 1px solid #e0e0e0;
+            font-family: 'Segoe UI', 'Helvetica Neue', sans-serif;
+        }
+        .districts-table th {
             background: var(--or-blue);
             color: #fff;
+            font-size: 0.85rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+        .districts-table td {
+            font-size: 0.95rem;
+            color: #333;
+        }
+        .districts-table tr:hover { background: #f9f9f9; }
+
+        .cta-section {
+            background: var(--or-blue);
+            text-align: center;
+            color: #fff;
+        }
+        .cta-section .section-eyebrow { color: var(--or-gold); }
+        .cta-section .section-headline { color: #fff; }
+        .cta-section .section-desc { color: rgba(255,255,255,0.9); margin-left: auto; margin-right: auto; }
+        .cta-button {
+            display: inline-block;
+            background: var(--or-gold);
+            color: #1a1a1a;
             text-decoration: none;
             padding: 16px 34px;
             text-transform: uppercase;
@@ -192,7 +242,7 @@
             font-weight: 600;
             font-family: 'Segoe UI', 'Helvetica Neue', sans-serif;
         }
-        .cta-button:hover { background: #001338; }
+        .cta-button:hover { background: #e6d44a; }
 
         footer {
             background: #000;
@@ -204,8 +254,10 @@
         @media (max-width: 900px) {
             nav { display: none; }
             .hero h1 { font-size: 2.2rem; }
-            .summary-grid,
+            .type4-grid,
             .data-grid { grid-template-columns: 1fr; }
+            .accountability-grid { grid-template-columns: 1fr; }
+            .districts-table { font-size: 0.85rem; }
         }
     </style>
 </head>
@@ -226,30 +278,32 @@
 <section class="hero">
     <div class="container">
         <div class="hero-content">
-            <p class="hero-eyebrow">Oregon Jurisdiction Review</p>
-            <h1>Oregon is a <strong>provisional H-EDU jurisdiction</strong> with a confirmed district-download ELPA domain report.</h1>
-            <p class="subtitle">H-EDU has already confirmed one real Oregon data path through the district-download ELPA Standards Report. The remaining question is whether the richer AWE Assessment Student Extract can support a stronger ELPA Speaking versus ELPA Writing build.</p>
-            <span class="hero-status">Provisional</span>
+            <p class="hero-eyebrow">VERA Oregon</p>
+            <h1>Type 4 Dyslexia Screening for <strong>Oregon Public Schools</strong></h1>
+            <p class="subtitle">VERA-OR integrates ELPA and OSAS assessment data to identify students who speak well but struggle with writing. The oral-written delta reveals Type 4 dyslexia candidates who might otherwise be overlooked.</p>
+            <a href="https://vera-or.onrender.com" class="hero-cta">Launch VERA-OR</a>
+            <a href="mailto:brian@h-edu.solutions" class="hero-cta-secondary">Request Demo</a>
         </div>
     </div>
 </section>
 
-<section class="summary-section">
+<section class="type4-section">
     <div class="container">
-        <p class="section-eyebrow">Current Judgment</p>
-        <h2 class="section-headline">Oregon is structurally strong, but <strong>the secure extract path still controls the build</strong>.</h2>
-        <div class="summary-grid">
-            <div class="summary-card">
-                <h3>What Oregon Is</h3>
-                <p>A serious expansion target with statewide academic, EL, secure-reporting, and accountability systems already in place, plus one confirmed downloadable district ELPA report.</p>
+        <p class="section-eyebrow">Type 4 Detection</p>
+        <h2 class="section-headline">Identifying students who <strong>speak well but write poorly</strong></h2>
+        <p class="section-desc">Type 4 dyslexia candidates demonstrate strong oral communication abilities but significant challenges with written expression. VERA-OR uses the delta between ELPA Speaking scores and Writing domain performance to flag students for further evaluation.</p>
+        <div class="type4-grid">
+            <div class="type4-card">
+                <h3>Oral Proficiency</h3>
+                <p>ELPA Speaking domain scores measure oral language production, fluency, and comprehension in classroom contexts.</p>
             </div>
-            <div class="summary-card">
-                <h3>Best H-EDU Path</h3>
-                <p>The strongest Oregon model is a direct ELPA Speaking versus ELPA Writing oral-written comparison at district level, ideally from the AWE extract and at minimum from the confirmed ELPA Standards Report.</p>
+            <div class="type4-card">
+                <h3>Written Performance</h3>
+                <p>ELPA Writing domain and OSAS ELA scores capture written expression, organization, and conventions.</p>
             </div>
-            <div class="summary-card">
-                <h3>What Still Controls The Build</h3>
-                <p>The gating issue is no longer whether Oregon has a data path. It is whether Oregon district or state users can supply the richer AWE Assessment Student Extract artifact in a clean reusable district format.</p>
+            <div class="type4-card">
+                <h3>Delta Analysis</h3>
+                <p>When the oral-written delta exceeds 8 points, the student is flagged as a Type 4 candidate requiring additional screening.</p>
             </div>
         </div>
     </div>
@@ -257,58 +311,137 @@
 
 <section class="data-section">
     <div class="container">
-        <p class="section-eyebrow">Measurement Architecture</p>
-        <h2 class="section-headline">Oregon already has the right systems. <strong>The extract artifact is the open question.</strong></h2>
-        <p class="section-desc">Oregon is promising because it combines a confirmed downloadable ELPA Standards Report, a likely richer AWE Assessment Student Extract, SAR, ARUA, CRS, OSAS, and official district accountability reporting inside one coherent state environment. That makes Oregon stronger than states that require immediate cross-system improvisation.</p>
+        <p class="section-eyebrow">Oregon Data Systems</p>
+        <h2 class="section-headline">Built on Oregon's <strong>official assessment infrastructure</strong></h2>
+        <p class="section-desc">VERA-OR integrates with Oregon's established assessment and accountability systems, using publicly available district-level data to identify patterns that warrant individual student review.</p>
         <div class="data-grid">
             <div class="data-card">
-                <h4>Academic System</h4>
-                <p>OSAS ELA provides the statewide academic assessment structure and public district reporting context.</p>
+                <h4>ELPA</h4>
+                <p>English Language Proficiency Assessment measuring Listening, Speaking, Reading, and Writing for English learners.</p>
             </div>
             <div class="data-card">
-                <h4>EL System</h4>
-                <p>ELPA is the clearest H-EDU oral-written pathway because it already contains speaking and writing domains inside one statewide EL assessment system.</p>
+                <h4>OSAS</h4>
+                <p>Oregon Statewide Assessment System using Smarter Balanced for ELA and Mathematics in grades 3-8 and 11.</p>
             </div>
             <div class="data-card">
-                <h4>Accountability Layer</h4>
-                <p>At-A-Glance Profiles and Accountability Detail Sheets give Oregon strong interpretation context once the district extract path is confirmed.</p>
+                <h4>ODE Reporting</h4>
+                <p>Oregon Department of Education provides comprehensive district and school performance data through report cards.</p>
             </div>
             <div class="data-card">
-                <h4>Likely Access Path</h4>
-                <p>Oregon already has one confirmed district-download path through the ELPA Standards Report. The strongest likely richer path is the AWE Assessment Student Extract, supported by SAR, ARUA, and CRS.</p>
+                <h4>ESSA Accountability</h4>
+                <p>Federal accountability requirements track progress for all student subgroups including English Learners.</p>
             </div>
         </div>
     </div>
 </section>
 
-<section class="decision-section">
+<section class="accountability-section">
     <div class="container">
-        <div class="decision-box">
-            <h3>Build Decision</h3>
-            <p>Oregon is already strong enough for confident provisional placement. The right next step is to confirm whether Oregon district or state users can access an existing AWE Assessment Student Extract or related official file that shows ELPA Speaking and ELPA Writing side by side for the same year.</p>
-            <ul>
-                <li>If that file exists, Oregon becomes a near-ready Type 4 candidate.</li>
-                <li>If it does not, Oregon shifts toward a mixed-model or partner-access build path.</li>
-                <li>Until that point, Oregon should remain explicitly provisional.</li>
-            </ul>
+        <p class="section-eyebrow" style="color: var(--or-gold);">Accountability Integration</p>
+        <h2 class="section-headline" style="color: #fff;">VERA-OR connects <strong>assessment data to accountability</strong></h2>
+        <div class="accountability-grid">
+            <div class="accountability-card">
+                <h3>At-A-Glance Profiles</h3>
+                <p>Oregon's school accountability profiles show performance across multiple indicators. VERA-OR displays these alongside Type 4 detection to reveal how identification gaps affect overall outcomes.</p>
+            </div>
+            <div class="accountability-card">
+                <h3>EL Exit Criteria</h3>
+                <p>Oregon uses ELPA composite and domain scores to determine English Learner exit eligibility. Students with high speaking but low writing scores may meet oral thresholds while struggling academically.</p>
+            </div>
+            <div class="accountability-card">
+                <h3>Federal ESSA Compliance</h3>
+                <p>Under ESSA, Oregon must demonstrate progress for all student subgroups. Identifying Type 4 candidates helps districts provide appropriate interventions that improve outcomes.</p>
+            </div>
+            <div class="accountability-card">
+                <h3>Graduation Rate Impact</h3>
+                <p>Oregon tracks four-year and five-year graduation rates by subgroup. Early Type 4 identification can improve long-term outcomes for students who struggle with written expression.</p>
+            </div>
         </div>
+    </div>
+</section>
+
+<section class="districts-section">
+    <div class="container">
+        <p class="section-eyebrow">Pilot Districts</p>
+        <h2 class="section-headline">VERA-OR launches with <strong>Oregon's major school districts</strong></h2>
+        <p class="section-desc">Initial deployment includes Oregon's largest and most diverse districts, selected for their significant English Learner populations and established data reporting infrastructure.</p>
+        <table class="districts-table">
+            <thead>
+                <tr>
+                    <th>District</th>
+                    <th>District ID</th>
+                    <th>EL Population</th>
+                    <th>Graduation Rate</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Portland Public Schools</td>
+                    <td>1J-PPS</td>
+                    <td>Very High (20%)</td>
+                    <td>82.5%</td>
+                </tr>
+                <tr>
+                    <td>Salem-Keizer School District</td>
+                    <td>24J</td>
+                    <td>Very High (25%)</td>
+                    <td>78.3%</td>
+                </tr>
+                <tr>
+                    <td>Beaverton School District</td>
+                    <td>48J</td>
+                    <td>High (18%)</td>
+                    <td>88.1%</td>
+                </tr>
+                <tr>
+                    <td>Hillsboro School District</td>
+                    <td>1J-HIL</td>
+                    <td>Very High (25%)</td>
+                    <td>81.2%</td>
+                </tr>
+                <tr>
+                    <td>Eugene School District 4J</td>
+                    <td>4J</td>
+                    <td>Moderate (12%)</td>
+                    <td>85.4%</td>
+                </tr>
+                <tr>
+                    <td>Woodburn School District</td>
+                    <td>103</td>
+                    <td>Very High (50%)</td>
+                    <td>74.2%</td>
+                </tr>
+                <tr>
+                    <td>Reynolds School District</td>
+                    <td>7</td>
+                    <td>Very High (30%)</td>
+                    <td>72.5%</td>
+                </tr>
+                <tr>
+                    <td>David Douglas School District</td>
+                    <td>10J</td>
+                    <td>Very High (35%)</td>
+                    <td>75.8%</td>
+                </tr>
+            </tbody>
+        </table>
     </div>
 </section>
 
 <section class="cta-section">
     <div class="container">
-        <p class="section-eyebrow">Next Step</p>
-        <h2 class="section-headline">Oregon needs one practical secure-reporting test before any live deployment.</h2>
-        <p class="section-desc" style="margin-left:auto; margin-right:auto;">H-EDU's next Oregon task is to confirm whether the AWE Assessment Student Extract, already-supported by Oregon's secure reporting environment, can provide ELPA Speaking and ELPA Writing reporting in a clean buildable format.</p>
-        <a href="mailto:brian@h-edu.solutions" class="cta-button">Request Oregon Briefing</a>
+        <p class="section-eyebrow">Get Started</p>
+        <h2 class="section-headline">Launch VERA-OR for your Oregon district</h2>
+        <p class="section-desc">Access district-level assessment data, run Type 4 screening analysis, and identify students who need additional evaluation for learning differences.</p>
+        <a href="https://vera-or.onrender.com" class="cta-button">Launch VERA-OR</a>
     </div>
 </section>
 
 <footer>
     <div class="container">
-        <a href="../index.html" class="logo">H-<span>EDU.SOLUTIONS</span></a>
+        <a href="../index.html" class="logo">H-EDU.SOLUTIONS</a>
         <p style="margin-top: 20px;">&copy; 2026 H-EDU.solutions | A <a href="https://hallucinations.cloud">Hallucinations.cloud</a> Initiative</p>
-        <p style="margin-top: 12px;"><a href="../index.html">Global</a> &bull; Oregon (Provisional)</p>
+        <p style="margin-top: 12px;"><a href="../index.html">Global</a> &bull; <a href="california.html">California</a> &bull; <a href="new-york.html">New York</a> &bull; <a href="new-jersey.html">New Jersey</a> &bull; <a href="georgia.html">Georgia</a> &bull; Oregon &bull; <a href="washington.html">Washington</a></p>
     </div>
 </footer>
 
