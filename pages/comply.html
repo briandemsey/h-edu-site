@@ -1,0 +1,447 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>VERA Comply | SB 1288 AI Policy Compliance for California Schools</title>
+    <meta name="description" content="VERA Comply generates board-ready AI policies for California school districts in compliance with SB 1288. Six-module workflow produces complete AI governance documentation.">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: 'Georgia', 'Times New Roman', serif; line-height: 1.7; color: #000; background: #fff; }
+
+        :root {
+            --comply-blue: #1B4D89;
+            --comply-gold: #C4A000;
+            --comply-dark: #0d2847;
+        }
+
+        header {
+            background: #fff;
+            padding: 20px 0;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            border-bottom: 1px solid #e0e0e0;
+        }
+        .container { max-width: 1200px; margin: 0 auto; padding: 0 24px; }
+        header .container { display: flex; justify-content: space-between; align-items: center; }
+        .logo { color: #000; font-size: 1.5rem; font-weight: 700; text-decoration: none; letter-spacing: 1px; font-family: 'Segoe UI', 'Helvetica Neue', sans-serif; }
+        nav { display: flex; gap: 32px; align-items: center; }
+        nav a { color: #333; text-decoration: none; font-size: 0.9rem; font-weight: 400; transition: color 0.2s; font-family: 'Segoe UI', 'Helvetica Neue', sans-serif; }
+        nav a:hover { color: var(--comply-blue); }
+        nav .nav-cta { background: var(--comply-blue); color: #fff; padding: 10px 24px; font-weight: 500; }
+        nav .nav-cta:hover { background: var(--comply-dark); color: #fff; }
+
+        .hero {
+            min-height: 75vh;
+            background: linear-gradient(135deg, var(--comply-blue) 0%, var(--comply-dark) 100%);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            padding: 140px 24px 80px;
+            color: #fff;
+        }
+        .hero-content { max-width: 900px; }
+        .hero-eyebrow {
+            font-size: 1.1rem;
+            color: var(--comply-gold);
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            margin-bottom: 20px;
+            font-family: 'Segoe UI', 'Helvetica Neue', sans-serif;
+        }
+        .hero h1 {
+            font-size: 3rem;
+            font-weight: 400;
+            line-height: 1.2;
+            margin-bottom: 24px;
+        }
+        .hero h1 strong { font-weight: 700; }
+        .hero .subtitle {
+            font-size: 1.15rem;
+            max-width: 760px;
+            color: rgba(255,255,255,0.9);
+            margin-bottom: 28px;
+            line-height: 1.9;
+        }
+        .hero-cta {
+            display: inline-block;
+            background: var(--comply-gold);
+            color: #1a1a1a;
+            text-decoration: none;
+            padding: 16px 34px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            font-family: 'Segoe UI', 'Helvetica Neue', sans-serif;
+            margin-right: 16px;
+            margin-bottom: 12px;
+        }
+        .hero-cta:hover { background: #a38800; }
+        .hero-cta-secondary {
+            display: inline-block;
+            background: transparent;
+            color: #fff;
+            text-decoration: none;
+            padding: 14px 32px;
+            border: 2px solid rgba(255,255,255,0.5);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            font-family: 'Segoe UI', 'Helvetica Neue', sans-serif;
+        }
+        .hero-cta-secondary:hover { border-color: #fff; background: rgba(255,255,255,0.1); }
+
+        section { padding: 80px 0; }
+        .section-eyebrow {
+            font-size: 0.75rem;
+            color: #666;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            margin-bottom: 16px;
+            font-family: 'Segoe UI', 'Helvetica Neue', sans-serif;
+        }
+        .section-headline {
+            font-size: 2.2rem;
+            font-weight: 400;
+            margin-bottom: 24px;
+            color: #000;
+        }
+        .section-headline strong { font-weight: 700; }
+        .section-desc {
+            font-size: 1.05rem;
+            color: #444;
+            max-width: 760px;
+            margin-bottom: 40px;
+            line-height: 1.8;
+        }
+
+        .modules-section { background: #f7f7f7; }
+        .modules-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 24px;
+        }
+        .module-card {
+            background: #fff;
+            border: 1px solid #e0e0e0;
+            border-top: 4px solid var(--comply-blue);
+            padding: 30px;
+        }
+        .module-letter {
+            display: inline-block;
+            width: 36px;
+            height: 36px;
+            background: var(--comply-blue);
+            color: #fff;
+            text-align: center;
+            line-height: 36px;
+            font-weight: 700;
+            font-family: 'Segoe UI', 'Helvetica Neue', sans-serif;
+            margin-bottom: 16px;
+        }
+        .module-card h3 {
+            font-size: 1.1rem;
+            margin-bottom: 12px;
+            font-weight: 600;
+            font-family: 'Segoe UI', 'Helvetica Neue', sans-serif;
+        }
+        .module-card p {
+            font-size: 0.95rem;
+            color: #555;
+            line-height: 1.8;
+        }
+
+        .sb1288-section { background: #fff; }
+        .requirement-list {
+            list-style: none;
+            margin-top: 30px;
+        }
+        .requirement-list li {
+            padding: 20px 0;
+            border-bottom: 1px solid #e0e0e0;
+            display: flex;
+            align-items: flex-start;
+            gap: 20px;
+        }
+        .requirement-number {
+            background: var(--comply-gold);
+            color: #1a1a1a;
+            font-weight: 700;
+            width: 32px;
+            height: 32px;
+            text-align: center;
+            line-height: 32px;
+            flex-shrink: 0;
+            font-family: 'Segoe UI', 'Helvetica Neue', sans-serif;
+        }
+        .requirement-text {
+            font-size: 1.05rem;
+            color: #333;
+            line-height: 1.7;
+        }
+
+        .workflow-section {
+            background: #111;
+            color: #fff;
+        }
+        .workflow-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 30px;
+            margin-top: 40px;
+        }
+        .workflow-card {
+            border: 1px solid rgba(255,255,255,0.15);
+            background: rgba(255,255,255,0.03);
+            padding: 30px;
+        }
+        .workflow-card h3 {
+            font-size: 1.2rem;
+            margin-bottom: 14px;
+            color: var(--comply-gold);
+            font-family: 'Segoe UI', 'Helvetica Neue', sans-serif;
+        }
+        .workflow-card p {
+            color: rgba(255,255,255,0.86);
+            font-size: 0.95rem;
+            line-height: 1.8;
+        }
+
+        .output-section { background: #f7f7f7; }
+        .output-box {
+            background: #fff;
+            border: 2px solid var(--comply-blue);
+            padding: 40px;
+            margin-top: 30px;
+        }
+        .output-box h3 {
+            font-size: 1.4rem;
+            color: var(--comply-blue);
+            margin-bottom: 20px;
+            font-family: 'Segoe UI', 'Helvetica Neue', sans-serif;
+        }
+        .output-box ul {
+            list-style: none;
+            margin-bottom: 20px;
+        }
+        .output-box li {
+            padding: 10px 0;
+            padding-left: 30px;
+            position: relative;
+            font-size: 1.05rem;
+            color: #333;
+        }
+        .output-box li:before {
+            content: "\2713";
+            position: absolute;
+            left: 0;
+            color: var(--comply-gold);
+            font-weight: 700;
+        }
+
+        .cta-section {
+            background: var(--comply-blue);
+            text-align: center;
+            color: #fff;
+        }
+        .cta-section .section-eyebrow { color: var(--comply-gold); }
+        .cta-section .section-headline { color: #fff; }
+        .cta-section .section-desc { color: rgba(255,255,255,0.9); margin-left: auto; margin-right: auto; }
+        .cta-button {
+            display: inline-block;
+            background: var(--comply-gold);
+            color: #1a1a1a;
+            text-decoration: none;
+            padding: 16px 34px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            font-family: 'Segoe UI', 'Helvetica Neue', sans-serif;
+        }
+        .cta-button:hover { background: #a38800; }
+
+        footer {
+            background: #000;
+            padding: 50px 0;
+            text-align: center;
+        }
+        footer p, footer a { color: rgba(255,255,255,0.7); text-decoration: none; }
+
+        @media (max-width: 900px) {
+            nav { display: none; }
+            .hero h1 { font-size: 2.2rem; }
+            .modules-grid { grid-template-columns: 1fr; }
+            .workflow-grid { grid-template-columns: 1fr; }
+        }
+    </style>
+</head>
+<body>
+
+<header>
+    <div class="container">
+        <a href="../index.html" class="logo">H-EDU.SOLUTIONS</a>
+        <nav>
+            <a href="../index.html#portals">Portals</a>
+            <a href="../index.html#what">What We Do</a>
+            <a href="../index.html#jurisdictions">Jurisdictions</a>
+            <a href="mailto:brian@h-edu.solutions" class="nav-cta">Request Briefing</a>
+        </nav>
+    </div>
+</header>
+
+<section class="hero">
+    <div class="container">
+        <div class="hero-content">
+            <p class="hero-eyebrow">Portal D</p>
+            <h1>SB 1288 AI Policy Compliance for <strong>California School Districts</strong></h1>
+            <p class="subtitle">VERA Comply guides California LEAs through a structured six-module workflow that produces a board-ready AI policy document. From academic integrity to human oversight, every SB 1288 requirement is addressed.</p>
+            <a href="https://vera-comply.onrender.com" class="hero-cta">Launch VERA Comply</a>
+            <a href="mailto:brian@h-edu.solutions" class="hero-cta-secondary">Request Demo</a>
+        </div>
+    </div>
+</section>
+
+<section class="sb1288-section">
+    <div class="container">
+        <p class="section-eyebrow">SB 1288 Mandate</p>
+        <h2 class="section-headline">California requires LEAs to adopt <strong>AI governance policies</strong></h2>
+        <p class="section-desc">Senate Bill 1288 established the AI in Education Working Group to develop model policy guidance. Every California school district must adopt policies addressing:</p>
+        <ol class="requirement-list">
+            <li>
+                <span class="requirement-number">1</span>
+                <span class="requirement-text">Academic integrity and plagiarism in the context of AI tools</span>
+            </li>
+            <li>
+                <span class="requirement-number">2</span>
+                <span class="requirement-text">Acceptable and unacceptable uses of AI for pupils and educators</span>
+            </li>
+            <li>
+                <span class="requirement-number">3</span>
+                <span class="requirement-text">Pupil and educator data privacy and data security</span>
+            </li>
+            <li>
+                <span class="requirement-number">4</span>
+                <span class="requirement-text">Parent and guardian access to information pupils enter into AI systems</span>
+            </li>
+            <li>
+                <span class="requirement-number">5</span>
+                <span class="requirement-text">Procurement of software that ensures safety and privacy of pupils and educators</span>
+            </li>
+            <li>
+                <span class="requirement-number">6</span>
+                <span class="requirement-text">Effective use of AI to support teaching and learning without risk</span>
+            </li>
+        </ol>
+    </div>
+</section>
+
+<section class="modules-section">
+    <div class="container">
+        <p class="section-eyebrow">Six Modules</p>
+        <h2 class="section-headline">VERA Comply addresses <strong>every SB 1288 requirement</strong></h2>
+        <p class="section-desc">Each module presents CSBA model policy language, assesses your district's current status, and allows customization for local needs. Complete all six modules to generate your board-ready AI policy document.</p>
+        <div class="modules-grid">
+            <div class="module-card">
+                <span class="module-letter">A</span>
+                <h3>Academic Integrity</h3>
+                <p>Policies governing academic integrity, plagiarism, and disclosure requirements for AI-assisted work in classrooms.</p>
+            </div>
+            <div class="module-card">
+                <span class="module-letter">B</span>
+                <h3>Acceptable Uses</h3>
+                <p>Clear guidelines for appropriate and inappropriate AI use by students and educators across grade levels.</p>
+            </div>
+            <div class="module-card">
+                <span class="module-letter">C</span>
+                <h3>Data Privacy</h3>
+                <p>FERPA, CCPA, SOPIPA compliance. Data use agreements, privacy assessments, and vendor certification.</p>
+            </div>
+            <div class="module-card">
+                <span class="module-letter">D</span>
+                <h3>Parent Access</h3>
+                <p>Notification requirements, opt-out processes, and parent rights to access AI interaction history.</p>
+            </div>
+            <div class="module-card">
+                <span class="module-letter">E</span>
+                <h3>Procurement</h3>
+                <p>Vendor vetting, contract provisions, AI tool registry, and annual review cycles for continued use.</p>
+            </div>
+            <div class="module-card">
+                <span class="module-letter">F</span>
+                <h3>Human Oversight</h3>
+                <p>Required human review before AI influences student decisions. Professional development and effectiveness evaluation.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="workflow-section">
+    <div class="container">
+        <p class="section-eyebrow" style="color: var(--comply-gold);">The 360-Degree Loop</p>
+        <h2 class="section-headline" style="color: #fff;">VERA Comply completes the <strong>GAMUT policy cycle</strong></h2>
+        <div class="workflow-grid">
+            <div class="workflow-card">
+                <h3>GAMUT Hosts the Policy</h3>
+                <p>CSBA's GAMUT platform contains 650+ board policies, administrative regulations, and bylaws. VERA Comply generates AI policies that integrate seamlessly into GAMUT's structure.</p>
+            </div>
+            <div class="workflow-card">
+                <h3>VERA Comply Generates It</h3>
+                <p>Rather than starting from scratch, districts complete VERA Comply's guided workflow to produce a complete, SB 1288-compliant AI policy pre-populated with model language.</p>
+            </div>
+            <div class="workflow-card">
+                <h3>VERA Verifies Compliance</h3>
+                <p>Once adopted, VERA's data analytics tools verify that AI tool use aligns with district policy, tracking procurement, access patterns, and human approval workflows.</p>
+            </div>
+            <div class="workflow-card">
+                <h3>Assist Closes the Loop</h3>
+                <p>District questions about AI governance flow to Assist, where real people provide strategic guidance that informs the next policy revision cycle.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="output-section">
+    <div class="container">
+        <p class="section-eyebrow">The Output</p>
+        <h2 class="section-headline">A complete, <strong>board-ready AI policy document</strong></h2>
+        <div class="output-box">
+            <h3>What VERA Comply Produces</h3>
+            <ul>
+                <li>Full AI governance policy aligned to SB 1288 model requirements</li>
+                <li>District-specific customizations integrated with CSBA model language</li>
+                <li>FERPA/CCPA/SOPIPA compliance certifications</li>
+                <li>Parent notification templates in plain English</li>
+                <li>Procurement documentation for COE and auditor review</li>
+                <li>Human approval workflow specifications</li>
+                <li>AI tool registry template</li>
+                <li>Professional development recommendations</li>
+            </ul>
+            <p style="color: #666; font-style: italic;">Generated policies are formatted for direct adoption by district boards and integration into GAMUT.</p>
+        </div>
+    </div>
+</section>
+
+<section class="cta-section">
+    <div class="container">
+        <p class="section-eyebrow">Get Started</p>
+        <h2 class="section-headline">Launch VERA Comply for your California district</h2>
+        <p class="section-desc">Complete the six-module workflow and generate your board-ready AI policy in compliance with SB 1288. No more starting from scratch.</p>
+        <a href="https://vera-comply.onrender.com" class="cta-button">Launch VERA Comply</a>
+    </div>
+</section>
+
+<footer>
+    <div class="container">
+        <a href="../index.html" class="logo">H-EDU.SOLUTIONS</a>
+        <p style="margin-top: 20px;">&copy; 2026 H-EDU.solutions | A <a href="https://hallucinations.cloud">Hallucinations.cloud</a> Initiative</p>
+        <p style="margin-top: 12px;"><a href="../index.html">Global</a> &bull; <a href="california.html">California</a> &bull; VERA Comply</p>
+    </div>
+</footer>
+
+</body>
+</html>
