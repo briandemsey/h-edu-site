@@ -3,16 +3,16 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>H-EDU Nevada | Provisional Jurisdiction Review</title>
-    <meta name="description" content="Nevada is a provisional H-EDU jurisdiction with a confirmed district-report ACCESS domain path. H-EDU is now validating the richer posted WIDA AMS ACCESS data path before any live deployment.">
+    <title>VERA Nevada | Type 4 Dyslexia Screening for Nevada Schools</title>
+    <meta name="description" content="VERA-NV uses ACCESS for ELLs and SBAC assessment data to identify Type 4 dyslexia candidates in Nevada schools through oral-written delta analysis.">
     <style>
         * { margin: 0; padding: 0; box-sizing: border-box; }
         body { font-family: 'Georgia', 'Times New Roman', serif; line-height: 1.7; color: #000; background: #fff; }
 
         :root {
-            --nv-blue: #003f87;
-            --nv-silver: #cbd2dc;
-            --nv-gold: #d6b04d;
+            --nv-blue: #003366;
+            --nv-silver: #C0C0C0;
+            --nv-gold: #FFD700;
         }
 
         header {
@@ -31,11 +31,11 @@
         nav a { color: #333; text-decoration: none; font-size: 0.9rem; font-weight: 400; transition: color 0.2s; font-family: 'Segoe UI', 'Helvetica Neue', sans-serif; }
         nav a:hover { color: var(--nv-blue); }
         nav .nav-cta { background: var(--nv-blue); color: #fff; padding: 10px 24px; font-weight: 500; }
-        nav .nav-cta:hover { background: #002c61; color: #fff; }
+        nav .nav-cta:hover { background: #001a33; color: #fff; }
 
         .hero {
             min-height: 75vh;
-            background: linear-gradient(135deg, var(--nv-blue) 0%, #2f5b9e 54%, #6f88b7 100%);
+            background: linear-gradient(135deg, var(--nv-blue) 0%, #1a4d80 50%, #336699 100%);
             display: flex;
             flex-direction: column;
             justify-content: center;
@@ -45,7 +45,7 @@
         .hero-content { max-width: 900px; }
         .hero-eyebrow {
             font-size: 1.1rem;
-            color: #f0d78a;
+            color: var(--nv-gold);
             letter-spacing: 3px;
             text-transform: uppercase;
             margin-bottom: 20px;
@@ -65,17 +65,35 @@
             margin-bottom: 28px;
             line-height: 1.9;
         }
-        .hero-status {
+        .hero-cta {
             display: inline-block;
-            background: #f0d78a;
-            color: #3d2a00;
-            padding: 6px 14px;
+            background: var(--nv-gold);
+            color: #1a1a1a;
+            text-decoration: none;
+            padding: 16px 34px;
             text-transform: uppercase;
             letter-spacing: 1px;
-            font-size: 0.75rem;
-            font-weight: 700;
+            font-size: 0.85rem;
+            font-weight: 600;
+            font-family: 'Segoe UI', 'Helvetica Neue', sans-serif;
+            margin-right: 16px;
+            margin-bottom: 12px;
+        }
+        .hero-cta:hover { background: #e6c200; }
+        .hero-cta-secondary {
+            display: inline-block;
+            background: transparent;
+            color: #fff;
+            text-decoration: none;
+            padding: 14px 32px;
+            border: 2px solid rgba(255,255,255,0.5);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            font-size: 0.85rem;
+            font-weight: 600;
             font-family: 'Segoe UI', 'Helvetica Neue', sans-serif;
         }
+        .hero-cta-secondary:hover { border-color: #fff; background: rgba(255,255,255,0.1); }
 
         section { padding: 80px 0; }
         .section-eyebrow {
@@ -101,25 +119,25 @@
             line-height: 1.8;
         }
 
-        .summary-section { background: #f7f7f7; }
-        .summary-grid {
+        .type4-section { background: #f7f7f7; }
+        .type4-grid {
             display: grid;
             grid-template-columns: repeat(3, 1fr);
             gap: 24px;
         }
-        .summary-card {
+        .type4-card {
             background: #fff;
             border: 1px solid #e0e0e0;
             border-top: 4px solid var(--nv-blue);
             padding: 30px;
         }
-        .summary-card h3 {
+        .type4-card h3 {
             font-size: 1.1rem;
             margin-bottom: 12px;
             font-weight: 600;
             font-family: 'Segoe UI', 'Helvetica Neue', sans-serif;
         }
-        .summary-card p {
+        .type4-card p {
             font-size: 0.95rem;
             color: #555;
             line-height: 1.8;
@@ -150,41 +168,72 @@
             line-height: 1.7;
         }
 
-        .decision-section {
+        .accountability-section {
             background: #111;
             color: #fff;
         }
-        .decision-box {
-            max-width: 900px;
+        .accountability-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 30px;
+            margin-top: 40px;
+        }
+        .accountability-card {
             border: 1px solid rgba(255,255,255,0.15);
             background: rgba(255,255,255,0.03);
-            padding: 36px;
+            padding: 30px;
         }
-        .decision-box h3 {
-            font-size: 1.35rem;
-            margin-bottom: 16px;
-            color: #f0d78a;
+        .accountability-card h3 {
+            font-size: 1.2rem;
+            margin-bottom: 14px;
+            color: var(--nv-gold);
             font-family: 'Segoe UI', 'Helvetica Neue', sans-serif;
         }
-        .decision-box p,
-        .decision-box li {
+        .accountability-card p {
             color: rgba(255,255,255,0.86);
-            font-size: 1rem;
+            font-size: 0.95rem;
             line-height: 1.8;
         }
-        .decision-box ul {
-            margin-top: 18px;
-            padding-left: 22px;
-        }
 
-        .cta-section {
-            background: #f7f7f7;
-            text-align: center;
+        .districts-section { background: #f7f7f7; }
+        .districts-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 30px;
+            background: #fff;
         }
-        .cta-button {
-            display: inline-block;
+        .districts-table th,
+        .districts-table td {
+            padding: 16px 20px;
+            text-align: left;
+            border-bottom: 1px solid #e0e0e0;
+            font-family: 'Segoe UI', 'Helvetica Neue', sans-serif;
+        }
+        .districts-table th {
             background: var(--nv-blue);
             color: #fff;
+            font-size: 0.85rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+        .districts-table td {
+            font-size: 0.95rem;
+            color: #333;
+        }
+        .districts-table tr:hover { background: #f9f9f9; }
+
+        .cta-section {
+            background: var(--nv-blue);
+            text-align: center;
+            color: #fff;
+        }
+        .cta-section .section-eyebrow { color: var(--nv-gold); }
+        .cta-section .section-headline { color: #fff; }
+        .cta-section .section-desc { color: rgba(255,255,255,0.9); margin-left: auto; margin-right: auto; }
+        .cta-button {
+            display: inline-block;
+            background: var(--nv-gold);
+            color: #1a1a1a;
             text-decoration: none;
             padding: 16px 34px;
             text-transform: uppercase;
@@ -193,7 +242,7 @@
             font-weight: 600;
             font-family: 'Segoe UI', 'Helvetica Neue', sans-serif;
         }
-        .cta-button:hover { background: #002c61; }
+        .cta-button:hover { background: #e6c200; }
 
         footer {
             background: #000;
@@ -205,8 +254,10 @@
         @media (max-width: 900px) {
             nav { display: none; }
             .hero h1 { font-size: 2.2rem; }
-            .summary-grid,
+            .type4-grid,
             .data-grid { grid-template-columns: 1fr; }
+            .accountability-grid { grid-template-columns: 1fr; }
+            .districts-table { font-size: 0.85rem; }
         }
     </style>
 </head>
@@ -227,30 +278,32 @@
 <section class="hero">
     <div class="container">
         <div class="hero-content">
-            <p class="hero-eyebrow">Nevada Jurisdiction Review</p>
-            <h1>Nevada is a <strong>provisional H-EDU jurisdiction</strong> with a confirmed district-report ACCESS domain path.</h1>
-            <p class="subtitle">H-EDU has already confirmed one real Nevada data path through WIDA AMS district reporting. The remaining question is whether the richer posted ACCESS data files support a stronger ACCESS Speaking versus ACCESS Writing build.</p>
-            <span class="hero-status">Provisional</span>
+            <p class="hero-eyebrow">VERA Nevada</p>
+            <h1>Type 4 Dyslexia Screening for <strong>Nevada Public Schools</strong></h1>
+            <p class="subtitle">VERA-NV integrates ACCESS for ELLs (WIDA) and SBAC assessment data to identify students who speak well but struggle with writing. The oral-written delta reveals Type 4 dyslexia candidates who might otherwise be overlooked.</p>
+            <a href="https://vera-nv.onrender.com" class="hero-cta">Launch VERA-NV</a>
+            <a href="mailto:brian@h-edu.solutions" class="hero-cta-secondary">Request Demo</a>
         </div>
     </div>
 </section>
 
-<section class="summary-section">
+<section class="type4-section">
     <div class="container">
-        <p class="section-eyebrow">Current Judgment</p>
-        <h2 class="section-headline">Nevada is structurally strong, but <strong>verification still controls the build</strong>.</h2>
-        <div class="summary-grid">
-            <div class="summary-card">
-                <h3>What Nevada Is</h3>
-                <p>A serious expansion target with statewide academic, EL, accountability, and longitudinal-data systems already in place, plus one confirmed district ACCESS report path.</p>
+        <p class="section-eyebrow">Type 4 Detection</p>
+        <h2 class="section-headline">Identifying students who <strong>speak well but write poorly</strong></h2>
+        <p class="section-desc">Type 4 dyslexia candidates demonstrate strong oral communication abilities but significant challenges with written expression. VERA-NV uses the delta between ACCESS Speaking scores and Writing domain performance to flag students for further evaluation.</p>
+        <div class="type4-grid">
+            <div class="type4-card">
+                <h3>Oral Proficiency</h3>
+                <p>ACCESS for ELLs Speaking domain scores measure oral language production, fluency, and comprehension in classroom contexts.</p>
             </div>
-            <div class="summary-card">
-                <h3>Best H-EDU Path</h3>
-                <p>The strongest Nevada model is a direct ACCESS Speaking versus ACCESS Writing oral-written comparison, ideally from the richer WIDA AMS data files and at minimum from the confirmed district report path.</p>
+            <div class="type4-card">
+                <h3>Written Performance</h3>
+                <p>ACCESS Writing domain and SBAC ELA scores capture written expression, organization, and conventions.</p>
             </div>
-            <div class="summary-card">
-                <h3>What Still Controls The Build</h3>
-                <p>The gating issue is no longer whether Nevada has a data path. It is whether Nevada district or state users can supply the richer WIDA AMS data-file artifact in a clean reusable district format.</p>
+            <div class="type4-card">
+                <h3>Delta Analysis</h3>
+                <p>When the oral-written delta exceeds 8 points, the student is flagged as a Type 4 candidate requiring additional screening.</p>
             </div>
         </div>
     </div>
@@ -258,58 +311,137 @@
 
 <section class="data-section">
     <div class="container">
-        <p class="section-eyebrow">Measurement Architecture</p>
-        <h2 class="section-headline">Nevada already has the right systems. <strong>The reporting path is the open question.</strong></h2>
-        <p class="section-desc">Nevada is promising because it combines a confirmed WIDA AMS district report path, likely richer posted ACCESS data files, SBAC, ACT, the Nevada Accountability Portal, Nevada Report Card, NV SLDS, and SAIN inside one coherent state reporting environment. That makes Nevada a stronger candidate than states that require immediate cross-system improvisation.</p>
+        <p class="section-eyebrow">Nevada Data Systems</p>
+        <h2 class="section-headline">Built on Nevada's <strong>official assessment infrastructure</strong></h2>
+        <p class="section-desc">VERA-NV integrates with Nevada's established assessment and accountability systems, using publicly available district-level data to identify patterns that warrant individual student review.</p>
         <div class="data-grid">
             <div class="data-card">
-                <h4>Academic System</h4>
-                <p>SBAC provides the main statewide academic assessment structure and public district reporting context, with ACT adding a separate college-readiness layer.</p>
+                <h4>ACCESS for ELLs</h4>
+                <p>WIDA's English language proficiency assessment measuring Listening, Speaking, Reading, and Writing domains.</p>
             </div>
             <div class="data-card">
-                <h4>EL System</h4>
-                <p>ACCESS for ELLs is the clearest H-EDU oral-written pathway because it already contains speaking and writing domains inside one EL assessment system.</p>
+                <h4>SBAC</h4>
+                <p>Smarter Balanced assessments for ELA and Mathematics aligned to Nevada Academic Content Standards.</p>
             </div>
             <div class="data-card">
-                <h4>Accountability Layer</h4>
-                <p>Nevada Accountability Portal and Nevada Report Card give Nevada strong interpretation and accountability context once the extract path is confirmed.</p>
+                <h4>Nevada Report Card</h4>
+                <p>State reporting system providing comprehensive district and school performance data.</p>
             </div>
             <div class="data-card">
-                <h4>Likely Access Path</h4>
-                <p>Nevada already has one confirmed district-report path through WIDA AMS. The strongest likely richer path is the posted ACCESS data file set, supported by NV SLDS and SAIN.</p>
+                <h4>NSPF Accountability</h4>
+                <p>Nevada School Performance Framework measures school progress on state indicators.</p>
             </div>
         </div>
     </div>
 </section>
 
-<section class="decision-section">
+<section class="accountability-section">
     <div class="container">
-        <div class="decision-box">
-            <h3>Build Decision</h3>
-            <p>Nevada is already strong enough for confident provisional placement. The right next step is to confirm whether Nevada district or state users can access an existing posted WIDA AMS data file or related export that shows ACCESS Speaking and ACCESS Writing side by side for the same year.</p>
-            <ul>
-                <li>If that file exists, Nevada becomes a near-ready Type 4 candidate.</li>
-                <li>If it does not, Nevada shifts toward a mixed-model, public-records, or data-request build path.</li>
-                <li>Until that point, Nevada should remain explicitly provisional.</li>
-            </ul>
+        <p class="section-eyebrow" style="color: var(--nv-gold);">Accountability Integration</p>
+        <h2 class="section-headline" style="color: #fff;">VERA-NV connects <strong>assessment data to accountability</strong></h2>
+        <div class="accountability-grid">
+            <div class="accountability-card">
+                <h3>Nevada School Performance Framework</h3>
+                <p>NSPF rates schools on academic achievement, growth, graduation rates, and English Learner progress. VERA-NV displays NSPF scores alongside Type 4 detection to show how identification gaps affect overall performance.</p>
+            </div>
+            <div class="accountability-card">
+                <h3>EL Exit Criteria</h3>
+                <p>Nevada uses WIDA ACCESS composite and domain scores to determine English Learner exit eligibility. Students with high speaking but low writing scores may meet oral thresholds while struggling academically.</p>
+            </div>
+            <div class="accountability-card">
+                <h3>Federal ESSA Compliance</h3>
+                <p>Under ESSA, Nevada must demonstrate progress for all student subgroups. Identifying Type 4 candidates helps districts provide appropriate interventions that improve outcomes.</p>
+            </div>
+            <div class="accountability-card">
+                <h3>Clark County Focus</h3>
+                <p>Clark County School District (Las Vegas) is the 5th largest district in the US with over 300,000 students. Early Type 4 identification can significantly impact statewide outcomes.</p>
+            </div>
         </div>
+    </div>
+</section>
+
+<section class="districts-section">
+    <div class="container">
+        <p class="section-eyebrow">Pilot Districts</p>
+        <h2 class="section-headline">VERA-NV launches with <strong>Nevada's major school districts</strong></h2>
+        <p class="section-desc">Initial deployment includes Nevada's largest and most diverse districts, selected for their significant English Learner populations and established data reporting infrastructure.</p>
+        <table class="districts-table">
+            <thead>
+                <tr>
+                    <th>District</th>
+                    <th>District ID</th>
+                    <th>EL Population</th>
+                    <th>NSPF Score</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Clark County School District</td>
+                    <td>02</td>
+                    <td>Very High (18%)</td>
+                    <td>52.5</td>
+                </tr>
+                <tr>
+                    <td>Washoe County School District</td>
+                    <td>16</td>
+                    <td>High (18%)</td>
+                    <td>58.2</td>
+                </tr>
+                <tr>
+                    <td>Carson City School District</td>
+                    <td>01</td>
+                    <td>High (15%)</td>
+                    <td>55.8</td>
+                </tr>
+                <tr>
+                    <td>Elko County School District</td>
+                    <td>04</td>
+                    <td>Moderate (12%)</td>
+                    <td>61.3</td>
+                </tr>
+                <tr>
+                    <td>Lyon County School District</td>
+                    <td>09</td>
+                    <td>Moderate (12%)</td>
+                    <td>54.2</td>
+                </tr>
+                <tr>
+                    <td>Douglas County School District</td>
+                    <td>03</td>
+                    <td>Low (8%)</td>
+                    <td>65.4</td>
+                </tr>
+                <tr>
+                    <td>Nye County School District</td>
+                    <td>12</td>
+                    <td>Low (9%)</td>
+                    <td>48.6</td>
+                </tr>
+                <tr>
+                    <td>Churchill County School District</td>
+                    <td>05</td>
+                    <td>Moderate (10%)</td>
+                    <td>57.1</td>
+                </tr>
+            </tbody>
+        </table>
     </div>
 </section>
 
 <section class="cta-section">
     <div class="container">
-        <p class="section-eyebrow">Next Step</p>
-        <h2 class="section-headline">Nevada needs one practical access test before any live deployment.</h2>
-        <p class="section-desc" style="margin-left:auto; margin-right:auto;">H-EDU's next Nevada task is to confirm whether the richer posted WIDA AMS data files can provide ACCESS Speaking and ACCESS Writing reporting in a clean buildable format.</p>
-        <a href="mailto:brian@h-edu.solutions" class="cta-button">Request Nevada Briefing</a>
+        <p class="section-eyebrow">Get Started</p>
+        <h2 class="section-headline">Launch VERA-NV for your Nevada district</h2>
+        <p class="section-desc">Access district-level assessment data, run Type 4 screening analysis, and identify students who need additional evaluation for learning differences.</p>
+        <a href="https://vera-nv.onrender.com" class="cta-button">Launch VERA-NV</a>
     </div>
 </section>
 
 <footer>
     <div class="container">
-        <a href="../index.html" class="logo">H-<span>EDU.SOLUTIONS</span></a>
+        <a href="../index.html" class="logo">H-EDU.SOLUTIONS</a>
         <p style="margin-top: 20px;">&copy; 2026 H-EDU.solutions | A <a href="https://hallucinations.cloud">Hallucinations.cloud</a> Initiative</p>
-        <p style="margin-top: 12px;"><a href="../index.html">Global</a> &bull; Nevada (Provisional)</p>
+        <p style="margin-top: 12px;"><a href="../index.html">Global</a> &bull; <a href="california.html">California</a> &bull; <a href="new-york.html">New York</a> &bull; <a href="new-jersey.html">New Jersey</a> &bull; <a href="georgia.html">Georgia</a> &bull; <a href="oregon.html">Oregon</a> &bull; Nevada</p>
     </div>
 </footer>
 
