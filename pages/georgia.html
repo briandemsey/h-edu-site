@@ -3,16 +3,16 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>H-EDU Georgia | Provisional Jurisdiction Review</title>
-    <meta name="description" content="Georgia is a provisional H-EDU jurisdiction under review. H-EDU is validating WIDA AMS reporting, ACCESS speaking-writing architecture, and Georgia system-level joins before any live deployment.">
+    <title>VERA Georgia | Type 4 Dyslexia Screening for Georgia Schools</title>
+    <meta name="description" content="VERA-GA uses Georgia Milestones and ACCESS for ELLs data to identify Type 4 dyslexia candidates in Georgia schools through oral-written delta analysis.">
     <style>
         * { margin: 0; padding: 0; box-sizing: border-box; }
         body { font-family: 'Georgia', 'Times New Roman', serif; line-height: 1.7; color: #000; background: #fff; }
 
         :root {
             --ga-blue: #002868;
-            --ga-red: #b22234;
-            --ga-gold: #c9a23f;
+            --ga-red: #B22234;
+            --ga-gold: #C9A23F;
         }
 
         header {
@@ -35,7 +35,7 @@
 
         .hero {
             min-height: 75vh;
-            background: linear-gradient(135deg, var(--ga-blue) 0%, #143d89 48%, var(--ga-red) 100%);
+            background: linear-gradient(135deg, var(--ga-blue) 0%, #143d89 50%, var(--ga-red) 100%);
             display: flex;
             flex-direction: column;
             justify-content: center;
@@ -45,7 +45,7 @@
         .hero-content { max-width: 900px; }
         .hero-eyebrow {
             font-size: 1.1rem;
-            color: #f4d889;
+            color: var(--ga-gold);
             letter-spacing: 3px;
             text-transform: uppercase;
             margin-bottom: 20px;
@@ -65,17 +65,35 @@
             margin-bottom: 28px;
             line-height: 1.9;
         }
-        .hero-status {
+        .hero-cta {
             display: inline-block;
-            background: #f4d889;
-            color: #3d2a00;
-            padding: 6px 14px;
+            background: var(--ga-gold);
+            color: #1a1a1a;
+            text-decoration: none;
+            padding: 16px 34px;
             text-transform: uppercase;
             letter-spacing: 1px;
-            font-size: 0.75rem;
-            font-weight: 700;
+            font-size: 0.85rem;
+            font-weight: 600;
+            font-family: 'Segoe UI', 'Helvetica Neue', sans-serif;
+            margin-right: 16px;
+            margin-bottom: 12px;
+        }
+        .hero-cta:hover { background: #d4b44f; }
+        .hero-cta-secondary {
+            display: inline-block;
+            background: transparent;
+            color: #fff;
+            text-decoration: none;
+            padding: 14px 32px;
+            border: 2px solid rgba(255,255,255,0.5);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            font-size: 0.85rem;
+            font-weight: 600;
             font-family: 'Segoe UI', 'Helvetica Neue', sans-serif;
         }
+        .hero-cta-secondary:hover { border-color: #fff; background: rgba(255,255,255,0.1); }
 
         section { padding: 80px 0; }
         .section-eyebrow {
@@ -101,25 +119,25 @@
             line-height: 1.8;
         }
 
-        .summary-section { background: #f7f7f7; }
-        .summary-grid {
+        .type4-section { background: #f7f7f7; }
+        .type4-grid {
             display: grid;
             grid-template-columns: repeat(3, 1fr);
             gap: 24px;
         }
-        .summary-card {
+        .type4-card {
             background: #fff;
             border: 1px solid #e0e0e0;
             border-top: 4px solid var(--ga-blue);
             padding: 30px;
         }
-        .summary-card h3 {
+        .type4-card h3 {
             font-size: 1.1rem;
             margin-bottom: 12px;
             font-weight: 600;
             font-family: 'Segoe UI', 'Helvetica Neue', sans-serif;
         }
-        .summary-card p {
+        .type4-card p {
             font-size: 0.95rem;
             color: #555;
             line-height: 1.8;
@@ -150,41 +168,72 @@
             line-height: 1.7;
         }
 
-        .decision-section {
+        .accountability-section {
             background: #111;
             color: #fff;
         }
-        .decision-box {
-            max-width: 900px;
+        .accountability-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 30px;
+            margin-top: 40px;
+        }
+        .accountability-card {
             border: 1px solid rgba(255,255,255,0.15);
             background: rgba(255,255,255,0.03);
-            padding: 36px;
+            padding: 30px;
         }
-        .decision-box h3 {
-            font-size: 1.35rem;
-            margin-bottom: 16px;
-            color: #f4d889;
+        .accountability-card h3 {
+            font-size: 1.2rem;
+            margin-bottom: 14px;
+            color: var(--ga-gold);
             font-family: 'Segoe UI', 'Helvetica Neue', sans-serif;
         }
-        .decision-box p,
-        .decision-box li {
+        .accountability-card p {
             color: rgba(255,255,255,0.86);
-            font-size: 1rem;
+            font-size: 0.95rem;
             line-height: 1.8;
         }
-        .decision-box ul {
-            margin-top: 18px;
-            padding-left: 22px;
-        }
 
-        .cta-section {
-            background: #f7f7f7;
-            text-align: center;
+        .districts-section { background: #f7f7f7; }
+        .districts-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 30px;
+            background: #fff;
         }
-        .cta-button {
-            display: inline-block;
+        .districts-table th,
+        .districts-table td {
+            padding: 16px 20px;
+            text-align: left;
+            border-bottom: 1px solid #e0e0e0;
+            font-family: 'Segoe UI', 'Helvetica Neue', sans-serif;
+        }
+        .districts-table th {
             background: var(--ga-blue);
             color: #fff;
+            font-size: 0.85rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+        .districts-table td {
+            font-size: 0.95rem;
+            color: #333;
+        }
+        .districts-table tr:hover { background: #f9f9f9; }
+
+        .cta-section {
+            background: var(--ga-blue);
+            text-align: center;
+            color: #fff;
+        }
+        .cta-section .section-eyebrow { color: var(--ga-gold); }
+        .cta-section .section-headline { color: #fff; }
+        .cta-section .section-desc { color: rgba(255,255,255,0.9); margin-left: auto; margin-right: auto; }
+        .cta-button {
+            display: inline-block;
+            background: var(--ga-gold);
+            color: #1a1a1a;
             text-decoration: none;
             padding: 16px 34px;
             text-transform: uppercase;
@@ -193,7 +242,7 @@
             font-weight: 600;
             font-family: 'Segoe UI', 'Helvetica Neue', sans-serif;
         }
-        .cta-button:hover { background: #001a4d; }
+        .cta-button:hover { background: #d4b44f; }
 
         footer {
             background: #000;
@@ -205,8 +254,10 @@
         @media (max-width: 900px) {
             nav { display: none; }
             .hero h1 { font-size: 2.2rem; }
-            .summary-grid,
+            .type4-grid,
             .data-grid { grid-template-columns: 1fr; }
+            .accountability-grid { grid-template-columns: 1fr; }
+            .districts-table { font-size: 0.85rem; }
         }
     </style>
 </head>
@@ -227,30 +278,32 @@
 <section class="hero">
     <div class="container">
         <div class="hero-content">
-            <p class="hero-eyebrow">Georgia Jurisdiction Review</p>
-            <h1>Georgia is a <strong>provisional H-EDU jurisdiction</strong> with a confirmed district-report ACCESS domain path.</h1>
-            <p class="subtitle">H-EDU has already confirmed one real Georgia data path through WIDA AMS district reporting. The remaining question is whether the richer posted ACCESS data files support a stronger ACCESS Speaking versus ACCESS Writing build.</p>
-            <span class="hero-status">Provisional</span>
+            <p class="hero-eyebrow">VERA Georgia</p>
+            <h1>Type 4 Dyslexia Screening for <strong>Georgia Public Schools</strong></h1>
+            <p class="subtitle">VERA-GA integrates Georgia Milestones and ACCESS for ELLs data to identify students who speak well but struggle with writing. The oral-written delta reveals Type 4 dyslexia candidates who might otherwise be overlooked.</p>
+            <a href="https://vera-ga.onrender.com" class="hero-cta">Launch VERA-GA</a>
+            <a href="mailto:brian@h-edu.solutions" class="hero-cta-secondary">Request Demo</a>
         </div>
     </div>
 </section>
 
-<section class="summary-section">
+<section class="type4-section">
     <div class="container">
-        <p class="section-eyebrow">Current Judgment</p>
-        <h2 class="section-headline">Georgia is structurally strong, but <strong>verification still controls the build</strong>.</h2>
-        <div class="summary-grid">
-            <div class="summary-card">
-                <h3>What Georgia Is</h3>
-                <p>A serious expansion target with statewide academic, EL, accountability, and longitudinal-data systems already in place, plus one confirmed district ACCESS report path.</p>
+        <p class="section-eyebrow">Type 4 Detection</p>
+        <h2 class="section-headline">Identifying students who <strong>speak well but write poorly</strong></h2>
+        <p class="section-desc">Type 4 dyslexia candidates demonstrate strong oral communication abilities but significant challenges with written expression. VERA-GA uses the delta between ACCESS Speaking scores and Georgia Milestones Writing performance to flag students for further evaluation.</p>
+        <div class="type4-grid">
+            <div class="type4-card">
+                <h3>Oral Proficiency</h3>
+                <p>ACCESS for ELLs Speaking domain scores measure oral language production, fluency, and comprehension in classroom contexts.</p>
             </div>
-            <div class="summary-card">
-                <h3>Best H-EDU Path</h3>
-                <p>The strongest Georgia model is a direct ACCESS Speaking versus ACCESS Writing oral-written comparison, ideally from the richer WIDA AMS data files and at minimum from the confirmed district report path.</p>
+            <div class="type4-card">
+                <h3>Written Performance</h3>
+                <p>Georgia Milestones ELA and ACCESS Writing domain scores capture written expression, organization, and conventions.</p>
             </div>
-            <div class="summary-card">
-                <h3>What Still Controls The Build</h3>
-                <p>The gating issue is no longer whether Georgia has a data path. It is whether Georgia district users can supply the richer WIDA AMS data-file artifact in a clean, reusable district/system format.</p>
+            <div class="type4-card">
+                <h3>Delta Analysis</h3>
+                <p>When the oral-written delta exceeds 8 points, the student is flagged as a Type 4 candidate requiring additional screening.</p>
             </div>
         </div>
     </div>
@@ -258,60 +311,139 @@
 
 <section class="data-section">
     <div class="container">
-        <p class="section-eyebrow">Measurement Architecture</p>
-        <h2 class="section-headline">Georgia already has the right systems. <strong>The reporting path is the open question.</strong></h2>
-        <p class="section-desc">Georgia is promising because it combines a confirmed WIDA AMS district report path, likely richer posted ACCESS data files, Georgia Milestones, CCRPI, GSGM, and SLDS inside one coherent state reporting environment. That makes Georgia a stronger candidate than states that require immediate cross-system improvisation.</p>
+        <p class="section-eyebrow">Georgia Data Systems</p>
+        <h2 class="section-headline">Built on Georgia's <strong>official assessment infrastructure</strong></h2>
+        <p class="section-desc">VERA-GA integrates with Georgia's established assessment and accountability systems, using publicly available district-level data to identify patterns that warrant individual student review.</p>
         <div class="data-grid">
             <div class="data-card">
-                <h4>Academic System</h4>
-                <p>Georgia Milestones provides the statewide academic assessment structure and public district/system reporting context.</p>
+                <h4>Georgia Milestones</h4>
+                <p>End-of-Grade (EOG) and End-of-Course (EOC) assessments in ELA, Mathematics, Science, and Social Studies.</p>
             </div>
             <div class="data-card">
-                <h4>EL System</h4>
-                <p>ACCESS for ELLs is the clearest H-EDU oral-written pathway because it already contains speaking and writing domains inside one EL assessment system.</p>
+                <h4>ACCESS for ELLs</h4>
+                <p>WIDA's English language proficiency assessment measuring Listening, Speaking, Reading, and Writing domains.</p>
             </div>
             <div class="data-card">
-                <h4>Accountability Layer</h4>
-                <p>CCRPI and GSGM give Georgia strong interpretation and accountability context once the extract path is confirmed.</p>
+                <h4>GOSA Reporting</h4>
+                <p>Governor's Office of Student Achievement provides comprehensive district and school performance data.</p>
             </div>
             <div class="data-card">
-                <h4>Likely Access Path</h4>
-                <p>Georgia already has one confirmed district-report path through WIDA AMS. The strongest likely richer path is the posted ACCESS data file set, supported by SLDS and MyGaDOE Portal.</p>
+                <h4>CCRPI Accountability</h4>
+                <p>College and Career Ready Performance Index measures school and district progress on state goals.</p>
             </div>
         </div>
     </div>
 </section>
 
-<section class="decision-section">
+<section class="accountability-section">
     <div class="container">
-        <div class="decision-box">
-            <h3>Build Decision</h3>
-            <p>Georgia is already strong enough for confident provisional placement. The right next step is to confirm whether Georgia district or system users can access an existing posted WIDA AMS data file or related export that shows ACCESS Speaking and ACCESS Writing side by side for the same year.</p>
-            <ul>
-                <li>If that file exists, Georgia becomes a near-ready Type 4 candidate.</li>
-                <li>If it does not, Georgia shifts toward a mixed-model or partner-access build path.</li>
-                <li>Until that point, Georgia should remain explicitly provisional.</li>
-            </ul>
+        <p class="section-eyebrow" style="color: var(--ga-gold);">Accountability Integration</p>
+        <h2 class="section-headline" style="color: #fff;">VERA-GA connects <strong>assessment data to accountability</strong></h2>
+        <div class="accountability-grid">
+            <div class="accountability-card">
+                <h3>CCRPI Framework</h3>
+                <p>Georgia's College and Career Ready Performance Index (CCRPI) rates schools on a 0-100 scale across Content Mastery, Progress, Readiness, and Graduation Rate indicators. VERA-GA displays CCRPI scores alongside Type 4 detection to show how identification gaps affect overall performance.</p>
+            </div>
+            <div class="accountability-card">
+                <h3>EL Exit Criteria</h3>
+                <p>Georgia uses WIDA ACCESS composite and domain scores to determine English Learner exit eligibility. Students with high speaking but low writing scores may meet oral thresholds while struggling academically, making Type 4 screening critical for appropriate support.</p>
+            </div>
+            <div class="accountability-card">
+                <h3>Federal ESSA Compliance</h3>
+                <p>Under the Every Student Succeeds Act, Georgia must demonstrate progress for all student subgroups including English Learners. Identifying Type 4 candidates helps districts provide appropriate interventions that improve outcomes.</p>
+            </div>
+            <div class="accountability-card">
+                <h3>Statewide Longitudinal Data</h3>
+                <p>Georgia's SLDS connects student records across years, enabling VERA-GA to track students longitudinally and identify persistent oral-written gaps that indicate underlying learning differences.</p>
+            </div>
         </div>
+    </div>
+</section>
+
+<section class="districts-section">
+    <div class="container">
+        <p class="section-eyebrow">Pilot Districts</p>
+        <h2 class="section-headline">VERA-GA launches with <strong>Georgia's major school systems</strong></h2>
+        <p class="section-desc">Initial deployment includes Georgia's largest and most diverse districts, selected for their significant English Learner populations and established data reporting infrastructure.</p>
+        <table class="districts-table">
+            <thead>
+                <tr>
+                    <th>District</th>
+                    <th>System ID</th>
+                    <th>EL Population</th>
+                    <th>CCRPI Score</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Gwinnett County</td>
+                    <td>067</td>
+                    <td>Very High (20%)</td>
+                    <td>81.2</td>
+                </tr>
+                <tr>
+                    <td>Cobb County</td>
+                    <td>033</td>
+                    <td>High (16%)</td>
+                    <td>79.8</td>
+                </tr>
+                <tr>
+                    <td>DeKalb County</td>
+                    <td>044</td>
+                    <td>High (18%)</td>
+                    <td>68.4</td>
+                </tr>
+                <tr>
+                    <td>Fulton County</td>
+                    <td>060</td>
+                    <td>High (14%)</td>
+                    <td>77.3</td>
+                </tr>
+                <tr>
+                    <td>Atlanta Public Schools</td>
+                    <td>001</td>
+                    <td>High (15%)</td>
+                    <td>72.5</td>
+                </tr>
+                <tr>
+                    <td>Clayton County</td>
+                    <td>032</td>
+                    <td>High (17%)</td>
+                    <td>65.9</td>
+                </tr>
+                <tr>
+                    <td>Hall County</td>
+                    <td>068</td>
+                    <td>Very High (22%)</td>
+                    <td>74.1</td>
+                </tr>
+                <tr>
+                    <td>Dalton City Schools</td>
+                    <td>042</td>
+                    <td>Very High (45%)</td>
+                    <td>70.2</td>
+                </tr>
+            </tbody>
+        </table>
     </div>
 </section>
 
 <section class="cta-section">
     <div class="container">
-        <p class="section-eyebrow">Next Step</p>
-        <h2 class="section-headline">Georgia needs one practical access test before any live deployment.</h2>
-        <p class="section-desc" style="margin-left:auto; margin-right:auto;">H-EDU's next Georgia task is to confirm whether the richer posted WIDA AMS data files can provide ACCESS Speaking and ACCESS Writing reporting in a clean buildable format.</p>
-        <a href="mailto:brian@h-edu.solutions" class="cta-button">Request Georgia Briefing</a>
+        <p class="section-eyebrow">Get Started</p>
+        <h2 class="section-headline">Launch VERA-GA for your Georgia district</h2>
+        <p class="section-desc">Access district-level assessment data, run Type 4 screening analysis, and identify students who need additional evaluation for learning differences.</p>
+        <a href="https://vera-ga.onrender.com" class="cta-button">Launch VERA-GA</a>
     </div>
 </section>
 
 <footer>
     <div class="container">
-        <a href="../index.html" class="logo">H-<span>EDU.SOLUTIONS</span></a>
+        <a href="../index.html" class="logo">H-EDU.SOLUTIONS</a>
         <p style="margin-top: 20px;">&copy; 2026 H-EDU.solutions | A <a href="https://hallucinations.cloud">Hallucinations.cloud</a> Initiative</p>
-        <p style="margin-top: 12px;"><a href="../index.html">Global</a> &bull; Georgia (Provisional)</p>
+        <p style="margin-top: 12px;"><a href="../index.html">Global</a> &bull; <a href="california.html">California</a> &bull; <a href="new-york.html">New York</a> &bull; <a href="new-jersey.html">New Jersey</a> &bull; Georgia &bull; <a href="washington.html">Washington</a></p>
     </div>
-</footer>
+</section>
 
 </body>
 </html>
