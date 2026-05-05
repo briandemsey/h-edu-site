@@ -3,8 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>VERA Texas | Type 4 Dyslexia Screening for Texas Schools</title>
-    <meta name="description" content="VERA-TX uses TELPAS and STAAR assessment data to identify Type 4 dyslexia candidates in Texas schools through oral-written delta analysis.">
+    <title>VERA Texas | TEKS Standards & Type 4 Dyslexia Screening for Texas Schools</title>
+    <meta name="description" content="VERA-TX integrates TEKS curriculum standards with TELPAS and STAAR assessment data. Browse Texas Essential Knowledge and Skills and identify Type 4 dyslexia candidates.">
     <style>
         * { margin: 0; padding: 0; box-sizing: border-box; }
         body { font-family: 'Georgia', 'Times New Roman', serif; line-height: 1.7; color: #000; background: #fff; }
@@ -146,7 +146,7 @@
         .data-section { background: #fff; }
         .data-grid {
             display: grid;
-            grid-template-columns: repeat(4, 1fr);
+            grid-template-columns: repeat(5, 1fr);
             gap: 20px;
             margin-top: 30px;
         }
@@ -251,6 +251,9 @@
         }
         footer p, footer a { color: rgba(255,255,255,0.7); text-decoration: none; }
 
+        @media (max-width: 1100px) {
+            .data-grid { grid-template-columns: repeat(3, 1fr); }
+        }
         @media (max-width: 900px) {
             nav { display: none; }
             .hero h1 { font-size: 2.2rem; }
@@ -279,10 +282,36 @@
     <div class="container">
         <div class="hero-content">
             <p class="hero-eyebrow">VERA Texas</p>
-            <h1>Type 4 Dyslexia Screening for <strong>Texas Public Schools</strong></h1>
-            <p class="subtitle">VERA-TX integrates TELPAS and STAAR assessment data to identify students who speak well but struggle with writing. The oral-written delta reveals Type 4 dyslexia candidates who might otherwise be overlooked.</p>
+            <h1>TEKS Standards & Type 4 Screening for <strong>Texas Public Schools</strong></h1>
+            <p class="subtitle">VERA-TX provides browsable access to Texas Essential Knowledge and Skills (TEKS) curriculum standards alongside TELPAS and STAAR assessment integration. Explore state standards and identify Type 4 dyslexia candidates through oral-written delta analysis.</p>
             <a href="https://vera-tx.onrender.com" class="hero-cta">Launch VERA-TX</a>
             <a href="mailto:brian@h-edu.solutions" class="hero-cta-secondary">Request Demo</a>
+        </div>
+    </div>
+</section>
+
+<section class="data-section">
+    <div class="container">
+        <p class="section-eyebrow">TEKS Integration</p>
+        <h2 class="section-headline">Browse <strong>Texas Essential Knowledge and Skills</strong></h2>
+        <p class="section-desc">VERA-TX ingests TEKS curriculum standards directly from the Texas Education Agency via the CASE (Competency and Academic Standards Exchange) API. Navigate the complete TEKS structure by subject area, grade level, and student expectation.</p>
+        <div class="data-grid">
+            <div class="data-card">
+                <h4>Subject Areas</h4>
+                <p>English Language Arts, Mathematics, Science, Social Studies, and electives organized by discipline.</p>
+            </div>
+            <div class="data-card">
+                <h4>Grade Levels</h4>
+                <p>K-12 standards with grade-band progressions showing how expectations build across years.</p>
+            </div>
+            <div class="data-card">
+                <h4>Student Expectations</h4>
+                <p>Drill down to specific student expectations (SEs) that define what students should know and be able to do.</p>
+            </div>
+            <div class="data-card">
+                <h4>Live Updates</h4>
+                <p>TEKS data syncs from TEA sources to reflect current state-adopted curriculum standards.</p>
+            </div>
         </div>
     </div>
 </section>
@@ -315,6 +344,10 @@
         <h2 class="section-headline">Built on Texas's <strong>official assessment infrastructure</strong></h2>
         <p class="section-desc">VERA-TX integrates with Texas's established assessment and accountability systems, using publicly available district-level data to identify patterns that warrant individual student review.</p>
         <div class="data-grid">
+            <div class="data-card">
+                <h4>TEKS / CASE API</h4>
+                <p>Texas Essential Knowledge and Skills curriculum standards via the Competency and Academic Standards Exchange.</p>
+            </div>
             <div class="data-card">
                 <h4>TELPAS</h4>
                 <p>Texas English Language Proficiency Assessment System measuring Listening, Speaking, Reading, and Writing.</p>
@@ -432,7 +465,7 @@
     <div class="container">
         <p class="section-eyebrow">Get Started</p>
         <h2 class="section-headline">Launch VERA-TX for your Texas district</h2>
-        <p class="section-desc">Access district-level assessment data, run Type 4 screening analysis, and identify students who need additional evaluation for learning differences.</p>
+        <p class="section-desc">Browse TEKS curriculum standards, access district-level assessment data, run Type 4 screening analysis, and identify students who need additional evaluation for learning differences.</p>
         <a href="https://vera-tx.onrender.com" class="cta-button">Launch VERA-TX</a>
     </div>
 </section>
