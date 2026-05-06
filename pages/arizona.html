@@ -1,0 +1,567 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>VERA Arizona | Type 4 Dyslexia Screening & AZELLA Analysis for Arizona Schools</title>
+    <meta name="description" content="VERA-AZ integrates Arizona Academic Standards with AASA and AZELLA assessment data. HB 2170 Say Dyslexia compliance and Type 4 identification for Arizona's 100,000+ ESA students.">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: 'Georgia', 'Times New Roman', serif; line-height: 1.7; color: #000; background: #fff; }
+
+        :root {
+            --az-blue: #002868;
+            --az-red: #BF0A30;
+            --az-copper: #C87533;
+            --az-gold: #FFD700;
+        }
+
+        header {
+            background: #fff;
+            padding: 20px 0;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            border-bottom: 1px solid #e0e0e0;
+        }
+        .container { max-width: 1200px; margin: 0 auto; padding: 0 24px; }
+        header .container { display: flex; justify-content: space-between; align-items: center; }
+        .logo { color: #000; font-size: 1.5rem; font-weight: 700; text-decoration: none; letter-spacing: 1px; font-family: 'Segoe UI', 'Helvetica Neue', sans-serif; }
+        nav { display: flex; gap: 32px; align-items: center; }
+        nav a { color: #333; text-decoration: none; font-size: 0.9rem; font-weight: 400; transition: color 0.2s; font-family: 'Segoe UI', 'Helvetica Neue', sans-serif; }
+        nav a:hover { color: var(--az-blue); }
+        nav .nav-cta { background: var(--az-blue); color: #fff; padding: 10px 24px; font-weight: 500; }
+        nav .nav-cta:hover { background: #001a44; color: #fff; }
+
+        .hero {
+            min-height: 75vh;
+            background: linear-gradient(135deg, var(--az-blue) 0%, var(--az-copper) 50%, var(--az-red) 100%);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            padding: 140px 24px 80px;
+            color: #fff;
+        }
+        .hero-content { max-width: 900px; }
+        .hero-eyebrow {
+            font-size: 1.1rem;
+            color: var(--az-gold);
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            margin-bottom: 20px;
+            font-family: 'Segoe UI', 'Helvetica Neue', sans-serif;
+        }
+        .hero h1 {
+            font-size: 3rem;
+            font-weight: 400;
+            line-height: 1.2;
+            margin-bottom: 24px;
+        }
+        .hero h1 strong { font-weight: 700; }
+        .hero .subtitle {
+            font-size: 1.15rem;
+            max-width: 760px;
+            color: rgba(255,255,255,0.9);
+            margin-bottom: 28px;
+            line-height: 1.9;
+        }
+        .hero-cta {
+            display: inline-block;
+            background: var(--az-copper);
+            color: #fff;
+            text-decoration: none;
+            padding: 16px 34px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            font-family: 'Segoe UI', 'Helvetica Neue', sans-serif;
+            margin-right: 16px;
+            margin-bottom: 12px;
+        }
+        .hero-cta:hover { background: #a65f2a; }
+        .hero-cta-secondary {
+            display: inline-block;
+            background: transparent;
+            color: #fff;
+            text-decoration: none;
+            padding: 14px 32px;
+            border: 2px solid rgba(255,255,255,0.5);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            font-family: 'Segoe UI', 'Helvetica Neue', sans-serif;
+        }
+        .hero-cta-secondary:hover { border-color: #fff; background: rgba(255,255,255,0.1); }
+
+        section { padding: 80px 0; }
+        .section-eyebrow {
+            font-size: 0.75rem;
+            color: #666;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            margin-bottom: 16px;
+            font-family: 'Segoe UI', 'Helvetica Neue', sans-serif;
+        }
+        .section-headline {
+            font-size: 2.2rem;
+            font-weight: 400;
+            margin-bottom: 24px;
+            color: #000;
+        }
+        .section-headline strong { font-weight: 700; }
+        .section-desc {
+            font-size: 1.05rem;
+            color: #444;
+            max-width: 760px;
+            margin-bottom: 40px;
+            line-height: 1.8;
+        }
+
+        .legislation-section { background: #fff; }
+        .legislation-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 24px;
+        }
+        .legislation-card {
+            background: #f9f9f9;
+            border: 1px solid #e0e0e0;
+            border-top: 4px solid var(--az-copper);
+            padding: 30px;
+        }
+        .legislation-card h3 {
+            font-size: 1.1rem;
+            margin-bottom: 8px;
+            font-weight: 600;
+            font-family: 'Segoe UI', 'Helvetica Neue', sans-serif;
+            color: var(--az-blue);
+        }
+        .legislation-card .bill-number {
+            font-size: 0.85rem;
+            color: var(--az-copper);
+            margin-bottom: 12px;
+            font-family: 'Segoe UI', 'Helvetica Neue', sans-serif;
+        }
+        .legislation-card p {
+            font-size: 0.95rem;
+            color: #555;
+            line-height: 1.8;
+        }
+
+        .type4-section { background: #f7f7f7; }
+        .type4-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 24px;
+        }
+        .type4-card {
+            background: #fff;
+            border: 1px solid #e0e0e0;
+            border-top: 4px solid var(--az-blue);
+            padding: 30px;
+        }
+        .type4-card h3 {
+            font-size: 1.1rem;
+            margin-bottom: 12px;
+            font-weight: 600;
+            font-family: 'Segoe UI', 'Helvetica Neue', sans-serif;
+        }
+        .type4-card p {
+            font-size: 0.95rem;
+            color: #555;
+            line-height: 1.8;
+        }
+
+        .data-section { background: #fff; }
+        .data-grid {
+            display: grid;
+            grid-template-columns: repeat(5, 1fr);
+            gap: 20px;
+            margin-top: 30px;
+        }
+        .data-card {
+            background: #f7f7f7;
+            border: 1px solid #e0e0e0;
+            padding: 24px 20px;
+        }
+        .data-card h4 {
+            font-size: 1rem;
+            margin-bottom: 10px;
+            color: var(--az-blue);
+            font-weight: 600;
+            font-family: 'Segoe UI', 'Helvetica Neue', sans-serif;
+        }
+        .data-card p {
+            font-size: 0.9rem;
+            color: #555;
+            line-height: 1.7;
+        }
+
+        .accountability-section {
+            background: #111;
+            color: #fff;
+        }
+        .accountability-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 30px;
+            margin-top: 40px;
+        }
+        .accountability-card {
+            border: 1px solid rgba(255,255,255,0.15);
+            background: rgba(255,255,255,0.03);
+            padding: 30px;
+        }
+        .accountability-card h3 {
+            font-size: 1.2rem;
+            margin-bottom: 14px;
+            color: var(--az-copper);
+            font-family: 'Segoe UI', 'Helvetica Neue', sans-serif;
+        }
+        .accountability-card p {
+            color: rgba(255,255,255,0.86);
+            font-size: 0.95rem;
+            line-height: 1.8;
+        }
+
+        .esa-section { background: #f7f7f7; }
+        .esa-stats {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 24px;
+            margin-top: 30px;
+        }
+        .esa-stat {
+            background: #fff;
+            border: 1px solid #e0e0e0;
+            padding: 30px;
+            text-align: center;
+        }
+        .esa-stat .number {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: var(--az-blue);
+            font-family: 'Segoe UI', 'Helvetica Neue', sans-serif;
+        }
+        .esa-stat .label {
+            font-size: 0.9rem;
+            color: #666;
+            margin-top: 8px;
+        }
+
+        .districts-section { background: #fff; }
+        .districts-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 30px;
+            background: #fff;
+        }
+        .districts-table th,
+        .districts-table td {
+            padding: 16px 20px;
+            text-align: left;
+            border-bottom: 1px solid #e0e0e0;
+            font-family: 'Segoe UI', 'Helvetica Neue', sans-serif;
+        }
+        .districts-table th {
+            background: var(--az-blue);
+            color: #fff;
+            font-size: 0.85rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+        .districts-table td {
+            font-size: 0.95rem;
+            color: #333;
+        }
+        .districts-table tr:hover { background: #f9f9f9; }
+
+        .cta-section {
+            background: var(--az-blue);
+            text-align: center;
+            color: #fff;
+        }
+        .cta-section .section-eyebrow { color: rgba(255,255,255,0.7); }
+        .cta-section .section-headline { color: #fff; }
+        .cta-section .section-desc { color: rgba(255,255,255,0.9); margin-left: auto; margin-right: auto; }
+        .cta-button {
+            display: inline-block;
+            background: var(--az-copper);
+            color: #fff;
+            text-decoration: none;
+            padding: 16px 34px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            font-family: 'Segoe UI', 'Helvetica Neue', sans-serif;
+        }
+        .cta-button:hover { background: #a65f2a; }
+
+        footer {
+            background: #000;
+            padding: 50px 0;
+            text-align: center;
+        }
+        footer p, footer a { color: rgba(255,255,255,0.7); text-decoration: none; }
+
+        @media (max-width: 1100px) {
+            .data-grid { grid-template-columns: repeat(3, 1fr); }
+            .esa-stats { grid-template-columns: repeat(2, 1fr); }
+        }
+        @media (max-width: 900px) {
+            nav { display: none; }
+            .hero h1 { font-size: 2.2rem; }
+            .type4-grid,
+            .legislation-grid,
+            .data-grid { grid-template-columns: 1fr; }
+            .accountability-grid { grid-template-columns: 1fr; }
+            .esa-stats { grid-template-columns: 1fr; }
+            .districts-table { font-size: 0.85rem; }
+        }
+    </style>
+</head>
+<body>
+
+<header>
+    <div class="container">
+        <a href="../index.html" class="logo">H-EDU.SOLUTIONS</a>
+        <nav>
+            <a href="../index.html#portals">Portals</a>
+            <a href="../index.html#what">What We Do</a>
+            <a href="../index.html#jurisdictions">Jurisdictions</a>
+            <a href="mailto:brian@h-edu.solutions" class="nav-cta">Request Briefing</a>
+        </nav>
+    </div>
+</header>
+
+<section class="hero">
+    <div class="container">
+        <div class="hero-content">
+            <p class="hero-eyebrow">VERA Arizona</p>
+            <h1>Type 4 Screening & AZELLA Analysis for <strong>Arizona Public Schools</strong></h1>
+            <p class="subtitle">VERA-AZ integrates Arizona Academic Standards with AASA and AZELLA assessment data. With 100,000+ students in ESA programs and HB 2170 "Say Dyslexia" now law, Arizona needs systematic Type 4 identification through oral-written delta analysis.</p>
+            <a href="https://vera-az.onrender.com" class="hero-cta">Launch VERA-AZ</a>
+            <a href="mailto:brian@h-edu.solutions" class="hero-cta-secondary">Request Demo</a>
+        </div>
+    </div>
+</section>
+
+<section class="legislation-section">
+    <div class="container">
+        <p class="section-eyebrow">2025 Legislative Session</p>
+        <h2 class="section-headline">Arizona's <strong>"Say Dyslexia" Era</strong></h2>
+        <p class="section-desc">Governor Hobbs signed HB 2170 in May 2025, requiring IEPs to explicitly indicate dyslexia diagnoses. Combined with Move On When Reading and universal ESA eligibility, Arizona's accountability landscape demands systematic Type 4 identification.</p>
+        <div class="legislation-grid">
+            <div class="legislation-card">
+                <h3>Say Dyslexia Act</h3>
+                <p class="bill-number">HB 2170 | Signed May 13, 2025</p>
+                <p>Amends A.R.S. § 15-763 to require IEPs indicate dyslexia diagnosis when a child qualifies under Specific Learning Disability category. Effective August 2025.</p>
+            </div>
+            <div class="legislation-card">
+                <h3>K-1 Dyslexia Screening</h3>
+                <p class="bill-number">A.R.S. § 15-704</p>
+                <p>Mandates screening within 45 days of enrollment for phonological awareness, rapid naming, sound-symbol correspondence, and nonsense word fluency.</p>
+            </div>
+            <div class="legislation-card">
+                <h3>Move On When Reading</h3>
+                <p class="bill-number">$45M Annual Appropriation</p>
+                <p>State Legislature appropriates $45 million annually to K-3 schools for effective early reading instruction and intervention programs.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="type4-section">
+    <div class="container">
+        <p class="section-eyebrow">Type 4 Detection</p>
+        <h2 class="section-headline">Identifying students who <strong>speak well but write poorly</strong></h2>
+        <p class="section-desc">Type 4 dyslexia candidates demonstrate strong oral communication but struggle with written expression. VERA-AZ analyzes the delta between AZELLA Speaking and Writing domains to flag students who may be missed by traditional phonics-focused screening.</p>
+        <div class="type4-grid">
+            <div class="type4-card">
+                <h3>AZELLA Speaking</h3>
+                <p>Arizona English Language Learner Assessment measures oral language production, fluency, and comprehension across structured and unstructured contexts.</p>
+            </div>
+            <div class="type4-card">
+                <h3>AZELLA Writing</h3>
+                <p>Writing domain captures written expression, organization, conventions, and language control aligned to Arizona English Language Proficiency Standards.</p>
+            </div>
+            <div class="type4-card">
+                <h3>Delta Analysis</h3>
+                <p>When Speaking scores significantly exceed Writing scores, the student is flagged for additional screening under Move On When Reading protocols.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="data-section">
+    <div class="container">
+        <p class="section-eyebrow">Arizona Data Systems</p>
+        <h2 class="section-headline">Built on Arizona's <strong>official assessment infrastructure</strong></h2>
+        <p class="section-desc">VERA-AZ integrates with Arizona's established assessment and accountability systems, connecting AZELLA English learner data with AASA academic achievement to identify Type 4 patterns.</p>
+        <div class="data-grid">
+            <div class="data-card">
+                <h4>Arizona Standards</h4>
+                <p>Arizona Academic Standards for ELA, Mathematics, and Science adopted by State Board of Education.</p>
+            </div>
+            <div class="data-card">
+                <h4>AASA</h4>
+                <p>Arizona's Academic Standards Assessment for grades 3-8 ELA and Mathematics, replacing AzMERIT.</p>
+            </div>
+            <div class="data-card">
+                <h4>AZELLA</h4>
+                <p>Arizona English Language Learner Assessment measuring Listening, Speaking, Reading, and Writing.</p>
+            </div>
+            <div class="data-card">
+                <h4>ADE Reporting</h4>
+                <p>Arizona Department of Education provides comprehensive district and school performance data.</p>
+            </div>
+            <div class="data-card">
+                <h4>A-F Letter Grades</h4>
+                <p>A.R.S. § 15-241 accountability system rates schools on A-F scale across multiple domains.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="accountability-section">
+    <div class="container">
+        <p class="section-eyebrow" style="color: var(--az-copper);">Accountability Integration</p>
+        <h2 class="section-headline" style="color: #fff;">VERA-AZ connects <strong>assessment data to accountability</strong></h2>
+        <div class="accountability-grid">
+            <div class="accountability-card">
+                <h3>A-F School Grades</h3>
+                <p>Arizona rates schools on an A-F scale measuring proficiency, growth, ELL progress, graduation rates, and college/career readiness. VERA-AZ shows how Type 4 identification gaps affect school grades.</p>
+            </div>
+            <div class="accountability-card">
+                <h3>AZELLA Proficiency</h3>
+                <p>Students must demonstrate proficiency across all four AZELLA domains to exit ELL status. High Speaking but low Writing scores may indicate Type 4 patterns requiring intervention.</p>
+            </div>
+            <div class="accountability-card">
+                <h3>Move On When Reading</h3>
+                <p>Arizona's $45M literacy initiative requires evidence-based intervention for struggling readers. Type 4 identification ensures students receive appropriate support beyond phonics instruction.</p>
+            </div>
+            <div class="accountability-card">
+                <h3>Structured English Immersion</h3>
+                <p>SB1014 requires 2 hours daily of Targeted ELD instruction. VERA-AZ helps identify which ELL students need writing-specific intervention within SEI programs.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="esa-section">
+    <div class="container">
+        <p class="section-eyebrow">School Choice Context</p>
+        <h2 class="section-headline">Arizona's <strong>Universal ESA Program</strong></h2>
+        <p class="section-desc">Arizona pioneered universal ESA eligibility in 2022. With 100,000+ students using Empowerment Scholarship Accounts, VERA-AZ provides curriculum alignment verification and dyslexia identification across public and private school settings.</p>
+        <div class="esa-stats">
+            <div class="esa-stat">
+                <div class="number">100K+</div>
+                <div class="label">ESA Students</div>
+            </div>
+            <div class="esa-stat">
+                <div class="number">9.8%</div>
+                <div class="label">of AZ K-12 Students</div>
+            </div>
+            <div class="esa-stat">
+                <div class="number">$7-8K</div>
+                <div class="label">Typical Award</div>
+            </div>
+            <div class="esa-stat">
+                <div class="number">2022</div>
+                <div class="label">Universal Eligibility</div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="districts-section">
+    <div class="container">
+        <p class="section-eyebrow">Pilot Districts</p>
+        <h2 class="section-headline">VERA-AZ launches with <strong>Arizona's major school districts</strong></h2>
+        <p class="section-desc">Initial deployment includes Arizona's largest districts, selected for significant English Learner populations and established data reporting infrastructure.</p>
+        <table class="districts-table">
+            <thead>
+                <tr>
+                    <th>District</th>
+                    <th>Location</th>
+                    <th>Students</th>
+                    <th>Letter Grade</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Chandler Unified</td>
+                    <td>Chandler</td>
+                    <td>44,000</td>
+                    <td>A</td>
+                </tr>
+                <tr>
+                    <td>Gilbert Public Schools</td>
+                    <td>Gilbert</td>
+                    <td>36,000</td>
+                    <td>A</td>
+                </tr>
+                <tr>
+                    <td>Glendale Elementary</td>
+                    <td>Glendale</td>
+                    <td>12,500</td>
+                    <td>B</td>
+                </tr>
+                <tr>
+                    <td>Mesa Public Schools</td>
+                    <td>Mesa</td>
+                    <td>64,000</td>
+                    <td>B</td>
+                </tr>
+                <tr>
+                    <td>Phoenix Union HSD</td>
+                    <td>Phoenix</td>
+                    <td>27,000</td>
+                    <td>B</td>
+                </tr>
+                <tr>
+                    <td>Scottsdale Unified</td>
+                    <td>Scottsdale</td>
+                    <td>22,000</td>
+                    <td>A</td>
+                </tr>
+                <tr>
+                    <td>Tempe Elementary</td>
+                    <td>Tempe</td>
+                    <td>11,000</td>
+                    <td>B</td>
+                </tr>
+                <tr>
+                    <td>Tucson Unified</td>
+                    <td>Tucson</td>
+                    <td>42,000</td>
+                    <td>C</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</section>
+
+<section class="cta-section">
+    <div class="container">
+        <p class="section-eyebrow">Get Started</p>
+        <h2 class="section-headline">Launch VERA-AZ for your Arizona district</h2>
+        <p class="section-desc">Browse Arizona Academic Standards, access district-level AZELLA and AASA data, run Type 4 screening analysis, and identify students who need additional evaluation under HB 2170.</p>
+        <a href="https://vera-az.onrender.com" class="cta-button">Launch VERA-AZ</a>
+    </div>
+</section>
+
+<footer>
+    <div class="container">
+        <a href="../index.html" class="logo">H-EDU.SOLUTIONS</a>
+        <p style="margin-top: 20px;">&copy; 2026 H-EDU.solutions | A <a href="https://hallucinations.cloud">Hallucinations.cloud</a> Initiative</p>
+        <p style="margin-top: 12px;"><a href="arizona.html">Arizona</a> &bull; <a href="california.html">California</a> &bull; <a href="colorado.html">Colorado</a> &bull; <a href="florida.html">Florida</a> &bull; <a href="texas.html">Texas</a> &bull; <a href="new-york.html">New York</a></p>
+    </div>
+</footer>
+
+</body>
+</html>
