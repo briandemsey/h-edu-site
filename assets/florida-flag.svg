@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 60 60" role="img" aria-labelledby="title">
+  <title>Florida Flag</title>
+  <rect width="60" height="60" fill="#ffffff"/>
+  <!-- Red St. Andrew's Cross (saltire) -->
+  <polygon fill="#C41E3A" points="0,0 10,0 60,50 60,60 50,60 0,10"/>
+  <polygon fill="#C41E3A" points="50,0 60,0 60,10 10,60 0,60 0,50"/>
+  <!-- Simplified seal circle -->
+  <circle cx="30" cy="30" r="12" fill="#002D72" stroke="#F4811F" stroke-width="2"/>
+  <text x="30" y="34" font-size="10" fill="white" text-anchor="middle" font-family="sans-serif" font-weight="bold">FL</text>
+</svg>
