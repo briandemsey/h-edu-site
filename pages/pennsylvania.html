@@ -1,0 +1,378 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>H-EDU Pennsylvania | Provisional Jurisdiction Review</title>
+    <meta name="description" content="Pennsylvania is a provisional H-EDU jurisdiction under review. H-EDU is validating ACCESS Speaking-Writing measurement architecture, AUN-based district joins, and PDE public reporting pathways before any live Type 4 deployment.">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: 'Georgia', 'Times New Roman', serif; line-height: 1.7; color: #000; background: #fff; }
+
+        :root {
+            --pa-blue: #002366;
+            --pa-gold: #FFD700;
+            --pa-dark: #001a4d;
+        }
+
+        header {
+            background: #fff;
+            padding: 20px 0;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            border-bottom: 1px solid #e0e0e0;
+        }
+        .container { max-width: 1200px; margin: 0 auto; padding: 0 24px; }
+        header .container { display: flex; justify-content: space-between; align-items: center; }
+        .logo { color: #000; font-size: 1.5rem; font-weight: 700; text-decoration: none; letter-spacing: 1px; font-family: 'Segoe UI', 'Helvetica Neue', sans-serif; }
+        nav { display: flex; gap: 32px; align-items: center; }
+        nav a { color: #333; text-decoration: none; font-size: 0.9rem; font-weight: 400; transition: color 0.2s; font-family: 'Segoe UI', 'Helvetica Neue', sans-serif; }
+        nav a:hover { color: var(--pa-blue); }
+        nav .nav-cta { background: var(--pa-blue); color: #fff; padding: 10px 24px; font-weight: 500; }
+        nav .nav-cta:hover { background: var(--pa-dark); color: #fff; }
+
+        .hero {
+            min-height: 75vh;
+            background: linear-gradient(135deg, var(--pa-blue) 0%, #1a3d7a 55%, #3a1a00 100%);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            padding: 140px 24px 80px;
+            color: #fff;
+        }
+        .hero-content { max-width: 900px; }
+        .hero-eyebrow {
+            font-size: 1.1rem;
+            color: var(--pa-gold);
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            margin-bottom: 20px;
+            font-family: 'Segoe UI', 'Helvetica Neue', sans-serif;
+        }
+        .hero h1 {
+            font-size: 3rem;
+            font-weight: 400;
+            line-height: 1.2;
+            margin-bottom: 24px;
+        }
+        .hero h1 strong { font-weight: 700; }
+        .hero .subtitle {
+            font-size: 1.15rem;
+            max-width: 760px;
+            color: rgba(255,255,255,0.9);
+            margin-bottom: 28px;
+            line-height: 1.9;
+        }
+        .hero-status {
+            display: inline-block;
+            background: var(--pa-gold);
+            color: #3d2a00;
+            padding: 6px 14px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            font-size: 0.75rem;
+            font-weight: 700;
+            font-family: 'Segoe UI', 'Helvetica Neue', sans-serif;
+        }
+
+        section { padding: 80px 0; }
+        .section-eyebrow {
+            font-size: 0.75rem;
+            color: #666;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            margin-bottom: 16px;
+            font-family: 'Segoe UI', 'Helvetica Neue', sans-serif;
+        }
+        .section-headline {
+            font-size: 2.2rem;
+            font-weight: 400;
+            margin-bottom: 24px;
+            color: #000;
+        }
+        .section-headline strong { font-weight: 700; }
+        .section-desc {
+            font-size: 1.05rem;
+            color: #444;
+            max-width: 760px;
+            margin-bottom: 40px;
+            line-height: 1.8;
+        }
+
+        .summary-section { background: #f7f7f7; }
+        .summary-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 24px;
+        }
+        .summary-card {
+            background: #fff;
+            border: 1px solid #e0e0e0;
+            border-top: 4px solid var(--pa-blue);
+            padding: 30px;
+        }
+        .summary-card h3 {
+            font-size: 1.1rem;
+            margin-bottom: 12px;
+            font-weight: 600;
+            font-family: 'Segoe UI', 'Helvetica Neue', sans-serif;
+        }
+        .summary-card p {
+            font-size: 0.95rem;
+            color: #555;
+            line-height: 1.8;
+        }
+
+        .data-section { background: #fff; }
+        .data-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 20px;
+            margin-top: 30px;
+        }
+        .data-card {
+            background: #f7f7f7;
+            border: 1px solid #e0e0e0;
+            padding: 24px 20px;
+        }
+        .data-card h4 {
+            font-size: 1rem;
+            margin-bottom: 10px;
+            color: var(--pa-blue);
+            font-weight: 600;
+            font-family: 'Segoe UI', 'Helvetica Neue', sans-serif;
+        }
+        .data-card p {
+            font-size: 0.9rem;
+            color: #555;
+            line-height: 1.7;
+        }
+
+        .equity-section { background: #f7f7f7; }
+        .equity-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 24px;
+            margin-top: 30px;
+        }
+        .equity-card {
+            background: #fff;
+            border: 1px solid #e0e0e0;
+            padding: 30px;
+            text-align: center;
+        }
+        .equity-card .rank {
+            font-size: 3rem;
+            font-weight: 700;
+            color: var(--pa-blue);
+            font-family: 'Segoe UI', 'Helvetica Neue', sans-serif;
+        }
+        .equity-card .rank-label {
+            font-size: 0.85rem;
+            color: #666;
+            margin-top: 8px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            font-family: 'Segoe UI', 'Helvetica Neue', sans-serif;
+        }
+        .equity-card p {
+            font-size: 0.9rem;
+            color: #555;
+            margin-top: 12px;
+            line-height: 1.7;
+        }
+
+        .decision-section {
+            background: #111;
+            color: #fff;
+        }
+        .decision-box {
+            max-width: 900px;
+            border: 1px solid rgba(255,255,255,0.15);
+            background: rgba(255,255,255,0.03);
+            padding: 36px;
+        }
+        .decision-box h3 {
+            font-size: 1.35rem;
+            margin-bottom: 16px;
+            color: var(--pa-gold);
+            font-family: 'Segoe UI', 'Helvetica Neue', sans-serif;
+        }
+        .decision-box p,
+        .decision-box li {
+            color: rgba(255,255,255,0.86);
+            font-size: 1rem;
+            line-height: 1.8;
+        }
+        .decision-box ul {
+            margin-top: 18px;
+            padding-left: 22px;
+        }
+
+        .cta-section {
+            background: #f7f7f7;
+            text-align: center;
+        }
+        .cta-button {
+            display: inline-block;
+            background: var(--pa-blue);
+            color: #fff;
+            text-decoration: none;
+            padding: 16px 34px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            font-family: 'Segoe UI', 'Helvetica Neue', sans-serif;
+        }
+        .cta-button:hover { background: var(--pa-dark); }
+
+        footer {
+            background: #000;
+            padding: 50px 0;
+            text-align: center;
+        }
+        footer p, footer a { color: rgba(255,255,255,0.7); text-decoration: none; }
+
+        @media (max-width: 900px) {
+            nav { display: none; }
+            .hero h1 { font-size: 2.2rem; }
+            .summary-grid,
+            .equity-grid { grid-template-columns: 1fr; }
+            .data-grid { grid-template-columns: 1fr 1fr; }
+        }
+    </style>
+</head>
+<body>
+
+<header>
+    <div class="container">
+        <a href="../index.html" class="logo">H-EDU.SOLUTIONS</a>
+        <nav>
+            <a href="../index.html#portals">Portals</a>
+            <a href="../index.html#what">What We Do</a>
+            <a href="../index.html#jurisdictions">Jurisdictions</a>
+            <a href="mailto:brian@h-edu.solutions" class="nav-cta">Request Briefing</a>
+        </nav>
+    </div>
+</header>
+
+<section class="hero">
+    <div class="container">
+        <div class="hero-content">
+            <p class="hero-eyebrow">Pennsylvania Jurisdiction Review</p>
+            <h1>Pennsylvania ranks <strong>last in the nation</strong> in Hispanic-white opportunity gaps.</h1>
+            <p class="subtitle">H-EDU is validating Pennsylvania as a Type 4 jurisdiction by confirming whether PDE public reporting supports district-level extraction of ACCESS Speaking and Writing values, joined statewide by AUN.</p>
+            <span class="hero-status">Provisional</span>
+        </div>
+    </div>
+</section>
+
+<section class="summary-section">
+    <div class="container">
+        <p class="section-eyebrow">Decision Status</p>
+        <h2 class="section-headline">Pennsylvania is a COSSBA Phase 1 priority with the <strong>worst equity rankings in America</strong>.</h2>
+        <div class="summary-grid">
+            <div class="summary-card">
+                <h3>What Pennsylvania Is</h3>
+                <p>A Phase 1 COSSBA priority jurisdiction under active review for H-EDU expansion. WIDA member since 2007. ~100,000 English Learners across 500 districts.</p>
+            </div>
+            <div class="summary-card">
+                <h3>Best-Case Path</h3>
+                <p>A true Type 4 build using <code>ACCESS Speaking</code> versus <code>ACCESS Writing</code> at district grain, joined statewide by <code>AUN</code> (Administrative Unit Number).</p>
+            </div>
+            <div class="summary-card">
+                <h3>Current Constraint</h3>
+                <p>Domain-level ACCESS data exists in PA's secure systems (eMetric, WIDA AMS) but is not publicly downloadable. A formal RTKL request to PDE is required.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="equity-section">
+    <div class="container">
+        <p class="section-eyebrow">Why Pennsylvania</p>
+        <h2 class="section-headline">The strongest <strong>equity case</strong> of any U.S. state.</h2>
+        <div class="equity-grid">
+            <div class="equity-card">
+                <div class="rank">50th</div>
+                <div class="rank-label">Hispanic-White Gap</div>
+                <p>Dead last in the nation. No state has a wider Hispanic-white education opportunity gap than Pennsylvania.</p>
+            </div>
+            <div class="equity-card">
+                <div class="rank">49th</div>
+                <div class="rank-label">Black-White Gap</div>
+                <p>Second to last nationally. 25+ point gaps persist between White and Black students with no measurable improvement since 2003.</p>
+            </div>
+            <div class="equity-card">
+                <div class="rank">49th</div>
+                <div class="rank-label">Income Gap</div>
+                <p>Second to last in the low-income vs high-income opportunity gap. Structural inequities compounded by historic underfunding.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="data-section">
+    <div class="container">
+        <p class="section-eyebrow">Measurement Architecture</p>
+        <h2 class="section-headline">The PA infrastructure is mature. <strong>The public data path is not.</strong></h2>
+        <p class="section-desc">Pennsylvania administers WIDA ACCESS with four separately scored domains. The assessment infrastructure supports Type 4 detection. The constraint is public data access, not measurement capability.</p>
+        <div class="data-grid">
+            <div class="data-card">
+                <h4>Academic System</h4>
+                <p><code>PSSA</code> (Grades 3-8) and <code>Keystone Exams</code> (Algebra I, Biology, Literature) are the statewide academic assessment surfaces.</p>
+            </div>
+            <div class="data-card">
+                <h4>EL System</h4>
+                <p><code>WIDA ACCESS</code> measures Listening, Speaking, Reading, and Writing as four separate domain scores (100-600 scale).</p>
+            </div>
+            <div class="data-card">
+                <h4>Data Backbone</h4>
+                <p><code>PIMS</code> (PA Information Management System) is the statewide SLDS. <code>PVAAS</code> provides growth analytics.</p>
+            </div>
+            <div class="data-card">
+                <h4>Join Key</h4>
+                <p><code>AUN</code> (Administrative Unit Number) is the 9-digit district identifier used across all PDE systems.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="decision-section">
+    <div class="container">
+        <p class="section-eyebrow" style="color: rgba(255,255,255,0.55);">Build Judgment</p>
+        <div class="decision-box">
+            <h3>Current H-EDU judgment</h3>
+            <p>Pennsylvania is structurally promising, strategically essential (COSSBA Phase 1), and has the worst equity rankings in the nation — making the VERA oral-written delta analysis both technically feasible and politically compelling.</p>
+            <ul>
+                <li><strong>Go</strong> for RTKL data request to PDE for aggregate domain-level ACCESS data by AUN.</li>
+                <li><strong>Go</strong> for provisional website placement and continued research.</li>
+                <li><strong>Go</strong> for district artifact requests (Philadelphia, Reading, Allentown).</li>
+                <li><strong>No-Go</strong> for app build until district-level Speaking + Writing extraction is confirmed.</li>
+                <li>If the RTKL request succeeds, Pennsylvania becomes a confirmed Type 4 jurisdiction.</li>
+                <li>If it does not, Pennsylvania shifts toward a mixed-model or accountability-monitoring classification.</li>
+            </ul>
+        </div>
+    </div>
+</section>
+
+<section class="cta-section">
+    <div class="container">
+        <p class="section-eyebrow">Next Step</p>
+        <h2 class="section-headline">The formal Right-to-Know Law request <strong>has been drafted</strong>.</h2>
+        <p class="section-desc" style="margin: 0 auto 40px;">H-EDU is preparing a targeted RTKL request to PDE for aggregate ACCESS domain-level proficiency distributions by district, to determine whether Pennsylvania can support a clean, buildable oral-written delta analysis.</p>
+        <a href="mailto:brian@h-edu.solutions" class="cta-button">Request Pennsylvania Briefing</a>
+    </div>
+</section>
+
+<footer>
+    <div class="container">
+        <p>&copy; 2026 H-EDU.solutions</p>
+    </div>
+</footer>
+
+</body>
+</html>
