@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 60 60" role="img" aria-labelledby="title">
+  <title>Wisconsin Flag</title>
+  <rect width="60" height="60" fill="#002B5C"/>
+  <circle cx="30" cy="26" r="14" fill="none" stroke="#FFFFFF" stroke-width="1.5"/>
+  <text x="30" y="30" text-anchor="middle" fill="#FFFFFF" font-size="10" font-family="serif" font-weight="bold">WI</text>
+  <text x="30" y="50" text-anchor="middle" fill="#C5050C" font-size="5" font-family="serif">WIDA HQ</text>
+</svg>
