@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 60 60" role="img" aria-labelledby="title">
+  <title>Kansas Flag</title>
+  <rect width="60" height="60" fill="#002855"/>
+  <circle cx="30" cy="26" r="14" fill="none" stroke="#FFB81C" stroke-width="1.5"/>
+  <text x="30" y="30" text-anchor="middle" fill="#FFB81C" font-size="10" font-family="serif" font-weight="bold">KS</text>
+  <text x="30" y="50" text-anchor="middle" fill="#FFB81C" font-size="5" font-family="serif">1861</text>
+</svg>
