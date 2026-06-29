@@ -1,1 +1,12 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 60 60"><title>Tokyo Flag</title><rect width="60" height="60" fill="#FFFFFF"/><circle cx="30" cy="28" r="12" fill="none" stroke="#6B3FA0" stroke-width="3"/><circle cx="30" cy="28" r="4" fill="#6B3FA0"/><text x="30" y="52" text-anchor="middle" fill="#6B3FA0" font-size="6" font-family="serif">東京</text></svg>
+<svg viewBox="-13.5 -9 27 18" width="900" height="600" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" fill="#fff">
+<path d="M-13.5-9h27v18h-27z" fill="#4b0082"/>
+<g id="b">
+<path id="a" d="M0 6L.5 5.519259V2h-1V5.519259z"/><!--12-√42-->
+<use xlink:href="#a" transform="rotate(60)"/>
+<use xlink:href="#a" transform="rotate(-60)"/>
+</g>
+<use xlink:href="#b" transform="scale(1-1)"/>
+<circle r="3"/>
+<circle r="2" fill="#4b0082"/>
+<circle r="1"/>
+</svg>

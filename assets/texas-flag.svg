@@ -1,8 +1,1 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 60 60" role="img" aria-labelledby="title">
-  <title>Texas Flag</title>
-  <rect width="60" height="60" fill="#ffffff"/>
-  <rect width="24" height="60" fill="#002868"/>
-  <rect x="24" width="36" height="30" fill="#ffffff"/>
-  <rect x="24" y="30" width="36" height="30" fill="#bf0a30"/>
-  <polygon fill="#ffffff" points="12,14 14.6,22 23,22 16.2,27 18.8,35 12,30 5.2,35 7.8,27 1,22 9.4,22"/>
-</svg>
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="900" height="600"><path d="M0 0h900v600H0z" fill="#bf0a30"/><path d="M0 0h900v300H0z" fill="#FFF"/><path d="M0 0h300v600H0z" fill="#00205B"/><g fill="#FFF" transform="translate(150 300)"><g id="b"><path id="a" d="M0-112.5V0h50" transform="rotate(18 0 -112.5)"/><use xlink:href="#a" transform="scale(-1 1)"/></g><use xlink:href="#b" transform="rotate(72)"/><use xlink:href="#b" transform="rotate(144)"/><use xlink:href="#b" transform="rotate(216)"/><use xlink:href="#b" transform="rotate(288)"/></g></svg>

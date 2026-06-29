@@ -1,16 +1,1 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 60 60" role="img" aria-labelledby="title">
-  <title>Arizona Flag</title>
-  <!-- Blue bottom half -->
-  <rect y="30" width="60" height="30" fill="#002868"/>
-  <!-- Red and gold rays (top half) -->
-  <polygon fill="#BF0A30" points="30,30 0,0 8.6,0"/>
-  <polygon fill="#FFD700" points="30,30 8.6,0 17.1,0"/>
-  <polygon fill="#BF0A30" points="30,30 17.1,0 25.7,0"/>
-  <polygon fill="#FFD700" points="30,30 25.7,0 34.3,0"/>
-  <polygon fill="#BF0A30" points="30,30 34.3,0 42.9,0"/>
-  <polygon fill="#FFD700" points="30,30 42.9,0 51.4,0"/>
-  <polygon fill="#BF0A30" points="30,30 51.4,0 60,0 60,30"/>
-  <polygon fill="#FFD700" points="30,30 0,0 0,30"/>
-  <!-- Copper star -->
-  <polygon fill="#C87533" points="30,18 32.4,24 39,24 33.6,28 35.6,35 30,31 24.4,35 26.4,28 21,24 27.6,24"/>
-</svg>
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="900" height="600" viewBox="-288 -192 576 384"><path d="M-288-192h576v384h-576z" fill="#00205B"/><path d="M-288-192h576V0h-576z" fill="#bf0a30"/><path id="a" d="M288-147v80L0 0zm-149-45h83L0 0zm-112 0h48L0 0z" fill="#fed700"/><use transform="scale(-1 1)" xlink:href="#a"/><path d="M0-96 62.385 96l-163.07-119.42h201.38L-62.375 96z" fill="#ce5c17"/></svg>
